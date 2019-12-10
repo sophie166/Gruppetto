@@ -22,7 +22,7 @@ class GeneralChatClub
     private $dateMessage;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
     private $contentMessage;
 

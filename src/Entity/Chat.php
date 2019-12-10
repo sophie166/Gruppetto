@@ -22,7 +22,7 @@ class Chat
     private $contentMessage;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateMessage;
 

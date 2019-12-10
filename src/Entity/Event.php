@@ -37,7 +37,7 @@ class Event
     private $timeEvent;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -45,11 +45,6 @@ class Event
      * @ORM\Column(type="integer")
      */
     private $participantLimit;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $participantName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -129,18 +124,6 @@ class Event
     public function setParticipantLimit(int $participantLimit): self
     {
         $this->participantLimit = $participantLimit;
-
-        return $this;
-    }
-
-    public function getParticipantName(): ?string
-    {
-        return $this->participantName;
-    }
-
-    public function setParticipantName(string $participantName): self
-    {
-        $this->participantName = $participantName;
 
         return $this;
     }
