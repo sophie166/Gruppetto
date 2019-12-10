@@ -16,11 +16,11 @@ class FriendRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Friends::class);
+        parent::__construct($registry, Friend::class);
     }
 
     // /**
-    //  * @return Friend[] Returns an array of Friends objects
+    //  * @return Friend[] Returns an array of Friend objects
     //  */
     /*
     public function findByExampleField($value)
