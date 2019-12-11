@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class SportCategory
      */
     private $nameCategory;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sport", mappedBy="sportCategory")
+     */
+    private $sports;
+
+    public function __construct()
+    {
+        $this->sports = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +46,37 @@ class SportCategory
     public function setNameCategory(string $nameCategory): self
     {
         $this->nameCategory = $nameCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sport[]
+     */
+    public function getSports(): Collection
+    {
+        return $this->sports;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports[] = $sport;
+            $sport->setSportCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sports->contains($sport)) {
+            $this->sports->removeElement($sport);
+            // set the owning side to null (unless already changed)
+            if ($sport->getSportCategory() === $this) {
+                $sport->setSportCategory(null);
+            }
+        }
 
         return $this;
     }

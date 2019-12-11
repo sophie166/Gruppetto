@@ -26,6 +26,17 @@ class Comment
      */
     private $dateComment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="comments")
+     */
+    private $event;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilSolo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +62,30 @@ class Comment
     public function setDateComment(\DateTimeInterface $dateComment): self
     {
         $this->dateComment = $dateComment;
+
+        return $this;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    public function getProfilSolo(): ?ProfilSolo
+    {
+        return $this->profilSolo;
+    }
+
+    public function setProfilSolo(?ProfilSolo $profilSolo): self
+    {
+        $this->profilSolo = $profilSolo;
 
         return $this;
     }

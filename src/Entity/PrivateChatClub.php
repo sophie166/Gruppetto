@@ -26,6 +26,18 @@ class PrivateChatClub
      */
     private $dateMessage;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\ProfilClub", inversedBy="privateChatClub", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilClub;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="privateChatClub", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilSolo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +63,30 @@ class PrivateChatClub
     public function setDateMessage(\DateTimeInterface $dateMessage): self
     {
         $this->dateMessage = $dateMessage;
+
+        return $this;
+    }
+
+    public function getProfilClub(): ?ProfilClub
+    {
+        return $this->profilClub;
+    }
+
+    public function setProfilClub(ProfilClub $profilClub): self
+    {
+        $this->profilClub = $profilClub;
+
+        return $this;
+    }
+
+    public function getProfilSolo(): ?ProfilSolo
+    {
+        return $this->profilSolo;
+    }
+
+    public function setProfilSolo(ProfilSolo $profilSolo): self
+    {
+        $this->profilSolo = $profilSolo;
 
         return $this;
     }

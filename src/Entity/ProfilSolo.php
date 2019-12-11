@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,6 +72,49 @@ class ProfilSolo
      * @ORM\Column(type="integer", nullable=true)
      */
     private $emergencyPhone;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="profilSolo")
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Sport", inversedBy="profilSolos")
+     */
+    private $sport;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Friend", inversedBy="profilSolos")
+     */
+    private $friend;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Chat", mappedBy="profilSolo", cascade={"persist", "remove"})
+     */
+    private $chat;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilSolo")
+     */
+    private $generalChatClubs;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\PrivateChatClub", mappedBy="profilSolo", cascade={"persist", "remove"})
+     */
+    private $privateChatClub;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="profilSolo", cascade={"persist", "remove"})
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->sport = new ArrayCollection();
+        $this->friend = new ArrayCollection();
+        $this->generalChatClubs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -204,6 +249,169 @@ class ProfilSolo
     public function setEmergencyPhone(?int $emergencyPhone): self
     {
         $this->emergencyPhone = $emergencyPhone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getProfilSolo() === $this) {
+                $comment->setProfilSolo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sport[]
+     */
+    public function getSport(): Collection
+    {
+        return $this->sport;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sport->contains($sport)) {
+            $this->sport[] = $sport;
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sport->contains($sport)) {
+            $this->sport->removeElement($sport);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Friend[]
+     */
+    public function getFriend(): Collection
+    {
+        return $this->friend;
+    }
+
+    public function addFriend(Friend $friend): self
+    {
+        if (!$this->friend->contains($friend)) {
+            $this->friend[] = $friend;
+        }
+
+        return $this;
+    }
+
+    public function removeFriend(Friend $friend): self
+    {
+        if ($this->friend->contains($friend)) {
+            $this->friend->removeElement($friend);
+        }
+
+        return $this;
+    }
+
+    public function getChat(): ?Chat
+    {
+        return $this->chat;
+    }
+
+    public function setChat(Chat $chat): self
+    {
+        $this->chat = $chat;
+
+        // set the owning side of the relation if necessary
+        if ($chat->getProfilSolo() !== $this) {
+            $chat->setProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GeneralChatClub[]
+     */
+    public function getGeneralChatClubs(): Collection
+    {
+        return $this->generalChatClubs;
+    }
+
+    public function addGeneralChatClub(GeneralChatClub $generalChatClub): self
+    {
+        if (!$this->generalChatClubs->contains($generalChatClub)) {
+            $this->generalChatClubs[] = $generalChatClub;
+            $generalChatClub->addProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGeneralChatClub(GeneralChatClub $generalChatClub): self
+    {
+        if ($this->generalChatClubs->contains($generalChatClub)) {
+            $this->generalChatClubs->removeElement($generalChatClub);
+            $generalChatClub->removeProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function getPrivateChatClub(): ?PrivateChatClub
+    {
+        return $this->privateChatClub;
+    }
+
+    public function setPrivateChatClub(PrivateChatClub $privateChatClub): self
+    {
+        $this->privateChatClub = $privateChatClub;
+
+        // set the owning side of the relation if necessary
+        if ($privateChatClub->getProfilSolo() !== $this) {
+            $privateChatClub->setProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newProfilSolo = null === $user ? null : $this;
+        if ($user->getProfilSolo() !== $newProfilSolo) {
+            $user->setProfilSolo($newProfilSolo);
+        }
 
         return $this;
     }

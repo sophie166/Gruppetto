@@ -26,6 +26,18 @@ class Chat
      */
     private $dateMessage;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="chat", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilSolo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Friend", inversedBy="chat", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $friend;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +63,30 @@ class Chat
     public function setDateMessage(\DateTimeInterface $dateMessage): self
     {
         $this->dateMessage = $dateMessage;
+
+        return $this;
+    }
+
+    public function getProfilSolo(): ?ProfilSolo
+    {
+        return $this->profilSolo;
+    }
+
+    public function setProfilSolo(ProfilSolo $profilSolo): self
+    {
+        $this->profilSolo = $profilSolo;
+
+        return $this;
+    }
+
+    public function getFriend(): ?Friend
+    {
+        return $this->friend;
+    }
+
+    public function setFriend(Friend $friend): self
+    {
+        $this->friend = $friend;
 
         return $this;
     }
