@@ -407,11 +407,14 @@ class ProfilSolo
     {
         $this->user = $user;
 
+        //Erreur: Cannot call method getProfilSolo() on App\Entity\User|null.
+        //Erreur: Cannot call method setProfilSolo() on App\Entity\User|null.
+
         // set (or unset) the owning side of the relation if necessary
-        $newProfilSolo = null === $user ? null : $this;
-        if ($user->getProfilSolo() !== $newProfilSolo) {
-            $user->setProfilSolo($newProfilSolo);
-        }
+        //$newProfilSolo = null === $user ? null : $this;
+        //if ($user->getProfilSolo() !== $newProfilSolo) {
+        //$user->setProfilSolo($newProfilSolo);
+        //}
 
         return $this;
     }
