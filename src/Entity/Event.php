@@ -64,9 +64,25 @@ class Event
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\profilSolo", inversedBy="events")
+     */
+    private $createurSolo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub", inversedBy="events")
+     */
+    private $createurClub;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilSolo", inversedBy="eventParticipants")
+     */
+    private $profilSolo;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->profilSolo = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,6 +212,56 @@ class Event
             if ($comment->getEvent() === $this) {
                 $comment->setEvent(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getCreateurSolo(): ?profilSolo
+    {
+        return $this->createurSolo;
+    }
+
+    public function setCreateurSolo(?profilSolo $createurSolo): self
+    {
+        $this->createurSolo = $createurSolo;
+
+        return $this;
+    }
+
+    public function getCreateurClub(): ?ProfilClub
+    {
+        return $this->createurClub;
+    }
+
+    public function setCreateurClub(?ProfilClub $createurClub): self
+    {
+        $this->createurClub = $createurClub;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProfilSolo[]
+     */
+    public function getProfilSolo(): Collection
+    {
+        return $this->profilSolo;
+    }
+
+    public function addProfilSolo(ProfilSolo $profilSolo): self
+    {
+        if (!$this->profilSolo->contains($profilSolo)) {
+            $this->profilSolo[] = $profilSolo;
+        }
+
+        return $this;
+    }
+
+    public function removeProfilSolo(ProfilSolo $profilSolo): self
+    {
+        if ($this->profilSolo->contains($profilSolo)) {
+            $this->profilSolo->removeElement($profilSolo);
         }
 
         return $this;

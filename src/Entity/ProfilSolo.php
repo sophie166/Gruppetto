@@ -108,12 +108,24 @@ class ProfilSolo
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="createurSolo")
+     */
+    private $events;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="profilSolo")
+     */
+    private $eventParticipants;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->sport = new ArrayCollection();
         $this->friend = new ArrayCollection();
         $this->generalChatClubs = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->eventParticipants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -415,6 +427,65 @@ class ProfilSolo
         //if ($user->getProfilSolo() !== $newProfilSolo) {
         //$user->setProfilSolo($newProfilSolo);
         //}
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setCreateurSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getCreateurSolo() === $this) {
+                $event->setCreateurSolo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEventParticipants(): Collection
+    {
+        return $this->eventParticipants;
+    }
+
+    public function addEventParticipant(Event $eventParticipant): self
+    {
+        if (!$this->eventParticipants->contains($eventParticipant)) {
+            $this->eventParticipants[] = $eventParticipant;
+            $eventParticipant->addProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventParticipant(Event $eventParticipant): self
+    {
+        if ($this->eventParticipants->contains($eventParticipant)) {
+            $this->eventParticipants->removeElement($eventParticipant);
+            $eventParticipant->removeProfilSolo($this);
+        }
 
         return $this;
     }
