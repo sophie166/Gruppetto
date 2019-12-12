@@ -4,11 +4,41 @@
 }
 
 body {
-    background-image: url("../pictures/runBackground.jpg");
+    background-image: url("/build/images/homepage.71b33183.jpg");
     margin: 0;
     padding: 0;
     height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    #auth-buttons{
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .auth-button{
+            background: rgba(74, 176, 121, 0.9);
+            border: 5px solid #1E6740;
+            width: 315px;
+            height: 78px;
+            color: #FFFFFF;
+            text-decoration: none;
+            text-align: center;
+            font-size: 48px;
+            margin: 0.5em 0;
+            border-radius: 5px;
+        }
+    }
+    #logo-banner{
+        width: 80%;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 23px;
+        margin: 0 auto;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
 }
