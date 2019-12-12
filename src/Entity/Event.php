@@ -217,12 +217,12 @@ class Event
         return $this;
     }
 
-    public function getCreateurSolo(): ?profilSolo
+    public function getCreateurSolo(): ?ProfilSolo
     {
         return $this->createurSolo;
     }
 
-    public function setCreateurSolo(?profilSolo $createurSolo): self
+    public function setCreateurSolo(?ProfilSolo $createurSolo): self
     {
         $this->createurSolo = $createurSolo;
 
