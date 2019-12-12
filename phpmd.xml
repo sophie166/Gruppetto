@@ -10,7 +10,20 @@
         <exclude name="ElseExpression" />
         <exclude name="StaticAccess" />
     </rule>
-    <rule ref="rulesets/codesize.xml" />
+    <rule ref="rulesets/codesize.xml" >
+        <exclude name="TooManyFields" />
+        <exclude name="ExcessiveClassComplexity"/>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity" >
+        <properties>
+            <property name="maximum" value="80"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/TooManyFields" >
+        <properties>
+            <property name="maxfields" value="25"/>
+        </properties>
+    </rule>
     <rule ref="rulesets/controversial.xml" >
         <exclude name="Superglobals" />
     </rule>
