@@ -119,7 +119,6 @@ class ProfilSolo
         $this->sport = new ArrayCollection();
         $this->friend = new ArrayCollection();
         $this->events = new ArrayCollection();
-        $this->eventParticipants = new ArrayCollection();
         $this->generalChatClub = new ArrayCollection();
     }
 

@@ -77,7 +77,6 @@ class Event
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->profilSolo = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,5 +234,4 @@ class Event
 
         return $this;
     }
-
 }
