@@ -1,9 +1,14 @@
-@import "vars";
-
-body {
-    background-color: $secondary-color;
+*{
+    padding: 0;
+    margin: 0;
 }
 
-a {
-    color: $warm-color;
+body {
+    background-image: url("../pictures/runBackground.jpg");
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
