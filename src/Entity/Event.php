@@ -74,9 +74,15 @@ class Event
      */
     private $createurClub;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RegistrationEvent", mappedBy="event")
+     */
+    private $registrationEvent;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->registrationEvent = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -231,6 +237,37 @@ class Event
     public function setCreateurClub(?ProfilClub $createurClub): self
     {
         $this->createurClub = $createurClub;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistrationEvent[]
+     */
+    public function getRegistrationEvent(): Collection
+    {
+        return $this->registrationEvent;
+    }
+
+    public function addRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if (!$this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent[] = $registrationEvent;
+            $registrationEvent->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if ($this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent->removeElement($registrationEvent);
+            // set the owning side to null (unless already changed)
+            if ($registrationEvent->getEvent() === $this) {
+                $registrationEvent->setEvent(null);
+            }
+        }
 
         return $this;
     }

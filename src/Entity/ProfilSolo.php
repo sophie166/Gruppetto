@@ -113,6 +113,12 @@ class ProfilSolo
      */
     private $generalChatClub;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RegistrationEvent", mappedBy="profilSolo")
+     */
+    private $registrationEvent;
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -120,6 +126,7 @@ class ProfilSolo
         $this->friend = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->generalChatClub = new ArrayCollection();
+        $this->registrationEvent = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -453,6 +460,37 @@ class ProfilSolo
             // set the owning side to null (unless already changed)
             if ($generalChatClub->getProfilSolo() === $this) {
                 $generalChatClub->setProfilSolo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistrationEvent[]
+     */
+    public function getRegistrationEvent(): Collection
+    {
+        return $this->registrationEvent;
+    }
+
+    public function addRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if (!$this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent[] = $registrationEvent;
+            $registrationEvent->setProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if ($this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent->removeElement($registrationEvent);
+            // set the owning side to null (unless already changed)
+            if ($registrationEvent->getProfilSolo() === $this) {
+                $registrationEvent->setProfilSolo(null);
             }
         }
 
