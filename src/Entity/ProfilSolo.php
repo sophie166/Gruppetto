@@ -109,11 +109,6 @@ class ProfilSolo
     private $events;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="profilSolo")
-     */
-    private $eventParticipants;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilSolo")
      */
     private $generalChatClub;
@@ -429,34 +424,6 @@ class ProfilSolo
             if ($event->getCreateurSolo() === $this) {
                 $event->setCreateurSolo(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Event[]
-     */
-    public function getEventParticipants(): Collection
-    {
-        return $this->eventParticipants;
-    }
-
-    public function addEventParticipant(Event $eventParticipant): self
-    {
-        if (!$this->eventParticipants->contains($eventParticipant)) {
-            $this->eventParticipants[] = $eventParticipant;
-            $eventParticipant->addProfilSolo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEventParticipant(Event $eventParticipant): self
-    {
-        if ($this->eventParticipants->contains($eventParticipant)) {
-            $this->eventParticipants->removeElement($eventParticipant);
-            $eventParticipant->removeProfilSolo($this);
         }
 
         return $this;

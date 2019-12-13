@@ -74,11 +74,6 @@ class Event
      */
     private $createurClub;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilSolo", inversedBy="eventParticipants")
-     */
-    private $profilSolo;
-
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -241,29 +236,4 @@ class Event
         return $this;
     }
 
-    /**
-     * @return Collection|ProfilSolo[]
-     */
-    public function getProfilSolo(): Collection
-    {
-        return $this->profilSolo;
-    }
-
-    public function addProfilSolo(ProfilSolo $profilSolo): self
-    {
-        if (!$this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo[] = $profilSolo;
-        }
-
-        return $this;
-    }
-
-    public function removeProfilSolo(ProfilSolo $profilSolo): self
-    {
-        if ($this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo->removeElement($profilSolo);
-        }
-
-        return $this;
-    }
 }
