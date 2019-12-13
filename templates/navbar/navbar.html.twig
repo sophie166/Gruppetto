@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+{% block body %}
+    <nav>
+        <div id="box-nav">
+            <ul>
+                <li><a class="position-icone" href="#"><img src="/build/images/icons-calendar.ef5e9bb6.svg" alt="Agenda">Mon agenga</a></li>
+                <li><a class="position-icone" href="#"><img src="/build/images/icons-running.c0d6579b.png" alt="Agenda">Mon club</a></li>
+                <li><a class="position-icone" href="#"><img src="/build/images/icons-event.9e861f44.png" alt="Agenda">Mes événements</a></li>
+                <li><a class="position-icone" href="#"><img src="/build/images/icons-mail.ac4d1648.png" alt="Agenda">Mes messages</a></li>
+                <li><a class="position-icone" href="#"><img src="/build/images/icons-user.b2b26d82.png" alt="Agenda">Mon profil</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+{% endblock %}
