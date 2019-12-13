@@ -36,7 +36,6 @@ class GeneralChatClub
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="generalChatClub")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $profilSolo;
 

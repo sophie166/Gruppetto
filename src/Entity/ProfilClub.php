@@ -59,7 +59,7 @@ class ProfilClub
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="createurClub")
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="creatorClub")
      */
     private $events;
 
@@ -223,7 +223,7 @@ class ProfilClub
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setCreateurClub($this);
+            $event->setCreatorClub($this);
         }
 
         return $this;
@@ -234,8 +234,8 @@ class ProfilClub
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($event->getCreateurClub() === $this) {
-                $event->setCreateurClub(null);
+            if ($event->getCreatorClub() === $this) {
+                $event->setCreatorClub(null);
             }
         }
 

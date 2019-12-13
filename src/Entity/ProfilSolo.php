@@ -104,7 +104,7 @@ class ProfilSolo
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="createurSolo")
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="creatorSolo")
      */
     private $events;
 
@@ -392,13 +392,13 @@ class ProfilSolo
     {
         $this->user = $user;
 
-        //Erreur: Cannot call method getProfilSolo() on App\Entity\User|null.
-        //Erreur: Cannot call method setProfilSolo() on App\Entity\User|null.
+        //Cannot call method getProfilSolo() on App\Entity\User|null.
+        //Cannot call method setProfilSolo() on App\Entity\User|null.
 
         // set (or unset) the owning side of the relation if necessary
         //$newProfilSolo = null === $user ? null : $this;
         //if ($user->getProfilSolo() !== $newProfilSolo) {
-        //$user->setProfilSolo($newProfilSolo);
+        //    $user->setProfilSolo($newProfilSolo);
         //}
 
         return $this;
@@ -416,7 +416,7 @@ class ProfilSolo
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setCreateurSolo($this);
+            $event->setCreatorSolo($this);
         }
 
         return $this;
@@ -427,8 +427,8 @@ class ProfilSolo
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($event->getCreateurSolo() === $this) {
-                $event->setCreateurSolo(null);
+            if ($event->getCreatorSolo() === $this) {
+                $event->setCreatorSolo(null);
             }
         }
 

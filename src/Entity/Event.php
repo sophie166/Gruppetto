@@ -67,12 +67,12 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="events")
      */
-    private $createurSolo;
+    private $creatorSolo;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub", inversedBy="events")
      */
-    private $createurClub;
+    private $creatorClub;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\RegistrationEvent", mappedBy="event")
@@ -217,26 +217,26 @@ class Event
         return $this;
     }
 
-    public function getCreateurSolo(): ?ProfilSolo
+    public function getCreatorSolo(): ?ProfilSolo
     {
-        return $this->createurSolo;
+        return $this->creatorSolo;
     }
 
-    public function setCreateurSolo(?ProfilSolo $createurSolo): self
+    public function setCreatorSolo(?ProfilSolo $creatorSolo): self
     {
-        $this->createurSolo = $createurSolo;
+        $this->creatorSolo = $creatorSolo;
 
         return $this;
     }
 
-    public function getCreateurClub(): ?ProfilClub
+    public function getCreatorClub(): ?ProfilClub
     {
-        return $this->createurClub;
+        return $this->creatorClub;
     }
 
-    public function setCreateurClub(?ProfilClub $createurClub): self
+    public function setCreatorClub(?ProfilClub $creatorClub): self
     {
-        $this->createurClub = $createurClub;
+        $this->creatorClub = $creatorClub;
 
         return $this;
     }
