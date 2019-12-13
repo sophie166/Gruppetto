@@ -34,10 +34,16 @@ class GeneralChatClub
      */
     private $profilClub;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="generalChatClub")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilSolo;
+
     public function __construct()
     {
+        $this->profilClub = new ArrayCollection();
         $this->profilSolo = new ArrayCollection();
-        $this->profilSolos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,17 @@ class GeneralChatClub
     public function setProfilClub(ProfilClub $profilClub): self
     {
         $this->profilClub = $profilClub;
+
+        return $this;
+    }
+    public function getProfilSolo(): ?ProfilSolo
+    {
+        return $this->profilSolo;
+    }
+
+    public function setProfilSolo(?ProfilSolo $profilSolo): self
+    {
+        $this->profilSolo = $profilSolo;
 
         return $this;
     }

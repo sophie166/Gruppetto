@@ -123,7 +123,6 @@ class ProfilSolo
         $this->comments = new ArrayCollection();
         $this->sport = new ArrayCollection();
         $this->friend = new ArrayCollection();
-        $this->generalChatClubs = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->eventParticipants = new ArrayCollection();
         $this->generalChatClub = new ArrayCollection();
