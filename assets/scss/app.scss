@@ -1,5 +1,6 @@
 @import "vars";
 @import "form";
+//reset
 *{
     padding: 0;
     margin: 0;
@@ -24,7 +25,6 @@ body {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             .auth-button {
                 background: rgba(74, 176, 121, 0.9);
                 border: 5px solid #1E6740;
@@ -50,7 +50,6 @@ body {
             background: rgba(255, 255, 255, 0.75);
             border-radius: 23px;
             margin: 0 auto;
-
             img {
                 width: 100%;
                 height: 100%;
@@ -61,7 +60,6 @@ body {
     #register-form{
         height: 50vh;
         z-index: 2;
-
         //form choose between 'sportif' and 'club'
         #choice-entity{
             display: flex;
@@ -87,32 +85,66 @@ body {
                     color: rgba(254, 204, 55, 0.9) ;
                 }
             }
-            .continue-btn{
-
-            }
         }
     }
-
+    .info-banner{
+        display: none;
+    }
 }
 
 @media screen and (min-width: 992px){
     body{
         display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 25% 25% 50%;
         grid-template-areas:
+            'logoBlock form'
             'buttons form'
-            'infobar infobar'
-            'footer footer';
-        .container{
-            height: auto;
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-            align-items: center;
+            'infobar infobar';
+        .logo-block{
+            grid-area: logoBlock;
+            height: 100%;
             #logo-banner{
                 margin: 0;
+                width: 400px;
+                height: 95%;
+            }
+        }
+        .container{
+            grid-area: buttons;
+            height: 100%;
+            #auth-buttons{
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                .auth-button{
+                    margin: 0;
+                    height: 65px;
+                }
+            }
+        }
+        .info-banner{
+            grid-area: infobar;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80%;
+            background-color: rgba(254, 204, 55, 0.7);
+            padding: 0 2em;
+            p{
+                display: flex;
+                flex-direction: column;
+                color: #102E82;
+                font-size: 36px;
+                text-align: center;
+                width: calc(100%/4);
+            }
+            hr{
+                height: 70%;
+                width: -1px;
+                color: #102E82;
             }
         }
     }
-
-
 }
