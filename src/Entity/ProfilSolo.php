@@ -388,15 +388,13 @@ class ProfilSolo
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
-
         // set (or unset) the owning side of the relation if necessary
-        $newProfilSolo = null === $user ? null : $this;
-        if ($user->getProfilSolo() !== $newProfilSolo) {
-            $user->setProfilSolo($newProfilSolo);
+        if ($user->getProfilSolo() !== $this) {
+            $user->setProfilSolo($this);
         }
 
         return $this;
