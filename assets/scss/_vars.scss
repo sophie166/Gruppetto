@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @font-face {
     font-family: 'Edmondsans';
     src: url('../fonts/Edmondsans-Regular.woff2') format('woff2'),
@@ -6,7 +5,8 @@
     font-weight: normal;
     font-style: normal;
 }
-// graphical charter: green
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+// style guide: green
 $green: rgba(74,176,121,1);
 $green50: rgba(74,176,121,0.50);
 $green55: rgba(74,176,121,0.55);
@@ -20,7 +20,7 @@ $green95: rgba(74,176,121,0.95);
 $green-border: rgba(30,103,64,1);
 $black-filter: rgba(0,0,0,0.50);
 
-// graphical charter: white
+// style guide: white
 $white50: rgba(255,255,255,0.50);
 $white55: rgba(255,255,255,0.55);
 $white60: rgba(255,255,255,0.60);
@@ -33,7 +33,7 @@ $white90: rgba(255,255,255,0.90);
 $white95: rgba(255,255,255,0.95);
 $white: rgba(255,255,255,1);
 
-// graphical charter: blue
+// style guide: blue
 $blue: rgba(16,46,130,1);
 $blue50: rgba(16,46,130,0.50);
 $blue55: rgba(16,46,130,0.55);
@@ -46,7 +46,7 @@ $blue85: rgba(16,46,130,0.85);
 $blue90: rgba(16,46,130,0.90);
 $blue95: rgba(16,46,130,0.95);
 
-// graphical charter: yellow
+// style guide: yellow
 $yellow: rgba(254,204,55,1);
 $yellow50: rgba(254,204,55,0.50);
 $yellow55: rgba(254,204,55,0.55);
