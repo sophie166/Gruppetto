@@ -1,15 +1,40 @@
 {% extends 'base.html.twig' %}
+{% block title %}Inscription{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
 
-{% block title %}Register{% endblock %}
-
+    <link href="../../assets/scss/_black-filter.css" rel="stylesheet">
+{% endblock stylesheets %}
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    {% block blackFiltered %}
+    <div id="black-filter"></div>
+    {% block mainLogo %}
+        {% include 'registration/_mainLogo.html.twig' %}
+    {% endblock mainLogo %}
 
-        <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    {% block registrationForm %}
+        {% include 'registration/_registrationForm1.html.twig' %}
+    {% endblock registrationForm %}
+    {% endblock blackFiltered %}
+
+
+
+{#
+       <div class="step-check">
+            <img src="/build/images/step-check.6607fff6.svg" id="first-check" alt="">
+            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
+            <img src="/build/images/step-check.6607fff6.svg" id="second-check" alt="">
+            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
+            <img src="/build/images/step-check.6607fff6.svg" id="third-check" alt="">
+            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
+            <img src="/build/images/step-check.6607fff6.svg" id="fourth-check" alt="">
+        </div>
+
+        <form action="" id="choice-entity" method="post">
+        <button type="button" class="entity" id="solo" value="2"><img src="/build/images/icons8-person.dc69705a.svg" alt="icon solo">Sportif</button>
+        <button type="button" class="entity" name="club" id="club"><img src="/build/images/icons8-user-groups.d1e79061.svg" alt="icon club">Club</button>
+        <button type="submit" class="continue-btn">Continuer</button>
+    </form>
+#}
 {% endblock %}

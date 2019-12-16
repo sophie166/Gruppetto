@@ -3,28 +3,12 @@
 {% block title %}Gruppetto{% endblock %}
 
 {% block body %}
-
-
-
     <section class="container">
         <section id="auth-buttons">
-            <button class="auth-button">Inscription</button>
+            <button onclick='location.href="{{path('app_register')}}"'  class="auth-button">Inscription</button>
             <button class="auth-button">Connexion</button>
         </section>
-        <div id="logo-banner">
-            <img src="/build/images/gruppettoLogo5.144bb9f2.png" alt="">
-        </div>
+
     </section>
-
-    <div id="black-filter"></div>
-
-    <section id="register-form">
-        <form action="" id="choice-entity" method="post">
-            <button type="button" class="entity" id="solo" value="2"><img src="/build/images/icons8-person.dc69705a.svg" alt="icon solo">Sportif</button>
-            <button type="button" class="entity" name="club" id="club"><img src="/build/images/icons8-user-groups.d1e79061.svg" alt="icon club">Club</button>
-            <button type="submit" class="continue-btn">Continuer</button>
-        </form>
-    </section>
-
-
+    {% include 'registration/_mainLogo.html.twig' %}
 {% endblock %}
