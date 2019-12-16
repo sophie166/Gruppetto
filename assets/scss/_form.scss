@@ -52,6 +52,13 @@ input {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+  ul{
+    li{
+      list-style: none;
+      color: #FFFFFF;
+      text-align: center;
+    }
+  }
 
 }
 

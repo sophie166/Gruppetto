@@ -38,41 +38,15 @@ class RegistrationFormType extends AbstractType
                 'label'=>'En m’inscrivant, je certifie avoir lu et accepté les Conditions Générales d’Utilisation'
             ])
             ->add('plainPassword', RepeatedType::class, [
+                'constraints' => [new Length(['min' => 3]), new NotBlank()],
                 'type'=>PasswordType::class,
                 'mapped' => false,
                 'invalid_message'=>'Passwords must match',
                 'first_options' => ['label' => false, 'attr'=>['placeholder'=>'Mot de passe']],
                 'second_options' => ['label' => false, 'attr'=>['placeholder'=>'Confirmer le mot de passe']]
             ])
-
-
-
-
-
-
-            /*->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Entrez votre mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-                'label' => false,
-                'required'=>true,
-                'attr'=> [
-                    'placeholder'=>'Mot de passe',
-                    'class' => 'green-input'
-                ]
-            ])*/
         ;
+        $options = null;
     }
 
     public function configureOptions(OptionsResolver $resolver)
