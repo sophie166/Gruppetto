@@ -86,7 +86,7 @@ class ProfilSolo
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Friend", inversedBy="profilSolos")
      */
-    private $friend;
+    private $friends;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Chat", mappedBy="profilSolo", cascade={"persist", "remove"})
@@ -123,7 +123,7 @@ class ProfilSolo
     {
         $this->comments = new ArrayCollection();
         $this->sport = new ArrayCollection();
-        $this->friend = new ArrayCollection();
+        $this->friends = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->generalChatClub = new ArrayCollection();
         $this->registrationEvent = new ArrayCollection();
@@ -328,22 +328,22 @@ class ProfilSolo
      */
     public function getFriend(): Collection
     {
-        return $this->friend;
+        return $this->friends;
     }
 
-    public function addFriend(Friend $friend): self
+    public function addFriend(Friend $friends): self
     {
-        if (!$this->friend->contains($friend)) {
-            $this->friend[] = $friend;
+        if (!$this->friends->contains($friends)) {
+            $this->friends[] = $friends;
         }
 
         return $this;
     }
 
-    public function removeFriend(Friend $friend): self
+    public function removeFriend(Friend $friends): self
     {
-        if ($this->friend->contains($friend)) {
-            $this->friend->removeElement($friend);
+        if ($this->friends->contains($friends)) {
+            $this->friends->removeElement($friends);
         }
 
         return $this;
