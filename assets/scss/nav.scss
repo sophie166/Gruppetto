@@ -3,45 +3,45 @@ $blue: rgba(16,46,130,1);
 $background-nav-opacity: rgba(255,255,255,0.35);
 
 header{
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
 }
 
 nav{
-  margin: 7%;
+    margin: 7%;
 }
 
 ul{
-  background: $background-nav-opacity;
-  padding: 20%;
-  border-radius: 5px;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    background: $background-nav-opacity;
+    padding: 20%;
+    border-radius: 5px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 li{
-  border-radius: 5px;
-  box-sizing: border-box;
-  width: 40%;
-  border: solid $yellow 10px;
-  margin: 5%;
-  display: flex;
-  justify-content: center;
-  background:$yellow;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 40%;
+    border: solid $yellow 10px;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    background:$yellow;
 
-  img{
-    width: 100%;
-    margin: auto;
-  }
+    img{
+        width: 100%;
+        margin: auto;
+    }
 }
 
 a{
-  text-decoration: none;
-  color:$blue;
-  font-size: 60%;
-  text-align: center;
+    text-decoration: none;
+    color:$blue;
+    font-size: 60%;
+    text-align: center;
 }
