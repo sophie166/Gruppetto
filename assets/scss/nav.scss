@@ -1,6 +1,7 @@
 $yellow: rgba(254,204,55,0.9);
 $blue: rgba(16,46,130,1);
 $background-nav-opacity: rgba(255,255,255,0.35);
+$green-background-opacity: rgba(74,176,121,0.8);
 
 header{
     width: 100%;
@@ -9,39 +10,36 @@ header{
     position: fixed;
 }
 
-nav{
-    margin: 7%;
-}
-
-ul{
-    background: $background-nav-opacity;
-    padding: 20%;
-    border-radius: 5px;
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-li{
-    border-radius: 5px;
-    box-sizing: border-box;
-    width: 40%;
-    border: solid $yellow 10px;
-    margin: 5%;
-    display: flex;
-    justify-content: center;
-    background:$yellow;
-
-    img{
-        width: 100%;
-        margin: auto;
+    ul{
+        background: $background-nav-opacity;
+        padding: 20%;
+        margin: 7%;
+        border-radius: 5px;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
-}
 
-a{
-    text-decoration: none;
-    color:$blue;
-    font-size: 60%;
-    text-align: center;
-}
+        li{
+            border-radius: 5px;
+            box-sizing: border-box;
+            width: 40%;
+            border: solid $yellow 10px;
+            margin: 5%;
+            display: flex;
+            justify-content: center;
+            background:$yellow;
+
+            img{
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+            a{
+                text-decoration: none;
+                color:$blue;
+                font-size: 60%;
+                text-align: center;
+            }
