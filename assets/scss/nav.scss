@@ -44,4 +44,32 @@ header {
             }
         }
     }
+
+        .green-bottom-nav {
+            display: flex;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            background-color: $green-background-opacity;
+            width: 100%;
+            margin-top: 8px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+            img {
+                width: 18%;
+            }
+
+            p{
+                font-size: 70%;
+            }
+
+            .yellow-bottom-nav {
+                width: 80%;
+                background-color: $yellow;
+                margin-left: 37px;
+            clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
+            }
+
+        }
+
 }
