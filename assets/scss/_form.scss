@@ -1,64 +1,64 @@
 @import "vars";
 
 .continue-btn{
-  background-color: r$yellow;
-  width: 220px;
-  height: 60px;
-  border: 3px solid $yellow-border;
-  border-radius: 5px;
+    background-color: r$yellow;
+    width: 220px;
+    height: 60px;
+    border: 3px solid $yellow-border;
+    border-radius: 5px;
 }
 
 input {
-  width: 230px;
-  height: 40px;
-  left: 63px;
-  top: 231px;
-  background: $green80;
-  border: 2px solid $green-border;
-  border-radius: 5px;
-  color: $white;
-  font-size: 18px;
-  text-align: center;
+    width: 230px;
+    height: 40px;
+    left: 63px;
+    top: 231px;
+    background: $green80;
+    border: 2px solid $green-border;
+    border-radius: 5px;
+    color: $white;
+    font-size: 18px;
+    text-align: center;
 }
 
 ::placeholder{
-  font-size: 18px;
-  color: $white80;
-  text-align: center;
+    font-size: 18px;
+    color: $white80;
+    text-align: center;
 }
 
 .cgu{
-  font-size: 14px;
-  text-align: right;
-  color: $yellow;
+    font-size: 14px;
+    text-align: right;
+    color: $yellow;
 }
 
 .cgu-block{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .step-check{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .registration-form{
-  height: 60%;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  ul{
-    li{
-      list-style: none;
-      color: $white;
-      text-align: center;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    ul{
+        li{
+            list-style: none;
+            color: $white;
+            text-align: center;
+        }
     }
-  }
 }
 
 
