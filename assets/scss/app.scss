@@ -29,7 +29,8 @@ body {
         display: flex;
         flex-direction: column;
         align-content: space-around;
-        .accordion {
+
+.accordion {
             background-color: $green;
             color: $white;
             cursor: pointer;
