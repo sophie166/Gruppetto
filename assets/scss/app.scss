@@ -29,7 +29,6 @@ body {
         display: flex;
         flex-direction: column;
         align-content: space-around;
-
         .accordion {
             background-color: $green;
             color: $white;
@@ -58,16 +57,16 @@ body {
             transition: max-height 0.2s ease-out;
         }
 
-      .backFaq {
-        margin: 100px auto;
-        height: 60px;
-        width: 60px;
-        background-color: $yellow;
-        border-radius: 50%;
-        display: inline-block;
-        border: none;
-        outline: none;
-      }
+        .backFaq {
+            margin: 100px auto;
+            height: 60px;
+            width: 60px;
+            background-color: $yellow;
+            border-radius: 50%;
+            display: inline-block;
+            border: none;
+            outline: none;
+        }
 
     }
 
