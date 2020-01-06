@@ -12,9 +12,9 @@ header {
 
     ul {
         background: $background-nav-opacity;
-        padding: 20%;
+        padding: 10%;
         margin: 7%;
-        border-radius: 5px;
+        border-radius: 1px;
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
@@ -22,18 +22,20 @@ header {
 
 
         li {
-            border-radius: 5px;
+            border-radius: 2px;
             box-sizing: border-box;
             width: 40%;
             border: solid $yellow 10px;
             margin: 5%;
             display: flex;
             justify-content: center;
+            justify-items: center;
             background: $yellow;
 
             img {
                 width: 100%;
                 margin: auto;
+
             }
 
             a {
@@ -43,33 +45,34 @@ header {
                 text-align: center;
             }
         }
+
     }
 
         .green-bottom-nav {
-            display: flex;
+            display: inline-flex;
             overflow: hidden;
             position: fixed;
+            align-items: center;
+            justify-content: space-between;
             bottom: 0;
             background-color: $green-background-opacity;
             width: 100%;
-            margin-top: 8px;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-
-            img {
-                width: 18%;
-            }
-
-            p{
-                font-size: 70%;
-            }
+                img {
+                    width:20%;
+                }
+                p{
+                font-size: 90%;
+                text-align: right;
+                color: $blue;
+                }
 
             .yellow-bottom-nav {
-                width: 80%;
+                width: 60%;
                 background-color: $yellow;
-                margin-left: 37px;
-            clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
-            }
+                clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
 
+            }
         }
+
 
 }
