@@ -32,52 +32,52 @@ header {
             background: $yellow;
 
             img {
-                width: 100%;
+                width: 80%;
                 margin: auto;
             }
 
             a {
                 text-decoration: none;
                 color: $blue;
-                font-size: 60%;
+                font-size: 80%;
                 text-align: center;
             }
         }
 
     }
-            /* Bottom bar-nav */
-        .green-bottom-nav {
-            display: inline-flex;
-            overflow: hidden;
-            position: fixed;
-            justify-content: space-between;
-            bottom: 0;
-            background-color: $green-background-opacity;
-            width: 100%;
+    /* Bottom bar-nav */
+    .green-bottom-nav {
+        display: inline-flex;
+        overflow: hidden;
+        position: fixed;
+        justify-content: space-between;
+        bottom: 0;
+        background-color: $green-background-opacity;
+        width: 100%;
 
-            img {
-                width: 13%;
+        img {
+            width: 13%;
             }
 
-            /* Display arrow*/
-            #arrow-swipe{
-                margin-left: 40%;
-                position: absolute;
-                z-index: 1;
+        /* Display arrow*/
+        #arrow-swipe {
+            margin-left: 40%;
+            position: absolute;
+            z-index: 1;
             }
 
-            .yellow-bottom-nav {
-                width: 60%;
-                background-color: $yellow;
-                clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
-                display: flex;
-                justify-content: right;
-                align-items: center;
+        .yellow-bottom-nav {
+            width: 60%;
+            background-color: $yellow;
+            clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
+            display: flex;
+            justify-content: right;
+            align-items: center;
 
-                p {
-                    font-size: 90%;
-                    color:$blue
-                }
+            p {
+                font-size: 90%;
+                color:$blue
             }
+        }
         }
 }
