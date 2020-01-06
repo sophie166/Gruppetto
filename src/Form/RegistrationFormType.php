@@ -41,7 +41,7 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'constraints' => [new Length(['min' => 6]), new NotBlank(), new Regex([
                     //at least one uppercase letter, one lowercase letter, one number and one special character
-                    'pattern' => '#^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]$#',
+                    'pattern' => '#(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]#',
                     'message' => "Votre mot de passe doit contenir au moins 6 charactères dont au moins une majuscule,
                      une minuscule, un chiffre et un charactère spécial"
                 ])],
