@@ -52,6 +52,7 @@ input {
 }
 
 .registration-form{
+    grid-area: form;
     height: 60%;
     width: 100%;
     display: flex;
@@ -65,5 +66,11 @@ input {
             color: $white;
             text-align: center;
         }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .registration-form{
+        height: 100%;
     }
 }
