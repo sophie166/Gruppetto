@@ -28,4 +28,3 @@ for (i = 0; i < acc.length; i += 1) {
 }
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
-
