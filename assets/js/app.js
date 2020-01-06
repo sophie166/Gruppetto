@@ -10,5 +10,21 @@ require('../scss/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
+
+
+// FAQ scroll through the answers.
+const acc = document.getElementsByClassName('accordion');
+let i;
+for (i = 0; i < acc.length; i += 1) {
+    acc[i].addEventListener('click', () => {
+        this.classList.toggle('active');
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = `${panel.scrollHeight}px`;
+        }
+    });
+}
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
