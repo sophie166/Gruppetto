@@ -22,6 +22,11 @@ input {
     text-align: center;
 }
 
+#registration_form_agreeTerms{
+    width: auto;
+    margin: 0 0.5rem;
+}
+
 ::placeholder{
     font-size: 18px;
     color: $white80;
