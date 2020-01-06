@@ -9,7 +9,6 @@ header {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
 
-
     ul {
         background: $background-nav-opacity;
         padding: 10%;
@@ -20,7 +19,7 @@ header {
         flex-wrap: wrap;
         justify-content: space-around;
 
-
+        /* icons*/
         li {
             border-radius: 2px;
             box-sizing: border-box;
@@ -35,7 +34,6 @@ header {
             img {
                 width: 100%;
                 margin: auto;
-
             }
 
             a {
@@ -47,32 +45,39 @@ header {
         }
 
     }
-
+            /* Bottom bar-nav */
         .green-bottom-nav {
             display: inline-flex;
             overflow: hidden;
             position: fixed;
-            align-items: center;
             justify-content: space-between;
             bottom: 0;
             background-color: $green-background-opacity;
             width: 100%;
-                img {
-                    width:20%;
-                }
-                p{
-                font-size: 90%;
-                text-align: right;
-                color: $blue;
-                }
+
+            img {
+                width: 13%;
+            }
+
+            /* Display arrow*/
+            #arrow-swipe{
+                margin-left: 40%;
+                position: absolute;
+                z-index: 1;
+            }
 
             .yellow-bottom-nav {
                 width: 60%;
                 background-color: $yellow;
                 clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
+                display: flex;
+                justify-content: right;
+                align-items: center;
 
+                p {
+                    font-size: 90%;
+                    color:$blue
+                }
             }
         }
-
-
 }
