@@ -1,11 +1,12 @@
 @import "vars";
 
 .continue-btn{
-    background-color: r$yellow;
+    background-color: $yellow;
     width: 220px;
     height: 60px;
     border: 3px solid $yellow-border;
     border-radius: 5px;
+    font-size: 1.1rem;
 }
 
 input {
