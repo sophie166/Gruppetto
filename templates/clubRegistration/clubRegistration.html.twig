@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>Ajouter une catégorie</p>
+    {{ form_start(formCat) }}
+
+    {{ form_row(formCat.name) }}
+
+    <button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+
+    {{ form_end(formCat) }}
+
+    <p>Liste des catégories</p>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.id }} / {{ category.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
