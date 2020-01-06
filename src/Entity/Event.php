@@ -65,24 +65,24 @@ class Event
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\profilSolo", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="events")
      */
-    private $createurSolo;
+    private $creatorSolo;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub", inversedBy="events")
      */
-    private $createurClub;
+    private $creatorClub;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilSolo", inversedBy="eventParticipants")
+     * @ORM\OneToMany(targetEntity="App\Entity\RegistrationEvent", mappedBy="event")
      */
-    private $profilSolo;
+    private $registrationEvent;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->profilSolo = new ArrayCollection();
+        $this->registrationEvent = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -217,51 +217,56 @@ class Event
         return $this;
     }
 
-    public function getCreateurSolo(): ?ProfilSolo
+    public function getCreatorSolo(): ?ProfilSolo
     {
-        return $this->createurSolo;
+        return $this->creatorSolo;
     }
 
-    public function setCreateurSolo(?ProfilSolo $createurSolo): self
+    public function setCreatorSolo(?ProfilSolo $creatorSolo): self
     {
-        $this->createurSolo = $createurSolo;
+        $this->creatorSolo = $creatorSolo;
 
         return $this;
     }
 
-    public function getCreateurClub(): ?ProfilClub
+    public function getCreatorClub(): ?ProfilClub
     {
-        return $this->createurClub;
+        return $this->creatorClub;
     }
 
-    public function setCreateurClub(?ProfilClub $createurClub): self
+    public function setCreatorClub(?ProfilClub $creatorClub): self
     {
-        $this->createurClub = $createurClub;
+        $this->creatorClub = $creatorClub;
 
         return $this;
     }
 
     /**
-     * @return Collection|ProfilSolo[]
+     * @return Collection|RegistrationEvent[]
      */
-    public function getProfilSolo(): Collection
+    public function getRegistrationEvent(): Collection
     {
-        return $this->profilSolo;
+        return $this->registrationEvent;
     }
 
-    public function addProfilSolo(ProfilSolo $profilSolo): self
+    public function addRegistrationEvent(RegistrationEvent $registrationEvent): self
     {
-        if (!$this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo[] = $profilSolo;
+        if (!$this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent[] = $registrationEvent;
+            $registrationEvent->setEvent($this);
         }
 
         return $this;
     }
 
-    public function removeProfilSolo(ProfilSolo $profilSolo): self
+    public function removeRegistrationEvent(RegistrationEvent $registrationEvent): self
     {
-        if ($this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo->removeElement($profilSolo);
+        if ($this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent->removeElement($registrationEvent);
+            // set the owning side to null (unless already changed)
+            if ($registrationEvent->getEvent() === $this) {
+                $registrationEvent->setEvent(null);
+            }
         }
 
         return $this;

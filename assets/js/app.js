@@ -7,6 +7,8 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../scss/app.scss');
+require('../scss/nav.scss');
+require('../scss/faq.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
@@ -14,3 +16,18 @@ require('../scss/app.scss');
 // takes the images in /pictures to put them in build/images
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
+
+// FAQ scroll through the answers.
+const acc = document.getElementsByClassName('accordion');
+let i;
+for (i = 0; i < acc.length; i += 1) {
+    acc[i].addEventListener('click', () => {
+        this.classList.toggle('active');
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = `${panel.scrollHeight}px`;
+        }
+    });
+}

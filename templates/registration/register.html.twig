@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Inscription{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
 
-    <link href="../../assets/scss/_black-filter.css" rel="stylesheet">
-{% endblock stylesheets %}
 {% block body %}
 
     {% block blackFiltered %}
@@ -18,23 +14,4 @@
     {% endblock registrationForm %}
     {% endblock blackFiltered %}
 
-
-
-{#
-       <div class="step-check">
-            <img src="/build/images/step-check.6607fff6.svg" id="first-check" alt="">
-            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
-            <img src="/build/images/step-check.6607fff6.svg" id="second-check" alt="">
-            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
-            <img src="/build/images/step-check.6607fff6.svg" id="third-check" alt="">
-            <img src="/build/images/separator-step-check.4c9f3f1b.svg" alt="">
-            <img src="/build/images/step-check.6607fff6.svg" id="fourth-check" alt="">
-        </div>
-
-        <form action="" id="choice-entity" method="post">
-        <button type="button" class="entity" id="solo" value="2"><img src="/build/images/icons8-person.dc69705a.svg" alt="icon solo">Sportif</button>
-        <button type="button" class="entity" name="club" id="club"><img src="/build/images/icons8-user-groups.d1e79061.svg" alt="icon club">Club</button>
-        <button type="submit" class="continue-btn">Continuer</button>
-    </form>
-#}
 {% endblock %}

@@ -35,12 +35,13 @@ class GeneralChatClub
     private $profilClub;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilSolo", inversedBy="generalChatClubs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="generalChatClub")
      */
     private $profilSolo;
 
     public function __construct()
     {
+        $this->profilClub = new ArrayCollection();
         $this->profilSolo = new ArrayCollection();
     }
 
@@ -84,29 +85,14 @@ class GeneralChatClub
 
         return $this;
     }
-
-    /**
-     * @return Collection|ProfilSolo[]
-     */
-    public function getProfilSolo(): Collection
+    public function getProfilSolo(): ?ProfilSolo
     {
         return $this->profilSolo;
     }
 
-    public function addProfilSolo(ProfilSolo $profilSolo): self
+    public function setProfilSolo(?ProfilSolo $profilSolo): self
     {
-        if (!$this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo[] = $profilSolo;
-        }
-
-        return $this;
-    }
-
-    public function removeProfilSolo(ProfilSolo $profilSolo): self
-    {
-        if ($this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo->removeElement($profilSolo);
-        }
+        $this->profilSolo = $profilSolo;
 
         return $this;
     }

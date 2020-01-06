@@ -1,10 +1,10 @@
 @import "vars";
 
 .continue-btn{
-  background-color: rgba(254, 204, 55, 1);
+  background-color: r$yellow;
   width: 220px;
   height: 60px;
-  border: 3px solid #CDA429;
+  border: 3px solid $yellow-border;
   border-radius: 5px;
 }
 
@@ -13,24 +13,24 @@ input {
   height: 40px;
   left: 63px;
   top: 231px;
-  background: rgba(74, 176, 121, 0.8);
-  border: 2px solid #1E6740;
+  background: $green80;
+  border: 2px solid $green-border;
   border-radius: 5px;
-  color: #FFFFFF;
+  color: $white;
   font-size: 18px;
   text-align: center;
 }
 
 ::placeholder{
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
+  color: $white80;
   text-align: center;
 }
 
 .cgu{
   font-size: 14px;
   text-align: right;
-  color: #FECC37;
+  color: $yellow;
 }
 
 .cgu-block{
@@ -55,11 +55,10 @@ input {
   ul{
     li{
       list-style: none;
-      color: #FFFFFF;
+      color: $white;
       text-align: center;
     }
   }
-
 }
 
 

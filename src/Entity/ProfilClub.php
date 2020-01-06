@@ -41,7 +41,7 @@ class ProfilClub
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Sport", inversedBy="profilClubs")
      */
-    private $sport;
+    private $sports;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub", cascade={"persist", "remove"})
@@ -54,18 +54,18 @@ class ProfilClub
     private $privateChatClub;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="profilClub")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="profilClubs")
      */
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="createurClub")
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="creatorClub")
      */
     private $events;
 
     public function __construct()
     {
-        $this->sport = new ArrayCollection();
+        $this->sports = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
@@ -128,22 +128,22 @@ class ProfilClub
      */
     public function getSport(): Collection
     {
-        return $this->sport;
+        return $this->sports;
     }
 
-    public function addSport(Sport $sport): self
+    public function addSport(Sport $sports): self
     {
-        if (!$this->sport->contains($sport)) {
-            $this->sport[] = $sport;
+        if (!$this->sports->contains($sports)) {
+            $this->sports[] = $sports;
         }
 
         return $this;
     }
 
-    public function removeSport(Sport $sport): self
+    public function removeSport(Sport $sports): self
     {
-        if ($this->sport->contains($sport)) {
-            $this->sport->removeElement($sport);
+        if ($this->sports->contains($sports)) {
+            $this->sports->removeElement($sports);
         }
 
         return $this;
@@ -223,7 +223,7 @@ class ProfilClub
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setCreateurClub($this);
+            $event->setCreatorClub($this);
         }
 
         return $this;
@@ -234,8 +234,8 @@ class ProfilClub
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($event->getCreateurClub() === $this) {
-                $event->setCreateurClub(null);
+            if ($event->getCreatorClub() === $this) {
+                $event->setCreatorClub(null);
             }
         }
 

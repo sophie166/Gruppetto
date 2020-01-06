@@ -86,17 +86,12 @@ class ProfilSolo
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Friend", inversedBy="profilSolos")
      */
-    private $friend;
+    private $friends;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Chat", mappedBy="profilSolo", cascade={"persist", "remove"})
      */
     private $chat;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilSolo")
-     */
-    private $generalChatClubs;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\PrivateChatClub", mappedBy="profilSolo", cascade={"persist", "remove"})
@@ -109,23 +104,29 @@ class ProfilSolo
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="createurSolo")
+     * @ORM\OneToMany(targetEntity="App\Entity\Event", mappedBy="creatorSolo")
      */
     private $events;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="profilSolo")
+     * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilSolo")
      */
-    private $eventParticipants;
+    private $generalChatClub;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RegistrationEvent", mappedBy="profilSolo")
+     */
+    private $registrationEvent;
+
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->sport = new ArrayCollection();
-        $this->friend = new ArrayCollection();
-        $this->generalChatClubs = new ArrayCollection();
+        $this->friends = new ArrayCollection();
         $this->events = new ArrayCollection();
-        $this->eventParticipants = new ArrayCollection();
+        $this->generalChatClub = new ArrayCollection();
+        $this->registrationEvent = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -327,22 +328,22 @@ class ProfilSolo
      */
     public function getFriend(): Collection
     {
-        return $this->friend;
+        return $this->friends;
     }
 
-    public function addFriend(Friend $friend): self
+    public function addFriend(Friend $friends): self
     {
-        if (!$this->friend->contains($friend)) {
-            $this->friend[] = $friend;
+        if (!$this->friends->contains($friends)) {
+            $this->friends[] = $friends;
         }
 
         return $this;
     }
 
-    public function removeFriend(Friend $friend): self
+    public function removeFriend(Friend $friends): self
     {
-        if ($this->friend->contains($friend)) {
-            $this->friend->removeElement($friend);
+        if ($this->friends->contains($friends)) {
+            $this->friends->removeElement($friends);
         }
 
         return $this;
@@ -360,34 +361,6 @@ class ProfilSolo
         // set the owning side of the relation if necessary
         if ($chat->getProfilSolo() !== $this) {
             $chat->setProfilSolo($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|GeneralChatClub[]
-     */
-    public function getGeneralChatClubs(): Collection
-    {
-        return $this->generalChatClubs;
-    }
-
-    public function addGeneralChatClub(GeneralChatClub $generalChatClub): self
-    {
-        if (!$this->generalChatClubs->contains($generalChatClub)) {
-            $this->generalChatClubs[] = $generalChatClub;
-            $generalChatClub->addProfilSolo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGeneralChatClub(GeneralChatClub $generalChatClub): self
-    {
-        if ($this->generalChatClubs->contains($generalChatClub)) {
-            $this->generalChatClubs->removeElement($generalChatClub);
-            $generalChatClub->removeProfilSolo($this);
         }
 
         return $this;
@@ -415,18 +388,14 @@ class ProfilSolo
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
-        //Erreur: Cannot call method getProfilSolo() on App\Entity\User|null.
-        //Erreur: Cannot call method setProfilSolo() on App\Entity\User|null.
-
         // set (or unset) the owning side of the relation if necessary
-        //$newProfilSolo = null === $user ? null : $this;
-        //if ($user->getProfilSolo() !== $newProfilSolo) {
-        //$user->setProfilSolo($newProfilSolo);
-        //}
+        if ($user->getProfilSolo() !== $this) {
+            $user->setProfilSolo($this);
+        }
 
         return $this;
     }
@@ -443,7 +412,7 @@ class ProfilSolo
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setCreateurSolo($this);
+            $event->setCreatorSolo($this);
         }
 
         return $this;
@@ -454,8 +423,8 @@ class ProfilSolo
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($event->getCreateurSolo() === $this) {
-                $event->setCreateurSolo(null);
+            if ($event->getCreatorSolo() === $this) {
+                $event->setCreatorSolo(null);
             }
         }
 
@@ -463,28 +432,62 @@ class ProfilSolo
     }
 
     /**
-     * @return Collection|Event[]
+     * @return Collection|GeneralChatClub[]
      */
-    public function getEventParticipants(): Collection
+    public function getGeneralChatClub(): Collection
     {
-        return $this->eventParticipants;
+        return $this->generalChatClub;
     }
 
-    public function addEventParticipant(Event $eventParticipant): self
+    public function addGeneralChatClub(GeneralChatClub $generalChatClub): self
     {
-        if (!$this->eventParticipants->contains($eventParticipant)) {
-            $this->eventParticipants[] = $eventParticipant;
-            $eventParticipant->addProfilSolo($this);
+        if (!$this->generalChatClub->contains($generalChatClub)) {
+            $this->generalChatClub[] = $generalChatClub;
+            $generalChatClub->setProfilSolo($this);
         }
 
         return $this;
     }
 
-    public function removeEventParticipant(Event $eventParticipant): self
+    public function removeGeneralChatClub(GeneralChatClub $generalChatClub): self
     {
-        if ($this->eventParticipants->contains($eventParticipant)) {
-            $this->eventParticipants->removeElement($eventParticipant);
-            $eventParticipant->removeProfilSolo($this);
+        if ($this->generalChatClub->contains($generalChatClub)) {
+            $this->generalChatClub->removeElement($generalChatClub);
+            // set the owning side to null (unless already changed)
+            if ($generalChatClub->getProfilSolo() === $this) {
+                $generalChatClub->setProfilSolo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistrationEvent[]
+     */
+    public function getRegistrationEvent(): Collection
+    {
+        return $this->registrationEvent;
+    }
+
+    public function addRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if (!$this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent[] = $registrationEvent;
+            $registrationEvent->setProfilSolo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistrationEvent(RegistrationEvent $registrationEvent): self
+    {
+        if ($this->registrationEvent->contains($registrationEvent)) {
+            $this->registrationEvent->removeElement($registrationEvent);
+            // set the owning side to null (unless already changed)
+            if ($registrationEvent->getProfilSolo() === $this) {
+                $registrationEvent->setProfilSolo(null);
+            }
         }
 
         return $this;

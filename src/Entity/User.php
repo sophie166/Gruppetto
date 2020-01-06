@@ -45,11 +45,11 @@ class User implements UserInterface
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\ProfilClub", inversedBy="users")
      */
-    private $profilClub;
+    private $profilClubs;
 
     public function __construct()
     {
-        $this->profilClub = new ArrayCollection();
+        $this->profilClubs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -143,15 +143,15 @@ class User implements UserInterface
     /**
      * @return Collection|ProfilClub[]
      */
-    public function getProfilClub(): Collection
+    public function getProfilClubs(): Collection
     {
-        return $this->profilClub;
+        return $this->profilClubs;
     }
 
     public function addProfilClub(ProfilClub $profilClub): self
     {
-        if (!$this->profilClub->contains($profilClub)) {
-            $this->profilClub[] = $profilClub;
+        if (!$this->profilClubs->contains($profilClub)) {
+            $this->profilClubs[] = $profilClub;
         }
 
         return $this;
@@ -159,8 +159,8 @@ class User implements UserInterface
 
     public function removeProfilClub(ProfilClub $profilClub): self
     {
-        if ($this->profilClub->contains($profilClub)) {
-            $this->profilClub->removeElement($profilClub);
+        if ($this->profilClubs->contains($profilClub)) {
+            $this->profilClubs->removeElement($profilClub);
         }
 
         return $this;
