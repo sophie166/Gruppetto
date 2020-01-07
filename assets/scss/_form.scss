@@ -1,10 +1,10 @@
 @import "vars";
 
 .continue-btn{
-    background-color: $yellow;
+    background-color: $secondary-color;
     width: 220px;
     height: 60px;
-    border: 3px solid $yellow-border;
+    border: 3px solid $secondary-border-color;
     border-radius: 5px;
     font-size: 1.1rem;
 }
@@ -14,10 +14,10 @@ input {
     height: 40px;
     left: 63px;
     top: 231px;
-    background: $green80;
-    border: 2px solid $green-border;
+    background: $primary-color80;
+    border: 2px solid $primary-border-color;
     border-radius: 5px;
-    color: $white;
+    color: $light;
     font-size: 18px;
     text-align: center;
 }
@@ -29,14 +29,14 @@ input {
 
 ::placeholder{
     font-size: 18px;
-    color: $white80;
+    color: $light-filter80;
     text-align: center;
 }
 
 .cgu{
     font-size: 14px;
     text-align: right;
-    color: $yellow;
+    color: $secondary-color;
 }
 
 .cgu-block{
@@ -63,7 +63,7 @@ input {
     ul{
         li{
             list-style: none;
-            color: $white;
+            color: $light;
             text-align: center;
         }
     }

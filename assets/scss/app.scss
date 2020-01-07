@@ -27,11 +27,11 @@ body {
             justify-content: center;
 
             .auth-button {
-                background: $green90;
-                border: 2px solid $green-border;
+                background: $primary-color90;
+                border: 2px solid $primary-border-color;
                 width: 315px;
                 height: 78px;
-                color: $white;
+                color: $light;
                 text-align: center;
                 font-size: 48px;
                 margin: 0.5em 0;
@@ -50,7 +50,7 @@ body {
 
         #logo-banner {
             width: 275px;
-            background: $white75;
+            background: $light-filter75;
             border-radius: 23px;
             margin: 0 auto;
 
@@ -74,14 +74,14 @@ body {
             height: 100%;
 
             .entity{
-                background: $green90;
-                border: 5px solid $green-border;
+                background: $primary-color90;
+                border: 5px solid $primary-border-color;
                 border-radius: 15px;
                 text-align: center;
                 font-size: 36px;
                 width: 40%;
                 height: 125px;
-                color: $white;
+                color: $light;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -91,7 +91,7 @@ body {
                 }
 
                 &:focus{
-                    color: $yellow90 ;
+                    color: $secondary-color90 ;
                 }
             }
         }
@@ -143,13 +143,13 @@ body {
             justify-content: space-around;
             align-items: center;
             height: 80%;
-            background-color: $yellow70;
+            background-color: $secondary-color70;
             padding: 0 2em;
 
             p {
                 display: flex;
                 flex-direction: column;
-                color: $blue;
+                color: $tertiary-color;
                 font-size: 36px;
                 text-align: center;
                 width: calc(100% / 4);
@@ -158,7 +158,7 @@ body {
             hr {
                 height: 70%;
                 width: -1px;
-                color: $blue;
+                color: $tertiary-color;
             }
         }
     }
