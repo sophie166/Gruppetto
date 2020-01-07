@@ -1,0 +1,82 @@
+@import "vars";
+
+header {
+    width: 100%;
+    height: 100%;
+    background: $black-filter;
+    position: fixed;
+
+    ul {
+        background:$light-filter50;
+        padding: 10%;
+        margin: 7%;
+        border-radius: 1px;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        /* icons*/
+        li {
+            border-radius: 2px;
+            box-sizing: border-box;
+            width: 40%;
+            border: solid $secondary-color90 10px;
+            margin: 5%;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            background: $secondary-color90;
+
+            img {
+                width: 80%;
+                margin: auto;
+            }
+
+            a {
+                text-decoration: none;
+                color: $tertiary-color;
+                font-size: 80%;
+                text-align: center;
+            }
+        }
+
+    }
+
+
+    /* Bottom bar-nav */
+    .green-bottom-nav {
+        display: inline-flex;
+        overflow: hidden;
+        position: fixed;
+        justify-content: space-between;
+        bottom: 0;
+        background-color: $primary-color85;
+        width: 100%;
+
+        img {
+            width: 13%;
+            }
+
+        /* Display arrow*/
+        #arrow-swipe {
+            margin-left: 40%;
+            position: absolute;
+            z-index: 1;
+            }
+
+        .yellow-bottom-nav {
+            width: 60%;
+            background-color: $secondary-color90;
+            clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
+            display: flex;
+            justify-content: right;
+            align-items: center;
+
+            p {
+                font-size: 90%;
+                color:$tertiary-color
+            }
+        }
+        }
+}
