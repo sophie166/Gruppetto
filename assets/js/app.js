@@ -11,6 +11,7 @@ require('../scss/app.scss');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
 
+
 // FAQ scroll through the answers.
 const acc = document.getElementsByClassName('accordion');
 let i;
@@ -26,3 +27,6 @@ function faqList() {
 for (i = 0; i < acc.length; i += 1) {
     acc[i].addEventListener('click', faqList);
 }
+
+const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
+imagesContext.keys().forEach(imagesContext);
