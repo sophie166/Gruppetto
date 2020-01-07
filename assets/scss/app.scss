@@ -161,5 +161,18 @@ body {
                 color: $tertiary-color;
             }
         }
+
+        .backFaq {
+            margin: 100px auto;
+            height: 60px;
+            width: 60px;
+            background-color: $secondary-color;
+            border-radius: 50%;
+            display: inline-block;
+            border: none;
+            outline: none;
+        }
+
     }
+
 }
