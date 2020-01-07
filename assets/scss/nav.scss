@@ -1,8 +1,4 @@
 @import "vars";
-$yellow: rgba(254,204,55,0.9);
-$blue: rgba(16,46,130,1);
-$background-nav-opacity: rgba(255,255,255,0.35);
-$green-background-opacity: rgba(74,176,121,0.8);
 
 header {
     width: 100%;
@@ -11,7 +7,7 @@ header {
     position: fixed;
 
     ul {
-        background:$white50;
+        background:$light-filter50;
         padding: 10%;
         margin: 7%;
         border-radius: 1px;
@@ -25,12 +21,12 @@ header {
             border-radius: 2px;
             box-sizing: border-box;
             width: 40%;
-            border: solid $yellow90 10px;
+            border: solid $secondary-color90 10px;
             margin: 5%;
             display: flex;
             justify-content: center;
             justify-items: center;
-            background: $yellow90;
+            background: $secondary-color90;
 
             img {
                 width: 80%;
@@ -39,7 +35,7 @@ header {
 
             a {
                 text-decoration: none;
-                color: $blue;
+                color: $tertiary-color;
                 font-size: 80%;
                 text-align: center;
             }
@@ -55,7 +51,7 @@ header {
         position: fixed;
         justify-content: space-between;
         bottom: 0;
-        background-color: $green-background-opacity;
+        background-color: $primary-color85;
         width: 100%;
 
         img {
@@ -71,7 +67,7 @@ header {
 
         .yellow-bottom-nav {
             width: 60%;
-            background-color: $yellow;
+            background-color: $secondary-color90;
             clip-path: polygon(55% 0, 100% 0%, 100% 100%, 35% 100%);
             display: flex;
             justify-content: right;
@@ -79,7 +75,7 @@ header {
 
             p {
                 font-size: 90%;
-                color:$blue
+                color:$tertiary-color
             }
         }
         }
