@@ -12,6 +12,7 @@
     </rule>
     <rule ref="rulesets/codesize.xml" >
         <exclude name="TooManyFields" />
+        <exclude name="TooManyPublicMethods" />
         <exclude name="ExcessiveClassComplexity"/>
         <exclude name="TooManyPublicMethods"/>
         <exclude name="ExcessivePublicCount"/>
@@ -41,6 +42,16 @@
     </rule>
     <rule ref="rulesets/design.xml" >
         <exclude name="CouplingBetweenObjects" />
+    </rule>
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" value="15"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessivePublicCount">
+        <properties>
+            <property name="minimum" value="50"/>
+        </properties>
     </rule>
     <rule ref="rulesets/design.xml/CouplingBetweenObjects">
         <properties>
