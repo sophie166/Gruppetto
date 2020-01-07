@@ -39,6 +39,12 @@ input {
     color: $secondary-color;
 }
 
+.errors-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .cgu-block{
     display: flex;
     justify-content: space-evenly;
