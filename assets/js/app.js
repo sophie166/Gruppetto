@@ -15,16 +15,18 @@ require('../scss/app.scss');
 // FAQ scroll through the answers.
 const acc = document.getElementsByClassName('accordion');
 let i;
-for (i = 0; i < acc.length; i += 1) {
-    acc[i].addEventListener('click', () => {
-        this.classList.toggle('active');
-        const panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = `${panel.scrollHeight}px`;
-        }
-    });
+function faqList() {
+    this.classList.toggle('active');
+    const panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+    } else {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+    }
 }
+for (i = 0; i < acc.length; i += 1) {
+    acc[i].addEventListener('click', faqList);
+}
+
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
