@@ -15,7 +15,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig');
     }
     /**
-     * @Route("/navbar", name="nav")
+     * @Route("/navbar", name="navigation")
      */
     // To display the navbar we be remove when we create the other page //
     public function nav()
