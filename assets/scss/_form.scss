@@ -1,5 +1,8 @@
 @import "vars";
-
+.alert-danger{
+    color: $light;
+    font-family: 'Roboto Light', sans-serif;
+}
 .continue-btn{
     background-color: $secondary-color;
     width: 220px;
@@ -57,7 +60,7 @@ input {
     align-items: center;
 }
 
-.registration-form{
+.registration-form, .login-form{
     grid-area: form;
     height: 60%;
     width: 100%;
@@ -76,7 +79,7 @@ input {
 }
 
 @media screen and (min-width: 992px) {
-    .registration-form{
+    .registration-form, .login-form{
         height: 100%;
     }
 }
