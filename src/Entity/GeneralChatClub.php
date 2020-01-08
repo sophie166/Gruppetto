@@ -29,7 +29,7 @@ class GeneralChatClub
     private $contentMessage;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProfilClub", inversedBy="generalChatClub", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\ProfilClub", mappedBy="generalChatClub", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $profilClub;
