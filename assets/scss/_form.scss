@@ -1,8 +1,10 @@
 @import "vars";
+
 .alert-danger{
     color: $light;
     font-family: 'Roboto Light', sans-serif;
 }
+
 .continue-btn{
     background-color: $secondary-color;
     width: 220px;
