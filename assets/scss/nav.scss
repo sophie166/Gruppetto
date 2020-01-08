@@ -8,12 +8,13 @@ header {
     top: 0;
     transition: top .5s;
 
-/* main menu include icons*/
+    /* main menu include icons*/
     .main-menu {
         width: 100%;
         height: 90%;
         padding: 7%;
         box-sizing: border-box;
+
         ul{
             height: 100%;
             background:$light-filter50;
@@ -53,6 +54,7 @@ header {
         }
 
     }
+
     /* Bottom bar-nav */
     .green-bottom-nav {
         display: inline-flex;
@@ -90,6 +92,7 @@ header {
         }
     }
 }
+
 
 header.closed{
     top: -90%;

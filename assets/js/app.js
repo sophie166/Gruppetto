@@ -34,7 +34,7 @@ for (i = 0; i < acc.length; i += 1) {
 }
 
 
-// Sophie - Interact with navbar, swipe effect !
+// Interact with navbar, swipe effect !
 const myArrow = document.querySelector('#arrow-swipe');
 const myHeader = document.querySelector('header');
 
