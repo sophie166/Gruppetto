@@ -60,7 +60,6 @@ class AppFixtures extends Fixture
          $event->setPlaceEvent('23 place des ecoliers 59000 Lille');
          $event->setSport($sport);
          $event->setCreatorClub($profilClub);
-         $event->setCreatorSolo($profilSolo);
 
         $manager->persist($event);
 
