@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
          $event = new Event();
          $event->setNameEvent('Entrainement de course ');
          $event->setLevelEvent('Debutant');
-         $event->setDateEvent('XXXX');
+         $event->setDateEvent('new\DateTime(O6/12/2012)');
          $event->setTimeEvent('1:12:12');
          $event->setDescription('Courses dans la nature');
          $event->setParticipantLimit('10');
