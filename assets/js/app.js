@@ -34,3 +34,13 @@ function faqList() {
 for (i = 0; i < acc.length; i += 1) {
     acc[i].addEventListener('click', faqList);
 }
+
+
+// Interact with navbar, swipe effect !
+const myArrow = document.querySelector('#arrow-swipe');
+const myHeader = document.querySelector('header');
+
+
+myArrow.addEventListener('click', () => {
+    myHeader.classList.toggle('closed');
+});
