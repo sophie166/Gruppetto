@@ -1,0 +1,33 @@
+@import "vars";
+
+.green-box{
+  background-color: $primary-color95;
+  height: 80%;
+  width: 90%;
+  border: 5px solid #1E6740;
+  border-radius: 5px;
+}
+.searchBar{
+  display: flex;
+  width: 80%;
+  height: 10%;
+  .searchType{
+    visibility: hidden;
+  }
+  img{
+    width: 10%;
+    height: 100%;
+  }
+}
+
+
+.container{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+li{
+  list-style: none;
+}

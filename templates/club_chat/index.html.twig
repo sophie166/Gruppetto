@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClubChatController!{% endblock %}
+{% block title %}Gruppetto | Messages{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/wilder/Project3/lille_0919_PHP_Gruppetto/src/Controller/ClubChatController.php'|file_link(0) }}">src/Controller/ClubChatController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/wilder/Project3/lille_0919_PHP_Gruppetto/templates/club_chat/index.html.twig'|file_link(0) }}">templates/club_chat/index.html.twig</a></code></li>
-    </ul>
-</div>
+{#    {% include 'navbar/_navbar.html.twig' %}#}
+    <section class="container">
+        <div class="searchBar">
+            <input type="text" class="searchType">
+            <img src="{{ asset('build/images/icons8-person.051ecf56.svg') }}" alt="search icon">
+        </div>
+        <section class="green-box">
+            <ul>
+                <li>
+                    <div><img src="{{ asset('build/images/icons8-person.051ecf56.svg') }}" alt="avatar"></div>
+                </li>
+                <hr>
+            </ul>
+        </section>
+    </section>
 {% endblock %}

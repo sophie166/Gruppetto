@@ -9,6 +9,8 @@
 require('../scss/app.scss');
 require('../scss/nav.scss');
 require('../scss/faq.scss');
+require('../scss/messages.scss');
+
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');

@@ -1,7 +1,5 @@
-{% extends 'base.html.twig' %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
 {% block body %}
     <header>
@@ -18,12 +16,11 @@
 
                     {# Nav bar effect#}
                 <div class="yellow-bottom-nav">
-                    <p> Running club</p>
+                    <p>Running club</p>
                 </div>
         </div>
     </header>
     {% block javascripts %}
         {{ encore_entry_script_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
-{% endblock %}
+    {% endblock %}
