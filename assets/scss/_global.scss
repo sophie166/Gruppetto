@@ -2,63 +2,62 @@
 
 //reset
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  height: 100vh;
-  background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;
-  background-size: cover;
+    height: 100vh;
+    background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;
+    background-size: cover;
 
-  .green-box{
-    background-color: $primary-color95;
-    height: 80%;
-    width: 90%;
-    border: 5px solid #1E6740;
-    border-radius: 5px;
-  }
-
-  .searchBar{
-    display: flex;
-    width: 80%;
-    justify-content: flex-end;
-
-    .searchType{
-      visibility: hidden;
-    }
-    // for searchBar
-    .searchType.visible{
-      visibility: visible;
+    .green-box{
+        background-color: $primary-color95;
+        height: 80%;
+        width: 90%;
+        border: 5px solid #1E6740;
+        border-radius: 5px;
     }
 
-    div.js-search-icon{
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 35px;
-      height: 100%;
-      background-color: $secondary-color;
-      img{
+    .searchBar{
+        display: flex;
         width: 80%;
-        height: 35px;
+        justify-content: flex-end;
+
+      .searchType{
+          visibility: hidden;
+      }
+      // for searchBar
+      .searchType.visible{
+          visibility: visible;
+      }
+
+      div.js-search-icon{
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 35px;
+          height: 100%;
+          background-color: $secondary-color;
+
+          img{
+              width: 80%;
+              height: 35px;
+          }
       }
     }
-  }
 
-  .container{
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
+    .container{
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 
-  li{
-    list-style: none;
-  }
-
+    li{
+        list-style: none;
+    }
 }
-

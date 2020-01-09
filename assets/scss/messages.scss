@@ -2,61 +2,61 @@
 @import "nav";
 
 form{
-  display: flex;
-  justify-content: center;
-  height: 40px;
-  margin: 0.3em 0;
-
-  .input-message-bar{
-    width: 90%;
-    background-color: $light;
-    border-radius: 15px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    height: 40px;
+    margin: 0.3em 0;
 
-    input{
-      color: $tertiary-color;
-      width: 80%;
-      border: 0;
+    .input-message-bar{
+        width: 90%;
+        background-color: $light;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-evenly;
+
+      input{
+          color: $tertiary-color;
+          width: 80%;
+          border: 0;
+      }
     }
-  }
 
 }
 
 body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  .green-box{
+   .green-box{
 
-    //style for message list club
-    ul{
-      height: 95%;
-      padding: 0.3em;
-      overflow: auto;
+      //style for message list club
+      ul{
+          height: 95%;
+          padding: 0.3em;
+          overflow: auto;
 
-      li#general-chat-button{
-        background-color: $secondary-color50;
-        border-radius: 5px;
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        max-width: 250px;
+        li#general-chat-button{
+            background-color: $secondary-color50;
+            border-radius: 5px;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            max-width: 250px;
 
-        img{
-          height: 70%;
+           img{
+                height: 70%;
+               }
+
+            p{
+                color: $light;
+                font-size: 21px;
+                font-family: 'Roboto', sans-serif;
+            }
         }
-
-        p{
-          color: $light;
-          font-size: 21px;
-          font-family: 'Roboto', sans-serif;
-        }
-      }
       li{
         height: 15%;
 
