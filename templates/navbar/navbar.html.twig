@@ -21,9 +21,19 @@
             <div class="yellow-bottom-nav">
                 <p> Running club</p>
             </div>
+
+            {# TODO Add links for FAQ, CGU, Mentions légales #}
+        {% endif %}
+            <div class="green-bottom-nav">
+                <img src="{{ asset("build/images/icons8-running-100.png")}}" alt="running picture">
+                <img id="arrow-swipe" src="{{ asset("build/images/arrow-up.svg")}}" alt="arrow">
+
+                    {# Nav bar effect#}
+                <div class="yellow-bottom-nav">
+                    <p> Running club</p>
+                </div>
         </div>
     </header>
-
     {% block javascripts %}
         {{ encore_entry_script_tags('nav') }}
         {{ parent('app') }}
