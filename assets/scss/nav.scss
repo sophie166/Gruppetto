@@ -1,5 +1,6 @@
 @import "vars";
 
+
 header {
     width: 100%;
     height: 100%;
@@ -14,6 +15,16 @@ header {
         height: 92%;
         padding: 10%;
         box-sizing: border-box;
+
+
+        #logout-button{
+            text-align: right;
+
+            a{
+                color: $secondary-color;
+                text-decoration: none;
+            }
+        }
 
         ul{
             height: 90%;
@@ -55,6 +66,14 @@ header {
 
             }
         }
+        #more-button{
+            text-align: right;
+
+            a{
+                color: $secondary-color;
+                text-decoration: none;
+            }
+        }
 
     }
 
@@ -72,6 +91,8 @@ header {
         img {
             width: 55px;
         }
+
+
 
         /* Display arrow*/
         #arrow-swipe {
@@ -105,20 +126,6 @@ header.closed{
     }
 }
 
-@media screen and (min-width: 600px) {
-
-    .main-menu{
-        ul{
-            li{
-
-            img{
-                width: 60px;
-            }
-            }
-        }
-
-    }
-    }
 
 
 
