@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Gruppetto | Messages{% endblock %}
-
+   {% block stylesheets %}
+       {{ encore_entry_link_tags('messages') }}
+   {% endblock %}
 {% block body %}
-{#    {% include 'navbar/_navbar.html.twig' %}#}
+{% include 'navbar/_navbar.html.twig' %}
     <section class="container">
         <div class="searchBar">
             <input type="text" class="searchType">
-            <img src="{{ asset('build/images/icons8-person.051ecf56.svg') }}" alt="search icon">
+            <div class="js-search-icon">
+                <img src="{{ asset('build/images/icons8-search-blue.c825990e.svg') }}" alt="search icon">
+            </div>
+
         </div>
         <section class="green-box">
             <ul>
@@ -18,4 +23,7 @@
             </ul>
         </section>
     </section>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('messages') }}
+    {% endblock %}
 {% endblock %}

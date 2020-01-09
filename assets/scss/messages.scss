@@ -1,9 +1,9 @@
 @import "global";
-@import "vars";
+@import "nav";
 
 body{
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
 }
