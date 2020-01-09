@@ -21,7 +21,7 @@ class Friend
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\ProfilSolo", mappedBy="friends")
      */
-    private $profilSolo;
+    private $profilSolos;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Chat", mappedBy="friend", cascade={"persist", "remove"})
@@ -30,7 +30,7 @@ class Friend
 
     public function __construct()
     {
-        $this->profilSolo = new ArrayCollection();
+        $this->profilSolos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -43,24 +43,24 @@ class Friend
      */
     public function getProfilSolo(): Collection
     {
-        return $this->profilSolo;
+        return $this->profilSolos;
     }
 
-    public function addProfilSolo(ProfilSolo $profilSolo): self
+    public function addProfilSolo(ProfilSolo $profilSolos): self
     {
-        if (!$this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo[] = $profilSolo;
-            $profilSolo->addFriend($this);
+        if (!$this->profilSolos->contains($profilSolos)) {
+            $this->profilSolos[] = $profilSolos;
+            $profilSolos->addFriend($this);
         }
 
         return $this;
     }
 
-    public function removeProfilSolo(ProfilSolo $profilSolo): self
+    public function removeProfilSolo(ProfilSolo $profilSolos): self
     {
-        if ($this->profilSolo->contains($profilSolo)) {
-            $this->profilSolo->removeElement($profilSolo);
-            $profilSolo->removeFriend($this);
+        if ($this->profilSolos->contains($profilSolos)) {
+            $this->profilSolos->removeElement($profilSolos);
+            $profilSolos->removeFriend($this);
         }
 
         return $this;

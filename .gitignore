@@ -1,4 +1,7 @@
-
+/templates/profil/
+/templates/registration/
+/src/Form
+/src/Controller/RegistrationController.php
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
