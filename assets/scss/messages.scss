@@ -14,11 +14,11 @@ form{
         display: flex;
         justify-content: space-evenly;
 
-      input{
-          color: $tertiary-color;
-          width: 80%;
-          border: 0;
-      }
+        input{
+            color: $tertiary-color;
+            width: 80%;
+            border: 0;
+        }
     }
 
 }
@@ -29,118 +29,117 @@ body{
     align-items: center;
     justify-content: center;
 
-   .green-box{
+    .green-box{
 
       //style for message list club
-      ul{
-          height: 95%;
-          padding: 0.3em;
-          overflow: auto;
+        ul{
+            height: 95%;
+            padding: 0.3em;
+            overflow: auto;
 
-        li#general-chat-button{
-            background-color: $secondary-color50;
-            border-radius: 5px;
-            width: 90%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            max-width: 250px;
+            li#general-chat-button{
+                background-color: $secondary-color50;
+                border-radius: 5px;
+                width: 90%;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                max-width: 250px;
 
-           img{
-                height: 70%;
-               }
+                img{
+                  height: 70%;
+                }
 
-            p{
-                color: $light;
-                font-size: 21px;
-                font-family: 'Roboto', sans-serif;
+                p{
+                  color: $light;
+                  font-size: 21px;
+                  font-family: 'Roboto', sans-serif;
+                }
             }
-        }
-      li{
-        height: 15%;
+            li{
+                height: 15%;
 
-        table{
-          margin: 0 auto;
-          width: 100%;
+                table{
+                    margin: 0 auto;
+                    width: 100%;
 
-          tr{
+                    tr{
 
-            #user-avatar-cell, #message-icon-cell{
-              text-align: center;
+                        #user-avatar-cell, #message-icon-cell{
+                            text-align: center;
 
-              img{
-                vertical-align: bottom;
-              }
+                          img{
+                              vertical-align: bottom;
+                          }
+                        }
+                        .user-name{
+                            color: $secondary-color;
+                            font-family: 'Roboto', sans-serif;
+                            font-size: 21px;
+                            font-weight: bold;
+                        }
+
+                        .user-last-message{
+                            color: $light;
+                            font-family: 'Roboto', sans-serif;
+                            font-size: 19px;
+                        }
+                        .avatar{
+                            vertical-align: middle;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+
             }
-            .user-name{
-              color: $secondary-color;
-              font-family: 'Roboto', sans-serif;
-              font-size: 21px;
-              font-weight: bold;
-            }
 
-            .user-last-message{
+            hr{
               color: $light;
-              font-family: 'Roboto', sans-serif;
-              font-size: 19px;
+              width: 80%;
+              margin: 0.5rem auto;
             }
-            .avatar{
-              vertical-align: middle;
-              margin: 0 auto;
-            }
-          }
         }
-
-      }
-      hr{
-        color: $light;
-        width: 80%;
-        margin: 0.5rem auto;
-
-      }
     }
-  }
-
     // end style message list club
 
     //style message general club
-  .general-chat-section{
-    display: flex;
-    flex-direction: column;
-
-    h4{
+    .general-chat-section{
       display: flex;
-      justify-content: space-evenly;
-      width: 80%;
-      margin: 0.5em auto;
-      font-family: 'Edmondsans', sans-serif;
-      color: $secondary-color;
-      font-size: 21px;
-    }
-    ul{
-      height: 90%;
+      flex-direction: column;
 
-      li{
-        height: auto;
-      }
-      li.general-chat-message{
-
-        margin: 0.3em 0;
-        height: auto;
-        font-size: 15px;
-        font-family: 'Roboto', sans-serif;
-        color: $light;
-
-        .sentAt{
-          font-size: 12px;
+        h4{
+            display: flex;
+            justify-content: space-evenly;
+            width: 80%;
+            margin: 0.5em auto;
+            font-family: 'Edmondsans', sans-serif;
+            color: $secondary-color;
+            font-size: 21px;
         }
+        ul{
+            height: 90%;
 
-        .sentBy{
-          color: $secondary-color;
-          font-weight: bold;
+            li{
+              height: auto;
+            }
+
+            li.general-chat-message{
+                margin: 0.3em 0;
+                height: auto;
+                font-size: 15px;
+                font-family: 'Roboto', sans-serif;
+                color: $light;
+
+                .sentAt{
+                  font-size: 12px;
+                }
+
+                .sentBy{
+                  color: $secondary-color;
+                  font-weight: bold;
+                }
+            }
         }
-      }
     }
-  }
 }
