@@ -31,7 +31,7 @@ body{
 
     .green-box{
 
-      //style for message list club
+        //style for message list club
         ul{
             height: 95%;
             padding: 0.3em;
@@ -48,13 +48,13 @@ body{
                 max-width: 250px;
 
                 img{
-                  height: 70%;
+                    height: 70%;
                 }
 
                 p{
-                  color: $light;
-                  font-size: 21px;
-                  font-family: 'Roboto', sans-serif;
+                    color: $light;
+                    font-size: 21px;
+                    font-family: 'Roboto', sans-serif;
                 }
             }
             li{
@@ -70,7 +70,7 @@ body{
                             text-align: center;
 
                           img{
-                              vertical-align: bottom;
+                            vertical-align: bottom;
                           }
                         }
                         .user-name{
@@ -95,9 +95,9 @@ body{
             }
 
             hr{
-              color: $light;
-              width: 80%;
-              margin: 0.5rem auto;
+                color: $light;
+                width: 80%;
+                margin: 0.5rem auto;
             }
         }
     }
@@ -105,8 +105,8 @@ body{
 
     //style message general club
     .general-chat-section{
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
 
         h4{
             display: flex;
@@ -121,7 +121,7 @@ body{
             height: 90%;
 
             li{
-              height: auto;
+                height: auto;
             }
 
             li.general-chat-message{
@@ -132,12 +132,12 @@ body{
                 color: $light;
 
                 .sentAt{
-                  font-size: 12px;
+                    font-size: 12px;
                 }
 
                 .sentBy{
-                  color: $secondary-color;
-                  font-weight: bold;
+                    color: $secondary-color;
+                    font-weight: bold;
                 }
             }
         }
