@@ -4,7 +4,10 @@
 form{
   display: flex;
   justify-content: center;
+  height: 40px;
+  margin: 0.3em 0;
   .input-message-bar{
+    width: 90%;
     background-color: $light;
     border-radius: 15px;
     display: flex;
@@ -12,6 +15,7 @@ form{
     input{
       color: $tertiary-color;
       width: 80%;
+      border: 0;
     }
   }
 
