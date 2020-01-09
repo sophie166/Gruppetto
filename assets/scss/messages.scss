@@ -6,12 +6,14 @@ form{
   justify-content: center;
   height: 40px;
   margin: 0.3em 0;
+
   .input-message-bar{
     width: 90%;
     background-color: $light;
     border-radius: 15px;
     display: flex;
     justify-content: space-evenly;
+
     input{
       color: $tertiary-color;
       width: 80%;
@@ -34,6 +36,7 @@ body{
       height: 95%;
       padding: 0.3em;
       overflow: auto;
+
       li#general-chat-button{
         background-color: $secondary-color50;
         border-radius: 5px;
@@ -43,9 +46,11 @@ body{
         align-items: center;
         justify-content: space-around;
         max-width: 250px;
+
         img{
           height: 70%;
         }
+
         p{
           color: $light;
           font-size: 21px;
@@ -58,9 +63,12 @@ body{
         table{
           margin: 0 auto;
           width: 100%;
+
           tr{
+
             #user-avatar-cell, #message-icon-cell{
               text-align: center;
+
               img{
                 vertical-align: bottom;
               }
@@ -100,6 +108,7 @@ body{
   .general-chat-section{
     display: flex;
     flex-direction: column;
+
     h4{
       display: flex;
       justify-content: space-evenly;
@@ -111,15 +120,18 @@ body{
     }
     ul{
       height: 90%;
+
       li{
         height: auto;
       }
       li.general-chat-message{
+
         margin: 0.3em 0;
         height: auto;
         font-size: 15px;
         font-family: 'Roboto', sans-serif;
         color: $light;
+
         .sentAt{
           font-size: 12px;
         }
