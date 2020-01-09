@@ -37,6 +37,7 @@ header {
                 justify-content: center;
                 align-items: center;
                 background: $secondary-color95;
+
                 a {
                     display: flex;
                     flex-direction: column;
@@ -45,6 +46,7 @@ header {
                     font-size: 12px;
                     color: $tertiary-color;
                 }
+
                 img {
                     width: 50px;
                     margin: auto;
