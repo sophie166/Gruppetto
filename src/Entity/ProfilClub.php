@@ -44,7 +44,7 @@ class ProfilClub
     private $sports;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\GeneralChatClub", inversedBy="profilClub", cascade={"persist", "remove"})
      */
     private $generalChatClub;
 

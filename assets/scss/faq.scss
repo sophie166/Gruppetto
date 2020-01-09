@@ -1,6 +1,17 @@
 @import "vars";
 
 // Start FAQ CSS
+.faq {
+    margin: 60px auto;
+    color: $tertiary-color;
+    background-color: $secondary-color;
+    border-radius: 5px;
+    border: $secondary-border-color solid 3px;
+    text-align: center;
+    width: 100px;
+    font-size: 18px;
+}
+
 .faqs {
     display: flex;
     flex-direction: column;
@@ -13,11 +24,12 @@
         padding: 18px;
         width: 100%;
         border-radius: 7px;
-        border: $primary-border-color solid 4px;
+        border: $primary-border-color solid 5px;
         text-align: left;
         outline: none;
         font-size: 15px;
         transition: 0.4s;
+        margin: 5px 0;
     }
 
     .active, .accordion:hover {
@@ -26,11 +38,23 @@
 
     .panel {
         padding: 0 18px;
-        width: 320px;
-        margin-left: 60px;
-        background-color: $light;
+        width: 80%;
+        margin: auto;
+        background-color: $light-filter75;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
     }
+
+    .backFaq {
+        margin: 100px auto;
+        height: 60px;
+        width: 60px;
+        background-color: $secondary-color;
+        border-radius: 50%;
+        display: inline-block;
+        border: none;
+        outline: none;
+    }
+
 }
