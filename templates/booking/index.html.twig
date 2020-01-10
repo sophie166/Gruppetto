@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking index{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+{% block body %}
+
+
+    <table class="tableIndex">
+        <thead>
+        <h1>Liste des évenements</h1>
+            <tr>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Titre</th>
+                <th>Editer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ booking.title }}</td>
+                <td>
+                    <a> {{ include('booking/_delete_form.html.twig') }}</a>
+                    <a href="{{ path('booking_edit', {'id': booking.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('booking_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+
+  <div class="form_beginAt">{{ form_row(form.beginAt) }}</div>
+
+<button class="btn">{{ button_label|default('') }}</button>
+<div class="alert alert-danger">{{  form_rest(form) }}</div>
+{{ form_end(form) }}
