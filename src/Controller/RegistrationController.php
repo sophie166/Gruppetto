@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +37,24 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('navigation');
+            return $this->redirectToRoute('app_profil_register');
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/register/profil", name="app_profil_register")
+     */
+    public function profilregister()
+    {
+        $form = $this
+            ->createForm(ProfilType::class);
+
+        return $this->render('profil/index.html.twig', [
+            'registrationForm2' => $form->createView(),
         ]);
     }
 }
