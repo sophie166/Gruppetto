@@ -40,19 +40,21 @@ body {
   .fc-dayGrid-view .fc-day-number {
     padding: 20px;
   }
+  .fc-unthemed th,
+  .fc-unthemed td,
+  .fc-unthemed thead,
+  {
+    border-color: transparent;
+  }
 /*case du jour */
   .fc-unthemed td.fc-today {
-    background-color: #4AB079;
-    border-color: transparent;
+    background-color: transparent;
   }
 
   .fc td.fc-today {
     border-style: double;
-    border-radius: 100%;
   }
   .fc table {
-    width: 100%;
-    box-sizing: border-box;
     table-layout: fixed;
     border-collapse: collapse;
     border-spacing: 0;
@@ -70,23 +72,19 @@ body {
 
 
   /* css page show calendar */
-  button{
-    background-color: transparent;
-    border-color: transparent;
-  }
-
-  .table {
+  #calendar-container{
     background: rgba(74, 176, 121, 0.8);
+    margin: 5% 5% 5% 5%;
     border: 5px solid #1E6740;
-    box-sizing: border-box;
+  }
 
+  .return_button{
+    background-image: url('/public/build/images/fleche_return.svg');
+    border-color: transparent;
+    background-color: transparent;
   }
-  .title{
-    color: white;
-    font-size: 55%;
-    text-align: center;
-  }
-/* CSS Nouveau Evenement*/
+
+  /* CSS Nouveau Evenement*/
   .new{
     background: rgba(74, 176, 121, 0.95);
     border: 5px solid #1E6740;
@@ -117,9 +115,7 @@ body {
            width: 50px;
            height: 50px;
          }
-            .form_beginAt{
 
-            }
 
   }
 
