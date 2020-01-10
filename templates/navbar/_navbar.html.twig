@@ -1,7 +1,5 @@
-{% extends 'base.html.twig' %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
 {% block body %}
     <header class="closed">
@@ -25,16 +23,14 @@
         </div>
         <section class="navigation-bar-bottom">
             <div class="green-bottom-nav">
-                <img src="{{ asset("build/images/icons8-running-100.png")}}" alt="running picture">
+                <img src="{{ asset("build/images/logo_club.png")}}" alt="running picture">
                 <img id="arrow-swipe" src="{{ asset("build/images/arrow-up.svg")}}" alt="arrow">
                 {# Nav bar effect#}
             </div>
-            <div class="yellow-bottom-nav">
-            </div>
+            <div class="yellow-bottom-nav"></div>
         </section>
     </header>
     {% block javascripts %}
         {{ encore_entry_script_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
-{% endblock %}
+    {% endblock %}
