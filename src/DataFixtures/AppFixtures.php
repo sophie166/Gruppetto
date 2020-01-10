@@ -3,12 +3,14 @@
 namespace App\DataFixtures;
 
 use App\Entity\Event;
+use App\Entity\GeneralChatClub;
 use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
 use App\Entity\Sport;
 use App\Entity\SportCategory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use DateTime;
 
 class AppFixtures extends Fixture
 {
@@ -20,8 +22,15 @@ class AppFixtures extends Fixture
         $profilClub->setNameClub('Run Team');
         $profilClub->setCityClub('Lille');
         $profilClub->setLogoClub('avatar2.jpg');
-        $profilClub->setDescriptionClub('Petite equipe Liloise');
+        $profilClub->setDescriptionClub('Petite equipe Lilloise');
         $manager->persist($profilClub);
+
+        $profilClub2 = new ProfilClub();
+        $profilClub2->setNameClub('Swim Team');
+        $profilClub2->setCityClub('Douai');
+        $profilClub2->setLogoClub('avatar6.jpg');
+        $profilClub2->setDescriptionClub('Club de natation');
+        $manager->persist($profilClub2);
 
         // Fixtures for profil Solo//
         $profilSolo= new ProfilSolo();
@@ -62,6 +71,13 @@ class AppFixtures extends Fixture
          $event->setCreatorClub($profilClub);
 
         $manager->persist($event);
+
+        // Fixtures for GeneralChatClub
+        $messageClub = new GeneralChatClub();
+        $messageClub->setProfilClub($profilClub2);
+        $messageClub->setDateMessage(new DateTime('now'));
+        $messageClub->setContentMessage('Bonjour, je suis un club de natation');
+        $manager->persist($messageClub);
 
         $manager->flush();
     }
