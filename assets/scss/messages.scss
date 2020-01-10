@@ -29,6 +29,28 @@ body{
     align-items: center;
     justify-content: center;
 
+    #general-chat-button{
+        background-color: $primary-color95;
+        border: 3px solid #1E6740;
+        border-radius: 5px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        max-width: 250px;
+
+        img{
+            height: 70%;
+        }
+
+        p{
+            color: $light;
+            font-size: 21px;
+            font-family: 'Edmondsans', sans-serif;
+        }
+    }
+
     .green-box{
 
         //style for message list club
@@ -36,27 +58,6 @@ body{
             height: 95%;
             padding: 0.3em;
             overflow: auto;
-
-            li#general-chat-button{
-                background-color: $secondary-color50;
-                border-radius: 5px;
-                width: 90%;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                max-width: 250px;
-
-                img{
-                    height: 70%;
-                }
-
-                p{
-                    color: $light;
-                    font-size: 21px;
-                    font-family: 'Roboto', sans-serif;
-                }
-            }
 
             li{
                 height: 15%;
