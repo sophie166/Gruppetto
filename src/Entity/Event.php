@@ -80,7 +80,7 @@ class Event
     private $registrationEvent;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Booking", mappedBy="event")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Booking", mappedBy="events")
      */
     private $bookings;
 
