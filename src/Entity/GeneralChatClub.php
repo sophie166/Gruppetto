@@ -29,7 +29,7 @@ class GeneralChatClub
     private $contentMessage;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\ProfilClub", inversedBy="generalChatClub", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub", inversedBy="generalChatClub", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $profilClub;
@@ -38,12 +38,6 @@ class GeneralChatClub
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilSolo", inversedBy="generalChatClub")
      */
     private $profilSolo;
-
-    public function __construct()
-    {
-        $this->profilClub = new ArrayCollection();
-        $this->profilSolo = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

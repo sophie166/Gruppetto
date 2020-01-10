@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,10 +13,11 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+  
     /**
-     * @Route("/navbar", name="home")
+     * @Route("/navbar", name="navigation")
      */
-    // To display the navbar we be remove when we create the other page //
+    // To display the navbar will be removed when we create the other pages //
     public function nav()
     {
         return $this->render('navbar/navbar.html.twig');

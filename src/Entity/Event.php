@@ -79,10 +79,16 @@ class Event
      */
     private $registrationEvent;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Booking", mappedBy="events")
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->registrationEvent = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -267,6 +273,34 @@ class Event
             if ($registrationEvent->getEvent() === $this) {
                 $registrationEvent->setEvent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBooking(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->addEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            $booking->removeEvent($this);
         }
 
         return $this;
