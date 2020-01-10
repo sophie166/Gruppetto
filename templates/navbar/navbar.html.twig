@@ -5,6 +5,7 @@
     {% endblock %}
 {% block body %}
     <header>
+        <div class="main-menu">
         <ul>
             <li><a href="#"><img src="{{ asset("build/images/icons-calendar.svg")}}"  alt="Calendar">Agenga</a></li>
             <li><a href="#"><img src="{{ asset("build/images/icons8-running-100.png")}}" alt="running picture">Club</a></li>
@@ -19,6 +20,7 @@
 
             {# TODO Add links for FAQ, CGU, Mentions légales #}
         {% endif %}
+        </div>
             <div class="green-bottom-nav">
                 <img src="{{ asset("build/images/icons8-running-100.png")}}" alt="running picture">
                 <img id="arrow-swipe" src="{{ asset("build/images/arrow-up.svg")}}" alt="arrow">
