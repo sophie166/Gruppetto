@@ -1,7 +1,5 @@
-{% extends 'base.html.twig' %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
 {% block body %}
     <header class="closed">
@@ -20,20 +18,27 @@
 
             {# TODO Add links for FAQ, CGU, Mentions légales #}
         {% endif %}
+        </div>
             <div class="green-bottom-nav">
-                <img src="{{ asset("build/images/icons8-running-100.png")}}" alt="running picture">
+                <img src="{{ asset("build/images/logo_club.png")}}" alt="running picture">
                 <img id="arrow-swipe" src="{{ asset("build/images/arrow-up.svg")}}" alt="arrow">
 
                     {# Nav bar effect#}
                 <div class="yellow-bottom-nav">
                     <p> Running club</p>
                 </div>
+<<<<<<< HEAD:templates/navbar/navbar.html.twig
             </div>
+=======
+>>>>>>> 1aff6d414702bc73437dcbb9fe23d33e0260eff7:templates/navbar/_navbar.html.twig
         </div>
     </header>
 
     {% block javascripts %}
         {{ encore_entry_script_tags('nav') }}
-        {{ parent('app') }}
     {% endblock %}
+<<<<<<< HEAD:templates/navbar/navbar.html.twig
 {% endblock %}
+=======
+    {% endblock %}
+>>>>>>> 1aff6d414702bc73437dcbb9fe23d33e0260eff7:templates/navbar/_navbar.html.twig

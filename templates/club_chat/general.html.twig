@@ -1,0 +1,23 @@
+{% extends 'club_chat/index.html.twig' %}
+
+{% block greenBox %}
+    <section class="green-box general-chat-section">
+        <ul>
+        <li><h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
+        </li>
+            <li class="general-chat-message">
+                <span class="sentAt">[21/01/2020 13:45]</span> <span class="sentBy">John Doe :</span> <span class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit.</span>
+            </li>
+            <li class="general-chat-message">
+                <span class="sentAt">[21/01/2020 13:50]</span> <span class="sentBy">Running Club :</span> <span class="message">Consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, laboriosam magni numquam odio quis sapiente vel? Aperiam cumque dolor excepturi explicabo nemo, nesciunt perspiciatis ratione tempora? Adipisci alias aliquam illo?</span>
+            </li>
+
+        </ul>
+        <form action="">
+            <div class="input-message-bar">
+                <input type="text" placeholder="Ecrivez votre message ...">
+                <img src="{{ asset('build/images/send-message-icon.svg') }}" alt="">
+            </div>
+        </form>
+    </section>
+{% endblock greenBox %}

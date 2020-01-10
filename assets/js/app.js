@@ -7,8 +7,8 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../scss/app.scss');
-require('../scss/nav.scss');
 require('../scss/faq.scss');
+
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
@@ -32,12 +32,3 @@ function faqList() {
 for (i = 0; i < acc.length; i += 1) {
     acc[i].addEventListener('click', faqList);
 }
-
-
-// Interact with navbar, swipe effect !
-const myArrow = document.querySelector('#arrow-swipe');
-const myHeader = document.querySelector('header');
-
-myArrow.addEventListener('click', () => {
-    myHeader.classList.toggle('closed');
-});
