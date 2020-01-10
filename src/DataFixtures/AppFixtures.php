@@ -13,6 +13,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use DateTime;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker;
 
 class AppFixtures extends Fixture
 {
@@ -26,6 +27,8 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+
+        $faker = Faker\Factory::create('en_US');
 
         // Creating admin user
         $admin = new User();
@@ -115,8 +118,8 @@ class AppFixtures extends Fixture
          $event = new Event();
          $event->setNameEvent('Entrainement de course ');
          $event->setLevelEvent(1);
-         $event->setDateEvent(new\ DateTime(6/12/2019));
-         $event->setTimeEvent(new\ DateTime(16/44/12));
+         $event->setDateEvent($faker->dateTimeThisMonth);
+         $event->setTimeEvent($faker->dateTimeThisMonth);
          $event->setDescription('Courses dans la nature');
          $event->setParticipantLimit('10');
          $event->setPlaceEvent('23 place des ecoliers 59000 Lille');
