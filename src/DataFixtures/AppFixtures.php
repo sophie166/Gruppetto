@@ -8,21 +8,63 @@ use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
 use App\Entity\Sport;
 use App\Entity\SportCategory;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use DateTime;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
 
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     public function load(ObjectManager $manager)
     {
-        // fFixures for profil club//
+
+        // Creating admin user
+        $admin = new User();
+        $admin->setEmail('admin@gruppetto.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'adminpassword'
+        ));
+
+        $manager->persist($admin);
+
+        // Creating cluber user : run team
+        $cluber = new User();
+        $cluber->setEmail('run-team@club.com');
+        $cluber->setRoles(['ROLE_CLUBER']);
+        $cluber->setPassword($this->passwordEncoder->encodePassword(
+            $cluber,
+            'clubpassword'
+        ));
+        $manager->persist($cluber);
+
+        // Creating cluber user : swim team
+        $cluber2 = new User();
+        $cluber2->setEmail('swim-team@club.com');
+        $cluber2->setRoles(['ROLE_CLUBER']);
+        $cluber2->setPassword($this->passwordEncoder->encodePassword(
+            $cluber2,
+            'clubpassword'
+        ));
+        $manager->persist($cluber2);
+
+        // Fixtures for profil club//
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('Run Team');
         $profilClub->setCityClub('Lille');
         $profilClub->setLogoClub('avatar2.jpg');
         $profilClub->setDescriptionClub('Petite equipe Lilloise');
+        $profilClub->addUser($cluber);
         $manager->persist($profilClub);
 
         $profilClub2 = new ProfilClub();
@@ -47,6 +89,17 @@ class AppFixtures extends Fixture
         $profilSolo->setEmergencyPhone('0000000000');
         $manager->persist($profilSolo);
 
+        // Creating lambda user
+        $user = new User();
+        $user->setProfilSolo($profilSolo);
+        $user->setEmail('john-doe@msn.com');
+        $user->setRoles(['ROLE_USER']);
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user,
+            'userpassword'
+        ));
+        $manager->persist($user);
+
         // Fixtures for sportCategory//
         $sportCategory=new SportCategory();
         $sportCategory->setNameCategory('Running');
@@ -69,8 +122,7 @@ class AppFixtures extends Fixture
          $event->setPlaceEvent('23 place des ecoliers 59000 Lille');
          $event->setSport($sport);
          $event->setCreatorClub($profilClub);
-
-        $manager->persist($event);
+         $manager->persist($event);
 
         // Fixtures for GeneralChatClub
         $messageClub = new GeneralChatClub();
