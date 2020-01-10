@@ -75,13 +75,17 @@ header {
 
             }
         }
+
+
         #more-button{
             text-align: right;
             margin-bottom: 5%;
+
             a{
                 color: $secondary-color;
                 text-decoration: none;
             }
+
             a span{
                 font-size: 22px;
             }
