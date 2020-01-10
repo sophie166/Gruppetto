@@ -8,16 +8,19 @@ use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class BookingType
+ * @package App\Form
+ * @SuppressWarnings(PHPMD)
+ */
 class BookingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('beginAt', ButtonType::class)
             ->add('beginAt')
             ->add('endAt', ButtonType::class)
-            ->add('title', ButtonType::class )
-        ;
+            ->add('title', ButtonType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
