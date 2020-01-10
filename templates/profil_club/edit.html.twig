@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ProfilClub{% endblock %}
+
+{% block body %}
+    <h1>Edit ProfilClub</h1>
+
+    {{ include('profil_club/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('profil_club_index') }}">back to list</a>
+
+    {{ include('profil_club/_delete_form.html.twig') }}
+{% endblock %}

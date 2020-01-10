@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // fFixures for profil club//
+        // fFixtures for profil club//
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('Run Team');
         $profilClub->setCityClub('Lille');

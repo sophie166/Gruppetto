@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfilClub{% endblock %}
+
+{% block body %}
+    <h1>ProfilClub</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ profil_club.id }}</td>
+            </tr>
+            <tr>
+                <th>NameClub</th>
+                <td>{{ profil_club.nameClub }}</td>
+            </tr>
+            <tr>
+                <th>CityClub</th>
+                <td>{{ profil_club.cityClub }}</td>
+            </tr>
+            <tr>
+                <th>LogoClub</th>
+                <td>{{ profil_club.logoClub }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionClub</th>
+                <td>{{ profil_club.descriptionClub }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('profil_club_index') }}">back to list</a>
+
+    <a href="{{ path('profil_club_edit', {'id': profil_club.id}) }}">edit</a>
+
+    {{ include('profil_club/_delete_form.html.twig') }}
+{% endblock %}
