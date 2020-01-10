@@ -1,0 +1,141 @@
+/* body calendar*/
+@import url("https://fonts.googleapis.com/css");
+body {
+  background-image: url('/build/images/runBackground.b2ed985d.jpg');
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+    #calendar-holder {
+      background: rgba(74, 176, 121, 0.8);
+      margin: 5% 5% 5% 5%;
+      border: 5px solid #1E6740;
+  }
+  /* button calendar + page calendar*/
+  .fc-toolbar h2{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+  .fc th{
+    font-weight: inherit;
+    font-size: 15px;
+    text-align: center;
+    color: #FECC37;
+
+  }
+  /* fléche changer de mois*/
+  .fc-button-primary{
+    background-color: transparent;
+    border-color: transparent;
+  }
+/*table calendar*/
+  .fc-dayGrid-view .fc-week-number,
+  .fc-dayGrid-view .fc-day-number {
+    padding: 20px;
+  }
+/*case du jour */
+  .fc-unthemed td.fc-today {
+    background-color: #4AB079;
+    border-color: transparent;
+  }
+
+  .fc td.fc-today {
+    border-style: double;
+    border-radius: 100%;
+  }
+  .fc table {
+    width: 100%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 30%;
+    text-align: center;
+  }
+  /*touch event*/
+  .fc-event {
+    display: block;
+    font-size: 0.85em;
+    line-height: 1.4;
+    border-radius: 100px;
+    width: 20px;
+  }
+
+
+  /* css page show calendar */
+  button{
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .table {
+    background: rgba(74, 176, 121, 0.8);
+    border: 5px solid #1E6740;
+    box-sizing: border-box;
+
+  }
+  .title{
+    color: white;
+    font-size: 55%;
+    text-align: center;
+  }
+/* CSS Nouveau Evenement*/
+  .new{
+    background: rgba(74, 176, 121, 0.95);
+    border: 5px solid #1E6740;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 5% 5% 5% 5%;
+      input{
+        background-color: transparent;
+        border-color: transparent ;
+        color: #FECC37;
+        text-align: center;
+      }
+         hr{
+          width: 90%;
+          height: 2px;
+          background-color:rgba(16, 46, 130, 0.5); ;
+          border: none;
+           margin-top: 0;
+    }
+         .btn{
+           background-image: url('/build/images/Vector.svg');
+           background-size: 30px;
+           background-position: center;
+           background-repeat: no-repeat;
+           box-sizing: border-box;
+           background-color:#FECC37;
+           border-radius: 100%;
+           width: 50px;
+           height: 50px;
+         }
+            .form_beginAt{
+
+            }
+
+  }
+
+}
+@media only screen and (min-width: 1529px) {
+  @import url("https://fonts.googleapis.com/css");
+  body {
+    #calendar-holder {
+      background: rgba(74, 176, 121, 0.8);
+      border: 5px solid #1E6740;
+      width: 20%;
+      height:50%;
+
+    }
+  }
+}
+
+
+

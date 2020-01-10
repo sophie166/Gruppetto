@@ -26,7 +26,8 @@
         "symfony/validator": "4.3.*",
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.3.*",
+        "tattali/calendar-bundle": "^1.1"
     },
     "require-dev": {
         "phpro/grumphp": "^0.15.2",
@@ -83,7 +84,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "4.4.*"
         }
     }
