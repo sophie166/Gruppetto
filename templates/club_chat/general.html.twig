@@ -5,12 +5,23 @@
         <ul>
         <li><h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
         </li>
+            {% for message in messages %}
+
+            {% if message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0] %}
             <li class="general-chat-message">
-                <span class="sentAt">[21/01/2020 13:45]</span> <span class="sentBy">John Doe :</span> <span class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit.</span>
+                <span class="sentBy">
+                    {% if message.profilSolo %}
+                    {{ message.profilSolo.firstname }}
+                    {% else %}
+                    {{ message.profilClub.nameClub }}
+                    {% endif %}
+                </span>
+                <p class="message">{{ message.contentMessage }}</p><span class="sentAt">[{{ message.dateMessage.format('d-m-Y') }}]</span>
             </li>
-            <li class="general-chat-message">
-                <span class="sentAt">[21/01/2020 13:50]</span> <span class="sentBy">Running Club :</span> <span class="message">Consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, laboriosam magni numquam odio quis sapiente vel? Aperiam cumque dolor excepturi explicabo nemo, nesciunt perspiciatis ratione tempora? Adipisci alias aliquam illo?</span>
-            </li>
+            {% endif %}
+            {% endfor %}
+
+
 
         </ul>
         <form action="">

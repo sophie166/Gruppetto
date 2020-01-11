@@ -75,6 +75,7 @@ class AppFixtures extends Fixture
         $profilClub2->setCityClub('Douai');
         $profilClub2->setLogoClub('avatar6.jpg');
         $profilClub2->setDescriptionClub('Club de natation');
+        $profilClub2->addUser($cluber2);
         $manager->persist($profilClub2);
 
         // Fixtures for profil Solo//
@@ -133,6 +134,19 @@ class AppFixtures extends Fixture
         $messageClub->setDateMessage(new DateTime('now'));
         $messageClub->setContentMessage('Bonjour, je suis un club de natation');
         $manager->persist($messageClub);
+
+        $messageClub2 = new GeneralChatClub();
+        $messageClub2->setProfilClub($profilClub);
+        $messageClub2->setDateMessage(new DateTime('now'));
+        $messageClub2->setContentMessage('Bonjour, je suis un club de run');
+        $manager->persist($messageClub2);
+
+        $messageSolo = new GeneralChatClub();
+        $messageSolo->setProfilClub($profilClub2);
+        $messageSolo->setProfilSolo($profilSolo);
+        $messageSolo->setDateMessage(new DateTime('now'));
+        $messageSolo->setContentMessage('Bonjour, je suis John.');
+        $manager->persist($messageSolo);
 
         $manager->flush();
     }
