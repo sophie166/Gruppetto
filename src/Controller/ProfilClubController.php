@@ -38,7 +38,6 @@ class ProfilClubController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
             $entityManager->flush();
-
             return $this->redirectToRoute('profil_club_index');
         }
 

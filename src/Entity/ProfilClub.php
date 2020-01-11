@@ -98,6 +98,7 @@ class ProfilClub
 
         return $this;
     }
+    /* For logo file*/
 
     public function getLogoClub(): ?string
     {
