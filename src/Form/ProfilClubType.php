@@ -18,8 +18,8 @@ class ProfilClubType extends AbstractType
     {
         $builder
             ->add('nameClub')
-            /*->add('cityClub')
-            ->add('logoClub',FileType::class,['label'=>'Logo',
+            ->add('cityClub')
+            ->add('logoClub', FileType::class, ['label'=>'Logo',
                 // unmapped because the fiedl is not associate to any entity//
                 'mapped'=> false,
                 // require is false, don't have to re-upload if the user edit is profil//
@@ -36,9 +36,9 @@ class ProfilClubType extends AbstractType
                          'mimeTypesMessage'=>'Please upload a png or jpg file.'
                      ])
                  ]
-            ])*/
+            ])
 
-            /*->add('descriptionClub')*/
+            ->add('descriptionClub')
         ;
         $options=null;
     }

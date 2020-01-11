@@ -4,29 +4,17 @@
 
 {% block body %}
     <h2>Mon profil</h2>
-
-    <table class="table">
-        <tbody>
-                <th>Mon nom</th>
-                <td>{{ profil_club.nameClub }}</td>
-            <tr>
-                <th>Ma ville</th>
-                <td>{{ profil_club.cityClub }}</td>
-            </tr>
-            <tr>
-                <th>Mon logo</th>
-                <td>{{ profil_club.logoClub }}</td>
-            </tr>
-            <tr>
-                <th>Ma description</th>
-                <td>{{ profil_club.descriptionClub }}</td>
-            </tr>
-        </tbody>
-    </table>
+     <h3>Mon nom</h3>
+                <p>{{  profil_club.nameClub }}</p>
+                <h3>Ma ville</h3>
+                <p>{{ profil_club.cityClub }}</p>
+                <h3>Mon logo</h3>
+                <p>{{ profil_club.logoClub }}</p>
+                <h3>Ma description</h3>
+                <p>{{ profil_club.descriptionClub }}</p>
 
     <a href="{{ path('profil_club_index') }}">back to list</a>
 
     <a href="{{ path('profil_club_edit', {'id': profil_club.id}) }}">edit</a>
 
-    {{ include('profil_club/_delete_form.html.twig') }}
 {% endblock %}
