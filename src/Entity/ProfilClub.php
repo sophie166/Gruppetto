@@ -63,11 +63,17 @@ class ProfilClub
      */
     private $events;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ProfilSolo", mappedBy="profilClub")
+     */
+    private $profilSolos;
+
     public function __construct()
     {
         $this->sports = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->profilSolos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +242,37 @@ class ProfilClub
             // set the owning side to null (unless already changed)
             if ($event->getCreatorClub() === $this) {
                 $event->setCreatorClub(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProfilSolo[]
+     */
+    public function getProfilSolos(): Collection
+    {
+        return $this->profilSolos;
+    }
+
+    public function addProfilSolo(ProfilSolo $profilSolo): self
+    {
+        if (!$this->profilSolos->contains($profilSolo)) {
+            $this->profilSolos[] = $profilSolo;
+            $profilSolo->setProfilClub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfilSolo(ProfilSolo $profilSolo): self
+    {
+        if ($this->profilSolos->contains($profilSolo)) {
+            $this->profilSolos->removeElement($profilSolo);
+            // set the owning side to null (unless already changed)
+            if ($profilSolo->getProfilClub() === $this) {
+                $profilSolo->setProfilClub(null);
             }
         }
 

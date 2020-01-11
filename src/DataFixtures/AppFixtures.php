@@ -91,6 +91,7 @@ class AppFixtures extends Fixture
         $profilSolo->setSportFrequency(2);
         $profilSolo->setPhone('0000000000');
         $profilSolo->setEmergencyPhone('0000000000');
+        $profilSolo->setProfilClub($profilClub2);
         $manager->persist($profilSolo);
 
         // Creating lambda user
