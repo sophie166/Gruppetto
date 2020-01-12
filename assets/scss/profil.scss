@@ -24,20 +24,22 @@ body {
       justify-items: right;
       align-items: center;
       width: 90%;
-      height: 90px;
+      height: 93px;
       background: $primary-color80;
       border: 2px solid $primary-border-color;
       border-radius: 5px;
+      margin: -8px;
       img{
-        width: 50px;
-        margin-left: 20px;
+        width: 40px;
+        margin-left: 10px;
       }
 
       .box-text{
         color: $light;
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
         font-family: Edmondsans, sans-serif;
+        margin: auto;
         h3 {
           color: $secondary-color;
         }
