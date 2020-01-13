@@ -3,13 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\ProfilClub;
+use App\Entity\Sport;
 use App\Entity\User;
 use App\Form\DescriptionFormType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,21 +55,11 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register/profil", name="app_profil_register")
      */
-    public function profil(Request $request): Response
+    public function profilregister()
     {
-        $roles = new User();
         $form = $this
-            ->createForm(ProfilType::class, $roles);
-        $form->handleRequest($request);
+            ->createForm(ProfilType::class);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($roles);
-            $entityManager->flush();
-
-
-            return $this->redirectToRoute('app_info_register');
-        }
         return $this->render('profil/index.html.twig', [
             'registrationForm2' => $form->createView(),
         ]);
@@ -77,23 +70,35 @@ class RegistrationController extends AbstractController
      */
     public function information(Request $request): Response
     {
-        $profilClub=new ProfilClub();
-        $form = $this->createForm(InformationFormType::class, $profilClub);
+        $profilClub = new ProfilClub();
+        $sportName = new Sport();
+        $profilClub->setNameClub('');
+        $sportName->setSportName('');
+        $profilClub->setCityClub('');
+
+        $form = $this->createForm(InformationFormType::class, $profilClub)
+            ->add('nameClub', TextType::class)
+            ->add('sports', TextType::class)
+            ->add('cityClub', TextType::class)
+            ->add('save', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $profilClub->setNameClub('nameClub');
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_descript_register');
+            return $this->redirectToRoute('app_info_register');
         }
 
         return $this->render('registration/infoRegister.html.twig', [
             'registrationForm3' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/register/description", name="app_descript_register")
      */
@@ -103,7 +108,7 @@ class RegistrationController extends AbstractController
         $descriptionClub->setDescriptionClub('');
 
         $form = $this->createForm(DescriptionFormType::class, $descriptionClub)
-            ->add('Description', TextareaType::class);
+            ->add('DescriptionClub', TextareaType::class);
 
         $form->handleRequest($request);
 

@@ -14,7 +14,7 @@ class InformationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('profilClub', TextType::class, [
+            ->add('nameClub', TextType::class, [
                 'label' => false,
                 'required'=>true,
                 'attr'=> [
@@ -26,7 +26,7 @@ class InformationFormType extends AbstractType
                         'message' => 'le Nom du club est manquant .'
                     ])
                 ]])
-            ->add('sport', TextType::class, [
+            ->add('sports', TextType::class, [
                 'label' => false,
                 'required'=>true,
                 'attr'=> [
@@ -38,7 +38,7 @@ class InformationFormType extends AbstractType
                         'message' => 'le Nom du sport est manquant .'
                     ])
                 ]])
-            ->add('ville', TextType::class, [
+            ->add('cityClub', TextType::class, [
                 'label' => false,
                 'required'=>true,
                 'attr'=> [

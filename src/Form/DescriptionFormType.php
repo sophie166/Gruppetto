@@ -13,7 +13,7 @@ class DescriptionFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', TextareaType::class, [
+            ->add('DescriptionClub', TextareaType::class, [
                 'attr'=> [
                     'placeholder'=>'Description',
                     'class' => 'green-input']
