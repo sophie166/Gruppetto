@@ -24,7 +24,7 @@ class Sport
     private $sportName;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilClub", mappedBy="sport")
+     * @ORM\ManyToMany(targetEntity="App\Entity\ProfilClub", mappedBy="sports")
      */
     private $profilClubs;
 

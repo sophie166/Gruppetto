@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\ProfilClub;
 use App\Entity\User;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
+use App\Form\InformationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,13 +50,44 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register/profil", name="app_profil_register")
      */
-    public function profilregister()
+    public function profil(Request $request): Response
     {
+        $roles = new User();
         $form = $this
-            ->createForm(ProfilType::class);
+            ->createForm(ProfilType::class, $roles);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($roles);
+
+
+            return $this->redirectToRoute('app_info_register');
+        }
         return $this->render('profil/index.html.twig', [
             'registrationForm2' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/register/information", name="app_info_register")
+     */
+    public function information(Request $request): Response
+    {
+        $profilClub=new ProfilClub();
+        $form = $this->createForm(InformationFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($profilClub);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_info_register');
+        }
+
+        return $this->render('registration/infoRegister.html.twig', [
+            'registrationForm3' => $form->createView(),
         ]);
     }
 }
