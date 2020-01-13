@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\ProfilClub;
+use App\Entity\Sport;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +27,7 @@ class InformationFormType extends AbstractType
                         'message' => 'le Nom du club est manquant .'
                     ])
                 ]])
-            ->add('sports', TextType::class, [
+            ->add('sport', TextType::class, [
                 'label' => false,
                 'required'=>true,
                 'attr'=> [
@@ -56,7 +57,7 @@ class InformationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProfilClub::class
+            'data_class' => ProfilClub::class, Sport::class
         ]);
     }
 }

@@ -78,9 +78,8 @@ class RegistrationController extends AbstractController
 
         $form = $this->createForm(InformationFormType::class, $profilClub)
             ->add('nameClub', TextType::class)
-            ->add('sports', TextType::class)
-            ->add('cityClub', TextType::class)
-            ->add('save', SubmitType::class);
+            ->add('sport', TextType::class)
+            ->add('cityClub', TextType::class);
 
         $form->handleRequest($request);
 
