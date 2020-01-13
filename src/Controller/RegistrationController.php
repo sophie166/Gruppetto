@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ProfilClub;
 use App\Entity\User;
+use App\Form\DescriptionFormType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
@@ -60,6 +61,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($roles);
+            $entityManager->flush();
 
 
             return $this->redirectToRoute('app_info_register');
@@ -75,7 +77,7 @@ class RegistrationController extends AbstractController
     public function information(Request $request): Response
     {
         $profilClub=new ProfilClub();
-        $form = $this->createForm(InformationFormType::class);
+        $form = $this->createForm(InformationFormType::class, $profilClub);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,11 +85,33 @@ class RegistrationController extends AbstractController
             $entityManager->persist($profilClub);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_info_register');
+            return $this->redirectToRoute('app_descript_register');
         }
 
         return $this->render('registration/infoRegister.html.twig', [
             'registrationForm3' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/register/description", name="app_descript_register")
+     */
+    public function description(Request $request): Response
+    {
+        $descript = new ProfilClub();
+        $form = $this->createForm(DescriptionFormType::class, $descript);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($descript);
+            $entityManager->flush();
+
+
+            return $this->redirectToRoute('app_descript_register');
+        }
+        return $this->render('registration/descriptionRegister.html.twig', [
+            'registrationForm4' => $form->createView(),
         ]);
     }
 }
