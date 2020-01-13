@@ -5,7 +5,9 @@
         <ul>
         <li><h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
         </li>
-            {% for message in messages %}
+
+            {{ dump(app.user) }}
+            {#{% for message in messages %}
 
                 {% if is_granted('ROLE_CLUBER') %}
                     {% if (message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0]) %}
@@ -36,17 +38,19 @@
                         </li>
                     {% endif %}
                 {% endif %}
-            {% endfor %}
+            {% endfor %}#}
 
 
 
         </ul>
-        <form action="">
-            <div class="input-message-bar">
-                <input type="text" placeholder="Ecrivez votre message ...">
-                <img src="{{ asset('build/images/send-message-icon.svg') }}" alt="">
-            </div>
-        </form>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.contentMessage) }}
+        <div class="input-message-bar">
+            <button><img src="{{ asset('build/images/send-message-icon.svg') }}" alt=""></button>
+        </div>
+        {{ form_end(form) }}
     </section>
 {% endblock greenBox %}
 
