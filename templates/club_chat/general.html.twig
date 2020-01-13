@@ -2,12 +2,11 @@
 
 {% block greenBox %}
     <section class="green-box general-chat-section">
-        <ul>
-        <li><h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
-        </li>
+        <h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
 
-            {{ dump(app.user) }}
-            {#{% for message in messages %}
+        <ul class="js-chatbox">
+
+            {% for message in messages %}
 
                 {% if is_granted('ROLE_CLUBER') %}
                     {% if (message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0]) %}
@@ -38,15 +37,27 @@
                         </li>
                     {% endif %}
                 {% endif %}
-            {% endfor %}#}
+            {% endfor %}
 
 
 
         </ul>
-        {{ form_start(form) }}
+        {{ form_start(form,{
+            'attr': {
+                'class': 'js-new-message',
+                'novalidate': 'novalidate'
+            }})
+        }}
         {{ form_errors(form) }}
 
         {{ form_row(form.contentMessage) }}
+
+        {% if is_granted('ROLE_CLUBER') %}
+            <input type="hidden" value="{{ app.user.profilClubs.owner.profilClubs.snapshot[0].id }}" name="profilClub">
+        {% elseif is_granted('ROLE_USER') %}
+                <input type="hidden" value="{{ app.user.profilClubs.owner.profilSolo.profilClub.id }}" name="profilClub">
+        {% endif %}
+
         <div class="input-message-bar">
             <button><img src="{{ asset('build/images/send-message-icon.svg') }}" alt=""></button>
         </div>

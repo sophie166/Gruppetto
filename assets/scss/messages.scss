@@ -27,14 +27,14 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 
     #general-chat-button{
         background-color: $primary-color95;
         border: 3px solid #1E6740;
         border-radius: 5px;
         width: 90%;
-        margin: 0 auto;
+        margin: 2.5em auto;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -111,6 +111,7 @@ body{
     .general-chat-section{
         display: flex;
         flex-direction: column;
+        height: 74vh;
 
         h1{
             display: flex;
