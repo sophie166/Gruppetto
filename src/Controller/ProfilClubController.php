@@ -6,6 +6,7 @@ use App\Entity\ProfilClub;
 use App\Form\ProfilClubType;
 use App\Repository\ProfilClubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +36,15 @@ class ProfilClubController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // upload logoform
+            $logoFile =$form['logoClub']->getData();
+            if ($logoFile) {
+                $logoFileName = md5(uniqid()). '.'.$logoFile->guessExtension();
+                // Move the file to the directory where brochures are stored
+                $logoFile->move($this->getParameter('upload_directory'), $logoFileName);
+                $profilClub->setLogoClub($logoFileName);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
             $entityManager->flush();
