@@ -9,6 +9,7 @@ use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,20 +99,27 @@ class RegistrationController extends AbstractController
      */
     public function description(Request $request): Response
     {
-        $descript = new ProfilClub();
-        $form = $this->createForm(DescriptionFormType::class, $descript);
+        $descriptionClub = new ProfilClub();
+        $descriptionClub->setDescriptionClub('');
+
+        $form = $this->createForm(DescriptionFormType::class, $descriptionClub)
+            ->add('Description', TextareaType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($descript);
-            $entityManager->flush();
+            $descriptionClub->setDescriptionClub('description');
 
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($descriptionClub);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_descript_register');
         }
+
         return $this->render('registration/descriptionRegister.html.twig', [
-            'registrationForm4' => $form->createView(),
+        'registrationForm4' => $form->createView(),
         ]);
     }
 }
