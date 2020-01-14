@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -22,4 +23,14 @@ class HomeController extends AbstractController
     {
         return $this->render('navbar/navbar.html.twig');
     }
+
+    /**
+     * @return Response
+     * @Route("/details", name="details")
+     */
+    public function show(): Response
+    {
+        return $this->render('details.html.twig');
+    }
+
 }
