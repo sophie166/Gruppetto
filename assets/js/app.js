@@ -9,10 +9,6 @@
 require('../scss/app.scss');
 require('../scss/faq.scss');
 
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-const $ = require('jquery');
-
 // takes the images in /pictures to put them in build/images
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
