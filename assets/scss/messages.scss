@@ -43,7 +43,7 @@ body{
 
     #general-chat-button{
         background-color: $primary-color95;
-        border: 3px solid #1E6740;
+        border: 3px solid $primary-border-color;
         border-radius: 5px;
         width: 90%;
         margin: 2.5em auto;
