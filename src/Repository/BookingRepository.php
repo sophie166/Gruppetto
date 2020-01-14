@@ -7,7 +7,6 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-
 /**
  * @method Booking|null find($id, $lockMode = null, $lockVersion = null)
  * @method Booking|null findOneBy(array $criteria, array $orderBy = null)

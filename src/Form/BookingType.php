@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Booking;
+use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,8 +20,8 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('beginAt')
-            ->add('endAt', ButtonType::class)
-            ->add('title', ButtonType::class);
+            ->add('endAt')
+            ->add('title');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -6,11 +6,10 @@
 
 {% block body %}
     <div class="new">
-        <input type="text" placeholder="Nom de l'évenement"/>
-        <hr>
+
 
     {{ include('booking/_form.html.twig') }}
 
-    <a href="{{ path('booking_index') }}">back to list</a>
+    <a href="{{ path('booking_index') }}"></a>
     </div>
 {% endblock %}

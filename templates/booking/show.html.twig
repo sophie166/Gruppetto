@@ -11,8 +11,11 @@
     <div id='calendar-container'>
         <button><a href="{{ path('booking_calendar') }}" class="return_button"></a></button>
         <div id='calendar1'></div>
-        {{ booking.title  }} {{ booking.beginAt ? booking.beginAt|date('H:i') }}
+        {% for booking in bookings %}
+            {{ booking.beginAt ? booking.beginAt|date(' H:i')}} {{ booking.title }} <br>
+        {% endfor %}
     </div>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -31,6 +34,9 @@
             var calendarEl = document.getElementById('calendar1');
             var checkbox = document.getElementById('drop-remove');
 
+
+
+
             // initialize the external events
             // -----------------------------------------------------------------
 
@@ -44,7 +50,6 @@
                 }
             });
 
-            // initialize the calendar
             // -----------------------------------------------------------------
 
             var calendar = new Calendar(calendarEl, {
@@ -85,6 +90,11 @@
             });
 
             calendar.render();
+            calendar.setOption('local', 'fr');
         });
+        setTimeout(() => {
+            document.querySelector('.fc-time-grid-container').style.cssText = 'overflow: initial';
+        }, 700);
+    </script>
     </script>
 {% endblock %}

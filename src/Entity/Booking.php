@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,13 +19,11 @@ class Booking
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $beginAt;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $endAt;
@@ -56,7 +52,6 @@ class Booking
     {
         return $this->beginAt;
     }
-
 
 
     public function setBeginAt(?\DateTimeInterface $beginAt): self
@@ -115,5 +110,4 @@ class Booking
 
         return $this;
     }
-
 }
