@@ -91,12 +91,10 @@ class RegistrationController extends AbstractController
             $sportName->getSportName();
             $profilClub->getCityClub();
 
-            if ($request->isMethod('GET') && $form->handleRequest($request)->isValid()) {
-                dump($profilClub);
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($profilClub);
-                $entityManager->flush();
-            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($profilClub);
+            $entityManager->flush();
+
             return $this->redirectToRoute('app_descript_register');
         }
 
