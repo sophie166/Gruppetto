@@ -27,11 +27,8 @@
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*",
-
         "tattali/calendar-bundle": "^1.1",
-
         "twig/extra-bundle": "^3.0"
-
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
