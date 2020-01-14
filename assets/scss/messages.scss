@@ -19,6 +19,18 @@ form{
             width: 80%;
             border: 0;
         }
+
+        button{
+            border: 0;
+        }
+
+        div{
+            height: 100%;
+
+            #general_chat_contentMessage{
+                height: 100%;
+            }
+        }
     }
 
 }

@@ -17,7 +17,9 @@ class GeneralChatType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('contentMessage', TextType::class)
+            ->add('contentMessage', TextType::class, [
+                'label' => false
+            ])
 
         ;
         $options=null;

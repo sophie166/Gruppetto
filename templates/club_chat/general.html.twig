@@ -50,7 +50,8 @@
         }}
         {{ form_errors(form) }}
 
-        {{ form_row(form.contentMessage) }}
+
+
 
         {% if is_granted('ROLE_CLUBER') %}
             <input type="hidden" value="{{ app.user.profilClubs.owner.profilClubs.snapshot[0].id }}" name="profilClub">
@@ -59,6 +60,7 @@
         {% endif %}
 
         <div class="input-message-bar">
+            {{ form_row(form.contentMessage)}}
             <button><img src="{{ asset('build/images/send-message-icon.svg') }}" alt=""></button>
         </div>
         {{ form_end(form) }}
