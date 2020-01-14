@@ -82,7 +82,7 @@ class AppFixtures extends Fixture
         $profilSolo= new ProfilSolo();
         $profilSolo->setLastname('Doe');
         $profilSolo->setFirstname('Jonh');
-        $profilSolo->setBirthdate(new\ DateTime(141220));
+        $profilSolo->setBirthdate(new DateTime(141220));
         $profilSolo->setDescription('My description');
         $profilSolo->setGender(0);
         $profilSolo->setAvatar('avatar.jpg');

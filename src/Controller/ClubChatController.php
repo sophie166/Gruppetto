@@ -9,6 +9,7 @@ use App\Form\GeneralChatType;
 use App\Repository\GeneralChatClubRepository;
 use App\Repository\ProfilClubRepository;
 use App\Repository\UserRepository;
+use App\Services\GetUserClub;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,6 +40,7 @@ class ClubChatController extends AbstractController
      */
     public function chatGeneral(GeneralChatClubRepository $clubRepository, Request $request) : Response
     {
+
         $newMessage = new GeneralChatClub();
         $form = $this->createForm(GeneralChatType::class, $newMessage);
         $form->handleRequest($request);
@@ -49,7 +51,7 @@ class ClubChatController extends AbstractController
                 ->findBy([
                  'id' => $_POST['profilClub']
                 ]);
-            $newMessage->setDateMessage(new \DateTime('now'));
+            $newMessage->setDateMessage(new DateTime('now'));
             $newMessage ->setContentMessage($form["contentMessage"]->getData());
             $newMessage->setProfilClub($club[0]);
             if (in_array('ROLE_USER', $user->getRoles())) {
