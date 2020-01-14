@@ -1,4 +1,24 @@
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div id="profil-club-form">
+
+    <div class="box-form-update">
+        <h3>{{form_label(form.nameClub) }}</h3>
+    {{ form_widget(form.nameClub) }}
+    </div>
+    <div class="box-form-update">
+        <h3>{{form_label(form.cityClub) }}</h3>
+        {{ form_widget(form.cityClub) }}
+</div>
+    <div class="box-form-update">
+        <h3>{{form_label(form.logoClub) }}</h3>
+        {{ form_widget(form.logoClub) }}
+    </div>
+    <div class="box-form-update">
+       <h3> {{form_label(form.descriptionClub) }}</h3>
+        {{ form_widget(form.descriptionClub) }}
+    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
+</div>
+
 {{ form_end(form) }}
