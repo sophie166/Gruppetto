@@ -9,11 +9,7 @@ use App\Form\DescriptionFormType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -76,21 +72,14 @@ class RegistrationController extends AbstractController
         $profilClub->setNameClub('');
         $sportName->setSportName('');
         $profilClub->setCityClub('');
+        $profilClub->setDescriptionClub('');
+        $profilClub->setLogoClub('');
 
-        $form = $this->createForm(InformationFormType::class, $profilClub)
-            ->add('nameClub', TextType::class)
-            ->add('sport', EntityType::class, [
-                'class' => Sport::class,
-            ])
-            ->add('cityClub', TextType::class);
+        $form = $this->createForm(InformationFormType::class, $profilClub);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $profilClub->getNameClub();
-            $sportName->getSportName();
-            $profilClub->getCityClub();
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
             $entityManager->flush();
@@ -107,30 +96,20 @@ class RegistrationController extends AbstractController
      */
     public function description(Request $request): Response
     {
-        $descriptionClub = new ProfilClub();
-        $descriptionClub->setDescriptionClub('');
-        $descriptionClub->setLogoClub('');
-
-        $form = $this->createForm(DescriptionFormType::class, $descriptionClub)
-            ->add('LogoClub', FileType::class, array(
-            ))
-            ->add('DescriptionClub', TextareaType::class);
-
+        $profilClub=new ProfilClub();
+        $form = $this->createForm(DescriptionFormType::class, $profilClub);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $descriptionClub->setDescriptionClub('description');
-            $descriptionClub->getLogoClub();
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($descriptionClub);
-            $entityManager->flush();
+            $profilClub->setDescriptionClub('');
+            $profilClub->setLogoClub('');
+            $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('app_descript_register');
         }
 
         return $this->render('registration/descriptionRegister.html.twig', [
-        'registrationForm4' => $form->createView(),
+        'registrationForm3' => $form->createView(),
         ]);
     }
 }

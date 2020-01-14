@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\ProfilClub;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,7 +13,8 @@ class DescriptionFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $builder->add('LogoClub', FileType::class, array(
+        ))
             ->add('DescriptionClub', TextareaType::class, [
                 'attr'=> [
                     'placeholder'=>'Description',
