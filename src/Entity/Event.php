@@ -91,101 +91,101 @@ class Event
         $this->bookings = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getNameEvent(): ?string
+    public function getNameEvent()
     {
         return $this->nameEvent;
     }
 
-    public function setNameEvent(string $nameEvent): self
+    public function setNameEvent(string $nameEvent)
     {
         $this->nameEvent = $nameEvent;
 
         return $this;
     }
 
-    public function getLevelEvent(): ?int
+    public function getLevelEvent()
     {
         return $this->levelEvent;
     }
 
-    public function setLevelEvent(?int $levelEvent): self
+    public function setLevelEvent(?int $levelEvent)
     {
         $this->levelEvent = $levelEvent;
 
         return $this;
     }
 
-    public function getDateEvent(): ?\DateTimeInterface
+    public function getDateEvent()
     {
         return $this->dateEvent;
     }
 
-    public function setDateEvent(\DateTimeInterface $dateEvent): self
+    public function setDateEvent(\DateTimeInterface $dateEvent)
     {
         $this->dateEvent = $dateEvent;
 
         return $this;
     }
 
-    public function getTimeEvent(): ?\DateTimeInterface
+    public function getTimeEvent()
     {
         return $this->timeEvent;
     }
 
-    public function setTimeEvent(\DateTimeInterface $timeEvent): self
+    public function setTimeEvent(\DateTimeInterface $timeEvent)
     {
         $this->timeEvent = $timeEvent;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescription()
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(?string $description)
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getParticipantLimit(): ?int
+    public function getParticipantLimit()
     {
         return $this->participantLimit;
     }
 
-    public function setParticipantLimit(int $participantLimit): self
+    public function setParticipantLimit(int $participantLimit)
     {
         $this->participantLimit = $participantLimit;
 
         return $this;
     }
 
-    public function getPlaceEvent(): ?string
+    public function getPlaceEvent()
     {
         return $this->placeEvent;
     }
 
-    public function setPlaceEvent(string $placeEvent): self
+    public function setPlaceEvent(string $placeEvent)
     {
         $this->placeEvent = $placeEvent;
 
         return $this;
     }
 
-    public function getSport(): ?Sport
+    public function getSport()
     {
         return $this->sport;
     }
 
-    public function setSport(?Sport $sport): self
+    public function setSport(?Sport $sport)
     {
         $this->sport = $sport;
 
@@ -200,7 +200,7 @@ class Event
         return $this->comments;
     }
 
-    public function addComment(Comment $comment): self
+    public function addComment(Comment $comment)
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
@@ -210,7 +210,7 @@ class Event
         return $this;
     }
 
-    public function removeComment(Comment $comment): self
+    public function removeComment(Comment $comment)
     {
         if ($this->comments->contains($comment)) {
             $this->comments->removeElement($comment);
@@ -223,12 +223,12 @@ class Event
         return $this;
     }
 
-    public function getCreatorSolo(): ?ProfilSolo
+    public function getCreatorSolo()
     {
         return $this->creatorSolo;
     }
 
-    public function setCreatorSolo(?ProfilSolo $creatorSolo): self
+    public function setCreatorSolo(?ProfilSolo $creatorSolo)
     {
         $this->creatorSolo = $creatorSolo;
 
@@ -240,7 +240,7 @@ class Event
         return $this->creatorClub;
     }
 
-    public function setCreatorClub(?ProfilClub $creatorClub): self
+    public function setCreatorClub(?ProfilClub $creatorClub)
     {
         $this->creatorClub = $creatorClub;
 
@@ -255,7 +255,7 @@ class Event
         return $this->registrationEvent;
     }
 
-    public function addRegistrationEvent(RegistrationEvent $registrationEvent): self
+    public function addRegistrationEvent(RegistrationEvent $registrationEvent)
     {
         if (!$this->registrationEvent->contains($registrationEvent)) {
             $this->registrationEvent[] = $registrationEvent;
@@ -265,7 +265,7 @@ class Event
         return $this;
     }
 
-    public function removeRegistrationEvent(RegistrationEvent $registrationEvent): self
+    public function removeRegistrationEvent(RegistrationEvent $registrationEvent)
     {
         if ($this->registrationEvent->contains($registrationEvent)) {
             $this->registrationEvent->removeElement($registrationEvent);
@@ -286,7 +286,7 @@ class Event
         return $this->bookings;
     }
 
-    public function addBooking(Booking $booking): self
+    public function addBooking(Booking $booking)
     {
         if (!$this->bookings->contains($booking)) {
             $this->bookings[] = $booking;
@@ -296,7 +296,7 @@ class Event
         return $this;
     }
 
-    public function removeBooking(Booking $booking): self
+    public function removeBooking(Booking $booking)
     {
         if ($this->bookings->contains($booking)) {
             $this->bookings->removeElement($booking);

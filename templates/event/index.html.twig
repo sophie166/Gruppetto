@@ -2,5 +2,56 @@
 
 {% block title %}Gruppetto | Evénements{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('new_events') }}
 {% endblock %}
+{% block body %}
+    <div class="new">
+        {{ form_start(form)}}
+        <div class="form_group1">
+            <label for="{{ form.nameEvent.vars.id }}"></label>
+            <input type="text" class="name_event" id= "{{ form.nameEvent.vars.id }}" title="{{ form.nameEvent.vars.full_name }}" value="{{ form.nameEvent.vars.value }}" placeholder="Nom de l'évenement"/>
+            <hr>
+            {% do form.nameEvent.setRendered %}
+        </div>
+        <div class="date_time">
+            <label for="{{ form.timeEvent.vars.id }}" class="time"></label>
+            <label for="{{ form.dateEvent.vars.id }}" class="date"></label>
+            <img src="{{ asset("build/images/calendar.svg")}}" alt="calendrier" class="img-date-heure">
+            <img src="{{ asset("build/images/time.svg")}}" alt="horloge" class="img-date-heure">
+        </div>
+        <div class="form_group">
+            {{ form_widget(form.dateEvent) }}
+            {% do form.dateEvent.setRendered %}
+            {{ form_widget(form.timeEvent) }}
+            {% do form.timeEvent.setRendered %}
+        </div>
+        <div class="form_group2">
+            <label for="{{ form.description.vars.id }}"></label>
+            <input type="text" class="description_event" id= "{{ form.description.vars.id }}" title="{{ form.description.vars.full_name }}" value="{{ form.description.vars.value }}" placeholder="Description :"/>
+            {% do form.description.setRendered %}
+        </div>
+        <div class="form_group3">
+             <label for="{{ form.levelEvent.vars.id }}" class="level">Niveau</label>
+             {{ form_widget(form.levelEvent) }}
+             {% do form.levelEvent.setRendered %}
+        </div>
+        <div class="form_group4">
+            <label for="{{ form.participantLimit.vars.id }}" class="level">Nombre de participant</label>
+            {{ form_widget(form.participantLimit) }}
+            {% do form.participantLimit.setRendered %}
+        </div>
+        <div class="form_group5">
+            <label for="{{ form.placeEvent.vars.id }}"></label>
+            <input type="text" class="placeEvent" id= "{{ form.placeEvent.vars.id }}" title="{{ form.placeEvent.vars.full_name }}" value="{{ form.placeEvent.vars.value }}" placeholder="Lieux:"/>
+            {% do form.placeEvent.setRendered %}
+        </div>
+
+            <button class="btn">{{ button_label|default('') }}</button>
+            <div class="alert alert-danger">{{ form_rest(form) }}</div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+ {% block javascripts %}
+     {{ encore_entry_script_tags('app') }}
+ {% endblock %}
