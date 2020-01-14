@@ -22,6 +22,7 @@ Encore
     .addEntry('messages', './assets/js/messages.js')
     //.addEntry('page1', './assets/js/page1.js')
     .addEntry('calendar', './assets/js/calendar/index.js')
+    .addEntry('new_events', './assets/js/new_events.js')
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
@@ -54,7 +55,7 @@ Encore
     .enableSassLoader()
 
     // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    .enableTypeScriptLoader()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher
