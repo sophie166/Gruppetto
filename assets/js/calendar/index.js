@@ -41,5 +41,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.fc-day-grid-container').style.cssText = 'overflow: initial';
     }, 700);
 });
-
-
