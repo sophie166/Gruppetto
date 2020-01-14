@@ -26,7 +26,8 @@ class InformationFormType extends AbstractType
                     new IsTrue([
                         'message' => 'le Nom du club est manquant .'
                     ])
-                ]])
+                ]
+            ])
             ->add('sport', TextType::class, [
                 'label' => false,
                 'required'=>true,
@@ -38,7 +39,8 @@ class InformationFormType extends AbstractType
                     new IsTrue([
                         'message' => 'le Nom du sport est manquant .'
                     ])
-                ]])
+                ]
+            ])
             ->add('cityClub', TextType::class, [
                 'label' => false,
                 'required'=>true,
@@ -50,7 +52,8 @@ class InformationFormType extends AbstractType
                     new IsTrue([
                         'message' => 'le Nom de la Ville est manquant .'
                     ])
-                ]]);
+                ]
+            ]);
         $options = null;
     }
 

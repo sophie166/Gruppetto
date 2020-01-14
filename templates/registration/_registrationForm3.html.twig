@@ -11,9 +11,9 @@
     <img src="{{ asset('build/images/step-check.svg') }}" id="fourth-check" alt="">
 </div>
 
-{{ form_widget(registrationForm3.nameClub) }}
-{{ form_widget(registrationForm3.sport) }}
-{{ form_widget(registrationForm3.cityClub) }}
+{{ form_widget(registrationForm3.nameClub, {'attr':{ "placeholder":"Club" }}) }}
+{{ form_widget(registrationForm3.sport, {'attr':{ "placeholder":"Sport" }}) }}
+{{ form_widget(registrationForm3.cityClub, {'attr':{ "placeholder":"Ville" }}) }}
 
 <button class="continue-btn">Continuer</button>
 {{ form_end(registrationForm3) }}

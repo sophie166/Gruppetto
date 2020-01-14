@@ -9,8 +9,9 @@ use App\Form\DescriptionFormType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,20 +79,25 @@ class RegistrationController extends AbstractController
 
         $form = $this->createForm(InformationFormType::class, $profilClub)
             ->add('nameClub', TextType::class)
-            ->add('sport', TextType::class)
+            ->add('sport', EntityType::class, [
+                'class' => Sport::class,
+            ])
             ->add('cityClub', TextType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $profilClub->setNameClub('nameClub');
+            $profilClub->getNameClub();
+            $sportName->getSportName();
+            $profilClub->getCityClub();
 
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($profilClub);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_info_register');
+            if ($request->isMethod('GET') && $form->handleRequest($request)->isValid()) {
+                dump($profilClub);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($profilClub);
+                $entityManager->flush();
+            }
+            return $this->redirectToRoute('app_descript_register');
         }
 
         return $this->render('registration/infoRegister.html.twig', [
@@ -105,15 +111,18 @@ class RegistrationController extends AbstractController
     {
         $descriptionClub = new ProfilClub();
         $descriptionClub->setDescriptionClub('');
+        $descriptionClub->setLogoClub('');
 
         $form = $this->createForm(DescriptionFormType::class, $descriptionClub)
+            ->add('LogoClub', FileType::class, array(
+            ))
             ->add('DescriptionClub', TextareaType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $descriptionClub->setDescriptionClub('description');
-
+            $descriptionClub->getLogoClub();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($descriptionClub);

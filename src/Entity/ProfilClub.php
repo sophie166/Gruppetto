@@ -29,7 +29,7 @@ class ProfilClub
     private $cityClub;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, )
      */
     private $logoClub;
 
@@ -131,7 +131,7 @@ class ProfilClub
         return $this->sports;
     }
 
-    public function setSport(Sport $sports): self
+    public function addSport(Sport $sports): self
     {
         if (!$this->sports->contains($sports)) {
             $this->sports[] = $sports;
