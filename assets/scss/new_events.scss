@@ -1,112 +1,112 @@
 body {
-        background-image: url('/build/images/runBackground.b2ed985d.jpg');
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    background-image: url('/build/images/runBackground.b2ed985d.jpg');
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-        //box vert page new
-        .new{
-                background: rgba(74, 176, 121, 0.95);
-                border: 5px solid #1E6740;
-                box-sizing: border-box;
-                border-radius: 5px;
-                margin: 5% 5% 20% 5%;
-                height: 80%;
+    //box vert page new
+    .new{
+        background: rgba(74, 176, 121, 0.95);
+        border: 5px solid #1E6740;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 5% 5% 20% 5%;
+        height: 80%;
 
-                //input pour ajouter un nom d'events
-                .name_event{
-                        background-color: transparent;
-                        border-color: transparent ;
-                        color: #FECC37;
-                        margin-bottom: 0;
-                        font-size: 20px;
-                        margin-left: 5%;
-                        margin-top: 5%;
-                        }
+        //input pour ajouter un nom d'events
+        .name_event{
+            background-color: transparent;
+            border-color: transparent ;
+            color: #FECC37;
+            margin-bottom: 0;
+            font-size: 20px;
+            margin-left: 5%;
+            margin-top: 5%;
+}
 
-                //trait bleu
-                hr{
-                        width: 90%;
-                        height: 2px;
-                        background-color:rgba(16, 46, 130, 0.5); ;
-                        border: none;
-                        margin-top: auto;
-                        }
+        //trait bleu
+        hr{
+            width: 90%;
+            height: 2px;
+            background-color:rgba(16, 46, 130, 0.5); ;
+            border: none;
+            margin-top: auto;
+}
 
-                //bouton de sauvegarde
-                .btn{
-                        background-image: url('/build/images/sauvegarde.627de847.svg');
-                        background-size: 30px;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        box-sizing: border-box;
-                        background-color:#FECC37;
-                        border-color: transparent ;
-                        border-radius: 100%;
-                        width: 50px;
-                        height: 50px;
-                        position: absolute;
-                        top: 520px;
-                        left: 135px;
-                        }
+        //bouton de sauvegarde
+        .btn{
+            background-image: url('/build/images/sauvegarde.627de847.svg');
+            background-size: 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            background-color:#FECC37;
+            border-color: transparent ;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 520px;
+            left: 135px;
+}
 
-                //sélection de la date et de l'heure
-                select, option{
-                        -webkit-appearance: none;
-                        -moz-appearance: none;
-                        appearance: none;
-                        border-color: transparent;
-                        background-color: transparent;
-                        color: white;
-                        }
+        //sélection de la date et de l'heure
+        select, option{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+             appearance: none;
+             border-color: transparent;
+             background-color: transparent;
+             color: white;
+}
 
-                //groupe date et heure
-                .form_group{
-                        display: flex;
-                        justify-content: space-evenly;
-                        }
+        //groupe date et heure
+        .form_group{
+            display: flex;
+            justify-content: space-evenly;
+}
 
-                //image date et heure
-                .img-date-heure{
-                        margin: 5% 1% 5% 19%;
-                        width: 60px;
-                        }
+        //image date et heure
+        .img-date-heure{
+            margin: 5% 1% 5% 19%;
+            width: 60px;
+}
 
-                //box bleu
-                .description_event{
-                        background: rgba(16, 46, 130, 0.5);
-                        border: 1px solid rgba(16, 46, 130, 0.5);
-                        color: white;
-                        border-radius: 5%;
-                        width: 250px;
-                        height: 100px;
-                        margin: 5% 5% 5% 5%;
-                        }
+        //box bleu
+        .description_event{
+            background: rgba(16, 46, 130, 0.5);
+            border: 1px solid rgba(16, 46, 130, 0.5);
+            color: white;
+            border-radius: 5%;
+            width: 250px;
+            height: 100px;
+            margin: 5% 5% 5% 5%;
+}
 
-                // le niveau de l'évenement
-                .level{
-                        color: white;
-                        margin-left: 5%;
-                        }
+        // le niveau de l'évenement
+        .level{
+            color: white;
+            margin-left: 5%;
+}
 
-                // lieu de l'events
-                        .placeEvent{
-                        color: white;
-                        margin-left: 5%;
-                        width: 90%;
-                        }
+        // lieu de l'events
+        .placeEvent{
+            color: white;
+            margin-left: 5%;
+            width: 90%;
+}
 
-                input{
-                        background-color: transparent;
-                        border-color: transparent ;
-                        color: #FECC37;
-                        margin-bottom: 3%;
-                        font-size: 20px;
-                        margin-left: 15%;
-                        }
+        input{
+            background-color: transparent;
+            border-color: transparent ;
+            color: #FECC37;
+            margin-bottom: 3%;
+            font-size: 20px;
+            margin-left: 15%;
+}
 
 }
 }
