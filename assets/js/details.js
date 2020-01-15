@@ -1,4 +1,4 @@
-// FAQ scroll through the answers.
+// Details scroll through the answers.
 
 require('../scss/details.scss');
 
