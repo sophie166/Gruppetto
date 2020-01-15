@@ -44,7 +44,7 @@ class ProfilClub
     private $sports;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub")
+     * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub", fetch="EAGER")
      */
     private $generalChatClub;
 
@@ -153,11 +153,6 @@ class ProfilClub
         }
 
         return $this;
-    }
-
-    public function getGeneralChatClub(): ?GeneralChatClub
-    {
-        return $this->generalChatClub;
     }
 
     public function setGeneralChatClub(GeneralChatClub $generalChatClub): self

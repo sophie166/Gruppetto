@@ -4,13 +4,13 @@
     <section class="green-box general-chat-section">
         <h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
 
-        <ul class="js-chatbox">
+        <ul class="js-chatbox" id="messages-list">
 
-            {% for message in messages %}
+           {# {% for message in messages %}
 
                 {% if is_granted('ROLE_CLUBER') %}
                     {% if (message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0]) %}
-                        <li class="general-chat-message">
+                        <li class="general-chat-message" data-message-id="{{ message.id }}">
                 <span class="sentBy">
                     {% if message.profilSolo %}
                         {{ message.profilSolo.firstname }}
@@ -25,7 +25,7 @@
 
                 {% elseif is_granted('ROLE_USER') %}
                     {% if message.profilClub == app.user.profilClubs.owner.profilSolo.profilClub %}
-                        <li class="general-chat-message">
+                        <li class="general-chat-message" data-message-id="{{ message.id }}">
                 <span class="sentBy">
                     {% if message.profilSolo %}
                         {{ message.profilSolo.firstname }}
@@ -37,7 +37,7 @@
                         </li>
                     {% endif %}
                 {% endif %}
-            {% endfor %}
+            {% endfor %}#}
 
 
 
