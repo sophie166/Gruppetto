@@ -45,7 +45,7 @@ class ClubChatController extends AbstractController
         $form = $this->createForm(GeneralChatType::class, $newMessage);
         $form->handleRequest($request);
         $user = $this->getUser();
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && ($form['contentMessage']->getData()) != null) {
             $club = $this->getDoctrine()->
             getRepository(ProfilClub::class)
                 ->findBy([
@@ -69,7 +69,6 @@ class ClubChatController extends AbstractController
         return $this->render('club_chat/general.html.twig', [
             'messages' => $clubRepository->findAll(),
             'form' => $form->createView(),
-
         ]);
     }
 }
