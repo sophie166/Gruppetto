@@ -37,13 +37,7 @@ class ProfilClubController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // upload logoform
-            $logoFile =$form['logoClub']->getData();
-            if ($logoFile) {
-                $logoFileName = md5(uniqid()). '.'.$logoFile->guessExtension();
-                // Move the file to the directory where brochures are stored
-                $logoFile->move($this->getParameter('upload_directory'), $logoFileName);
-                $profilClub->setLogoClub($logoFileName);
-            }
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
@@ -57,18 +51,20 @@ class ProfilClubController extends AbstractController
         ]);
     }
 
-    /**
+    /*/**
      * @Route("/{id}", name="profil_club_show", methods={"GET"})
      */
+    /*
     public function show(ProfilClub $profilClub): Response
     {
         return $this->render('profil_club/show.html.twig', [
             'profil_club' => $profilClub,
         ]);
     }
+    */
 
     /**
-     * @Route("/{id}/edit", name="profil_club_edit", methods={"GET","POST"})
+     * @Route("/{id}/", name="profil_club_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, ProfilClub $profilClub): Response
     {
@@ -76,12 +72,17 @@ class ProfilClubController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $logoFile =$form['logoClub']->getData();
+            if ($logoFile) {
+                $logoFileName = md5(uniqid()). '.'.$logoFile->guessExtension();
+                // Move the file to the directory where brochures are stored
+                $logoFile->move($this->getParameter('upload_directory'), $logoFileName);
+                $profilClub->setLogoClub($logoFileName);
+            }
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('profil_club_index');
         }
 
-        return $this->render('profil_club/edit.html.twig', [
+        return $this->render('profil_club/show.html.twig', [
             'profil_club' => $profilClub,
             'form' => $form->createView(),
         ]);

@@ -1,40 +1,60 @@
 @import "vars";
 
-h1{
-    color: #8959A8;
-}
-#profil-club-form{
+#edit-page{
+  height: 100%;
+  width: 100%;
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+
+  h2{
+    color: $light;
+    text-align: center;
+    font-family: Edmondsans, sans-serif;
+
+  }
+
+  .title-form-box {
+    height: 60px;
+    background: $primary-color80;
+    border: 2px solid $primary-border-color;
+    border-radius: 5px;
+    font-family: Edmondsans, sans-serif;
+    margin: 10px;
+
+    .box-form-update {
+      background: none;
+      border: none;
+    }
+
+  }
+
+  #update-logo {
     display: flex;
-    flex-direction: column;
-    justify-items: right;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 22px;
+    margin-bottom: 19px;
+    color: $secondary-color;
+  }
 
-    #profil_club_nameClub{
-        width: 90%;
-        height: 80px;
-        background: $primary-color80;
-        border: 2px solid $primary-border-color;
-        border-radius: 5px;
-        margin: -8px;
-    }
-    #profil_club_cityClub{
-        width: 90%;
-        height: 80px;
-        background: $primary-color80;
-        border: 2px solid $primary-border-color;
-        border-radius: 5px;
-        margin: -8px;
-    }
-    #profil_club_descriptionClub{
-        width: 90%;
-        height: 80px;
-        background: $primary-color80;
-        border: 2px solid $primary-border-color;
-        border-radius: 5px;
-        margin: -8px;
-    }
-    h3{
-        color: $secondary-color;
+  h3 {
+    color: $secondary-color;
+    font-family: Edmondsans, sans-serif;
+    text-align: center;
+  }
+
+  .btn {
+    background-color: $secondary-color;
+    border: solid $secondary-border-color;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-left: 50%;
+
+    img{
+      width: 30px;
     }
 
+  }
 }
+
