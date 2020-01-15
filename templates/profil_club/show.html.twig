@@ -6,7 +6,8 @@
 {% endblock %}
 {% block body %}
     {% include 'navbar/_navbar.html.twig' %}
-
+<main>
+    {{ form_start(form) }}
     <div id="box-global">
         <section class="box-contain-info">
             <img src="/uploads/{{ profil_club.logoClub }}"  alt="{{ profil_club.nameClub }}">
@@ -49,6 +50,8 @@
         <h3>{{form_label(form.logoClub) }}</h3>
         {{ form_widget(form.logoClub) }}
 
+    {{ form_end(form) }}
+
         <button class="btn"> <img src="{{ asset("build/images/btn-modif.svg")}}"{{ button_label|default('Save') }}></button>
         </section>
     </div>
@@ -58,7 +61,7 @@
     <a href="{{ path('profil_club_index') }}">back to list</a>
 
     <a href="{{ path('profil_club_edit', {'id': profil_club.id}) }}">edit</a>
-
+</main>
 
 {% endblock %}
 {% block javascripts %}

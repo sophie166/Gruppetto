@@ -28,7 +28,12 @@ body {
       background: $primary-color80;
       border: 2px solid $primary-border-color;
       border-radius: 5px;
-      margin: -8px;
+      margin: 18px auto 0;
+
+      .box-form-update {
+        display: none;
+      }
+
       img{
         width: 40px;
         margin-left: 10px;
