@@ -38,22 +38,18 @@ class ClubChatController extends AbstractController
      * @return Response
      * @Route("/general", name="_general")
      */
-    public function chatGeneral(GeneralChatClubRepository $clubRepository, Request $request) : Response
+    public function chatGeneral(GeneralChatClubRepository $clubRepository, Request $request, GetUserClub $club)
+    : Response
     {
-
+        $messages = $clubRepository->findBy(['profilClub' => $club->getClub()]);
         $newMessage = new GeneralChatClub();
         $form = $this->createForm(GeneralChatType::class, $newMessage);
         $form->handleRequest($request);
         $user = $this->getUser();
         if ($form->isSubmitted() && $form->isValid() && ($form['contentMessage']->getData()) != null) {
-            $club = $this->getDoctrine()->
-            getRepository(ProfilClub::class)
-                ->findBy([
-                 'id' => $_POST['profilClub']
-                ]);
             $newMessage->setDateMessage(new DateTime('now'));
             $newMessage ->setContentMessage($form["contentMessage"]->getData());
-            $newMessage->setProfilClub($club[0]);
+            $newMessage->setProfilClub($club->getClub());
             if (in_array('ROLE_USER', $user->getRoles())) {
                  $newMessage->setProfilSolo($user->getProfilSolo());
             } else {
@@ -67,7 +63,7 @@ class ClubChatController extends AbstractController
 
 
         return $this->render('club_chat/general.html.twig', [
-            'messages' => $clubRepository->findAll(),
+            'messages' => $messages,
             'form' => $form->createView(),
         ]);
     }

@@ -18,7 +18,7 @@ class GeneralChatType extends AbstractType
     {
         $builder
             ->add('contentMessage', TextType::class, [
-                'label' => false
+                'label' => false,
             ])
 
         ;
