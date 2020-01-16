@@ -2,6 +2,7 @@
 
 {% block title %}ProfilClub{% endblock %}
 {% block stylesheets %}
+    +     {{ parent('app') }}
     {{ encore_entry_link_tags('profil') }}
 {% endblock %}
 {% block body %}
@@ -10,6 +11,9 @@
     {{ form_start(form) }}
     <div id="box-global">
         <section class="box-contain-info">
+            <div class="btn-modify">
+                <img class="img-pen" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+            </div>
             <img src="/uploads/{{ profil_club.logoClub }}"  alt="{{ profil_club.nameClub }}">
             {{ form_widget(form.nameClub,{'attr':{'class':'box-form-update'}}) }}
 
@@ -17,10 +21,12 @@
                 <h3>Mon nom</h3>
                 <p>{{ profil_club.nameClub }}</p>
             </article>
-            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
         </section>
 
         <section class="box-contain-info">
+            <div class="btn-modify">
+                <img class="img-pen" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+            </div>
             <img src="{{ asset("build/images/icon-profil-city.svg")}}"  alt="{{ profil_club.nameClub }}">
             {{ form_widget(form.cityClub,{'attr':{'class':'box-form-update'}}) }}
 
@@ -28,11 +34,12 @@
                 <h3>Ma ville</h3>
                 <p>{{ profil_club.cityClub }}</p>
             </article>
-            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
-
         </section>
 
         <section class="box-contain-info">
+            <div class="btn-modify">
+                <img class="img-pen" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+            </div>
             <img src="{{ asset("build/images/icon-profil-biography.png")}}"  alt="{{ profil_club.nameClub }}">
             {{ form_widget(form.descriptionClub,{'attr':{'class':'box-form-update'}}) }}
 
@@ -40,37 +47,32 @@
                 <h3>Ma description</h3>
                 <p>{{ profil_club.descriptionClub }}</p>
             </article>
-
-            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
-
         </section >
 
         <section class="box-contain-info">
+            <div class="btn-modify">
+            <img class="img-pen" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+            </div>
             <img src="{{ asset("build/images/icon-profil-security.svg")}}"  alt="{{ profil_club.nameClub }}">
+
             <article class="box-text">
                 <h3>Sécurité</h3>
                 <p>changer le mot de passe</p>
             </article>
-
-            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
-
         </section>
-
-        <h3>{{form_label(form.logoClub) }}</h3>
-        {{ form_widget(form.logoClub) }}
-
+        <section id="logo-form">
+            <h3>{{form_label(form.logoClub) }}</h3>
+            {{ form_widget(form.logoClub) }}
+        </section>
     {{ form_end(form) }}
         <section>
-        <button class="btn"> <img src="{{ asset("build/images/btn-modif.svg")}}"{{ button_label|default('Save') }}></button>
+
+        <button class="btn-save">
+            <img src="{{ asset("build/images/save.svg")}}"{{ button_label|default('Save') }}>
+        </button>
 
         </section>
     </div>
-
-    {{ include('profil_club/edit.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('profil_club_index') }}">back to list</a>
-
-    <a href="{{ path('profil_club_edit', {'id': profil_club.id}) }}">edit</a>
 </main>
 
 {% endblock %}

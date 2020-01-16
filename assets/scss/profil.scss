@@ -8,6 +8,7 @@ body {
   height: 100vh;
   background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;
   background-size: cover;
+  overflow: hidden;
 
   #box-global {
     width: 100%;
@@ -19,10 +20,24 @@ body {
     align-items: center;
     margin-top: 10%;
 
+    .btn-modify {
+      background-color: $secondary-color;
+      width: 30px;
+      height: 30px;
+      border-radius: 22px 0;
+      position: relative;
+      top: -50px;
+      left: 449px;
+
+      .img-pen{
+        width: 30px;
+      }
+    }
+
     .box-contain-info {
       display: flex;
       align-items: center;
-      width: 90%;
+      width: 88%;
       height: 93px;
       background: $primary-color80;
       border: 2px solid $primary-border-color;
@@ -41,7 +56,7 @@ body {
       .box-form-update.displayed{
         display: block;
         text-align: center;
-        width: 100%;
+        margin-left: 13%;
       }
 
       .box-text{
@@ -57,16 +72,23 @@ body {
       .box-text.hidden{
         display: none;
       }
-
-      .btn-modify {
-        background-color: $secondary-color;
-        width: 20px;
-        height: 20px;
-        border-radius: 22px 0px;
-      }
-
     }
 
+  }
+  #logo-form{
+    margin-top: 10px;
+    color: $secondary-color;
+
+    #profil_club_logoClub{
+      background: none;
+      border: none;
+      width: auto;
+    }
+  }
+  .btn-save{
+    border: solid $secondary-color;
+    background-color: $secondary-color;
+    border-radius: 7px;
   }
 
 }
