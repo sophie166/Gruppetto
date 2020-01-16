@@ -17,16 +17,19 @@
                 <h3>Mon nom</h3>
                 <p>{{ profil_club.nameClub }}</p>
             </article>
+            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
         </section>
 
         <section class="box-contain-info">
             <img src="{{ asset("build/images/icon-profil-city.svg")}}"  alt="{{ profil_club.nameClub }}">
             {{ form_widget(form.cityClub,{'attr':{'class':'box-form-update'}}) }}
 
-            <article class="box-text">
+            <article  class="box-text">
                 <h3>Ma ville</h3>
                 <p>{{ profil_club.cityClub }}</p>
             </article>
+            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+
         </section>
 
         <section class="box-contain-info">
@@ -34,25 +37,32 @@
             {{ form_widget(form.descriptionClub,{'attr':{'class':'box-form-update'}}) }}
 
             <article class="box-text">
-            <h3>Ma description</h3>
-            <p>{{ profil_club.descriptionClub }}</p>
+                <h3>Ma description</h3>
+                <p>{{ profil_club.descriptionClub }}</p>
             </article>
+
+            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+
         </section >
 
         <section class="box-contain-info">
             <img src="{{ asset("build/images/icon-profil-security.svg")}}"  alt="{{ profil_club.nameClub }}">
             <article class="box-text">
-            <h3>Sécurité</h3>
-            <p>changer le mot de passe</p>
+                <h3>Sécurité</h3>
+                <p>changer le mot de passe</p>
             </article>
+
+            <img class="btn-modify" src="{{ asset("build/images/btn-modif.svg")}}" alt="picture pen">
+
         </section>
 
         <h3>{{form_label(form.logoClub) }}</h3>
         {{ form_widget(form.logoClub) }}
 
     {{ form_end(form) }}
-
+        <section>
         <button class="btn"> <img src="{{ asset("build/images/btn-modif.svg")}}"{{ button_label|default('Save') }}></button>
+
         </section>
     </div>
 
@@ -65,5 +75,5 @@
 
 {% endblock %}
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('profil') }}
 {% endblock %}

@@ -21,7 +21,6 @@ body {
 
     .box-contain-info {
       display: flex;
-      justify-items: right;
       align-items: center;
       width: 90%;
       height: 93px;
@@ -29,14 +28,20 @@ body {
       border: 2px solid $primary-border-color;
       border-radius: 5px;
       margin: 18px auto 0;
+      img{
+        width: 40px;
+      }
 
-      .box-form-update {
+      .box-form-update{
+        border: none;
+        background: none;
         display: none;
       }
 
-      img{
-        width: 40px;
-        margin-left: 10px;
+      .box-form-update.displayed{
+        display: block;
+        text-align: center;
+        width: 100%;
       }
 
       .box-text{
@@ -49,6 +54,21 @@ body {
           color: $secondary-color;
         }
       }
+      .box-text.hidden{
+        display: none;
+      }
+
+      .btn-modify {
+        background-color: $secondary-color;
+        width: 20px;
+        height: 20px;
+        border-radius: 22px 0px;
+      }
+
     }
+
   }
+
 }
+
+

@@ -18,7 +18,7 @@ class ProfilClubType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameClub')
+            ->add('nameClub', TextType::class, ['label'=>null])
             ->add('cityClub')
             ->add('logoClub', FileType::class, ['label'=>'Logo',
                 // unmapped because the fiedl is not associate to any entity//
