@@ -16,11 +16,32 @@ class InformationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameClub', TextType::class)
-            ->add('sport', EntityType::class, [
-                'class' => Sport::class,
+            ->add('nameClub', TextType::class, [
+                "label" => false,
+                "required" => true,
+                "attr" => [
+                    "placeholder" => "Nom du Club",
+                    "class" => "green-input"
+                ],
+                "constraints" => new IsTrue([
+                    "message" => "Veuillez remplir le nom du Club"
+                ])
             ])
-            ->add('cityClub', TextType::class);
+            ->add('sport', EntityType::class, [
+                "class" => Sport::class])
+            ->add('cityClub', TextType::class, [
+                "label" => false,
+                "required"=> true,
+                "attr" => [
+                    "placeholder" => "Nom de la Ville",
+                    "class" => "green-input"
+                ],
+                "constraints" => [
+                    new IsTrue([
+                        "message" => "Veuillez renseigner votre Ville"
+                    ])
+                ]
+            ]);
         $options = null;
     }
 
