@@ -50,18 +50,21 @@ class ClubChatController extends AbstractController
         $form->handleRequest($request);
         $user = $this->getUser();
         if ($form->isSubmitted() && $form->isValid() && ($form['contentMessage']->getData()) != null) {
-            $newMessage->setDateMessage(new DateTime('now'));
-            $newMessage ->setContentMessage($form["contentMessage"]->getData());
-            $newMessage->setProfilClub($club->getClub());
-            if (in_array('ROLE_USER', $user->getRoles())) {
-                 $newMessage->setProfilSolo($user->getProfilSolo());
-            } else {
-                 $newMessage->setProfilSolo(null);
+            if ($request->isXmlHttpRequest()) {
+                $newMessage->setDateMessage(new DateTime('now'));
+                $newMessage ->setContentMessage($_POST['general_chat']['contentMessage']);
+                $newMessage->setProfilClub($club->getClub());
+                if (in_array('ROLE_USER', $user->getRoles())) {
+                    $newMessage->setProfilSolo($user->getProfilSolo());
+                } else {
+                    $newMessage->setProfilSolo(null);
+                }
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($newMessage);
+
+                $entityManager->flush();
+                return new JsonResponse($newMessage, 200, [], false);
             }
-             $entityManager = $this->getDoctrine()->getManager();
-             $entityManager->persist($newMessage);
-             $entityManager->flush();
-             return $this->redirectToRoute('club_chat_general');
         }
 
 
@@ -83,7 +86,7 @@ class ClubChatController extends AbstractController
         if ($request->isXmlHttpRequest()) {
             $ema = $this->getDoctrine()->getManager();
             $messages = $ema->getRepository(GeneralChatClub::class)
-                ->findBy(['profilClub' => $club->getClub()]);
+                ->findBy(['profilClub' => $club->getClub()], ['id' =>'ASC']);
 
             $json = [];
             foreach ($messages as $message) {
@@ -94,7 +97,13 @@ class ClubChatController extends AbstractController
                 $pClub = $club->getClub()->getNameClub();
                 $solo = is_null($message->getProfilSolo())
                     ? null : $message->getProfilSolo()->getFirstname();
-                $json[] = [$id, $content, $pClub, $solo, $date];
+                $json[] = [
+                    'messageID'=>$id,
+                    'content'=> $content,
+                    'clubName' => $pClub,
+                    'soloName' =>$solo,
+                    'dateMessage'=>$date,
+                ];
             }
             $json = json_encode($json);
             return new JsonResponse($json, 200, [], true);
