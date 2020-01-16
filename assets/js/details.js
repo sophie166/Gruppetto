@@ -1,8 +1,7 @@
-// Details scroll through the answers.
-
 require('../scss/details.scss');
 
 
+// Details scroll through the answers.
 const acc = document.getElementsByClassName('accordion');
 let i;
 function faqList() {
