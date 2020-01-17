@@ -16,15 +16,15 @@ body{
         margin: 5% 5% 20% 5%;
         height: 80%;
 
-    //input of add name events
-    .name_event{
-        background-color: transparent;
-        border-color: transparent ;
-        color: #FECC37;
-        margin-bottom: 0;
-        font-size: 20px;
-        margin-left: 5%;
-        margin-top: 5%;
+        //input of add name events
+        .name_event{
+            background-color: transparent;
+            border-color: transparent ;
+            color: #FECC37;
+            margin-bottom: 0;
+            font-size: 20px;
+            margin-left: 5%;
+            margin-top: 5%;
 }
 }
 
@@ -38,81 +38,81 @@ body{
 }
 }
 
-    //button of save
-    .btn{
-        background-image: url('/build/images/save.627de847.svg');
-        background-size: 30px;
-        background-position: center;
-        background-repeat: no-repeat;
-        box-sizing: border-box;
-        background-color:#FECC37;
-        border-color: transparent ;
-        border-radius: 100%;
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 520px;
-        left: 135px;
+//button of save
+.btn{
+    background-image: url('/build/images/save.627de847.svg');
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-color:#FECC37;
+    border-color: transparent ;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 520px;
+    left: 135px;
 }
 
-    //select of date and time
-    select, option{
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border-color: transparent;
-        background-color: transparent;
-        color: white;
+//select of date and time
+select, option{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-color: transparent;
+    background-color: transparent;
+    color: white;
 }
 
-     //group date and time
-    .form_group{
-        display: flex;
-        justify-content: space-evenly;
+//group date and time
+.form_group{
+    display: flex;
+    justify-content: space-evenly;
 }
 
-    //picture date and time
-    .img-date-heure{
-        margin: 5% 1% 5% 19%;
-        width: 60px;
-        border-radius: 0;
+//picture date and time
+.img-date-heure{
+    margin: 5% 1% 5% 19%;
+    width: 60px;
+    border-radius: 0;
 }
 
-    //box blue
-    .description_event{
-        background: rgba(16, 46, 130, 0.5);
-        border: 1px solid rgba(16, 46, 130, 0.5);
-        color: white;
-        border-radius: 5%;
-        width: 250px;
-        height: 100px;
-        margin: 5% 5% 5% 5%;
+//box blue
+.description_event{
+    background: rgba(16, 46, 130, 0.5);
+    border: 1px solid rgba(16, 46, 130, 0.5);
+    color: white;
+    border-radius: 5%;
+    width: 250px;
+    height: 100px;
+    margin: 5% 5% 5% 5%;
 }
 
-    // level of  event
-    .level{
-        color: white;
-        margin-left: 5%;
+// level of  event
+.level{
+    color: white;
+    margin-left: 5%;
 }
 
-    // place of event
-    .placeEvent{
-        color: white;
-        margin-left: 5%;
-        width: 90%;
+// place of event
+.placeEvent{
+    color: white;
+    margin-left: 5%;
+    width: 90%;
 }
 
-    //icon of edit and return
-    .icons{
-        width: 30px;
-        margin: auto;
+//icon of edit and return
+.icons{
+    width: 30px;
+    margin: auto;
 }
 
-    input{
-        background-color: transparent;
-        border-color: transparent ;
-        color: #FECC37;
-        margin-bottom: 3%;
-        font-size: 20px;
-        margin-left: 15%;
+input{
+    background-color: transparent;
+    border-color: transparent ;
+    color: #FECC37;
+    margin-bottom: 3%;
+    font-size: 20px;
+    margin-left: 15%;
 }

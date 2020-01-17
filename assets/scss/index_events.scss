@@ -1,197 +1,197 @@
 body{
+    color: white;
+
+    //date & time page index
+    .date_time{
+        color: #fecc37;
+        text-align: start;
+        font-size: 15px;
+        margin: 0 5% 2% 5%;
+        }
+
+    //name of events
+    .n_event{
+        text-align: start;
+        font-size: 12px;
+        margin: 0 5% 2% 5%;
+        }
+
+    //cards of event in index page
+    .card_events{
+        background: rgba(74, 176, 121, 0.95);
+        border: 5px solid #1E6740;
+
+        }
+
+    //button add
+    .add{
+        box-sizing: border-box;
+        background-color:#FECC37;
+        border-color: transparent ;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 520px;
+        left: 250px;
+        color: transparent;
+        }
+
+    //line blue
+    hr{
+        width: 90%;
+        height: 2px;
+        background-color:rgba(16, 46, 130, 0.5); ;
+        border: none;
+        margin-top: auto;
+        }
+
+    //box green of page show
+    .show_events {
+        background: rgba(74, 176, 121, 0.95);
+        border: 5px solid #1E6740;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 5% 5% 20% 5%;
+        height: 80%;
+        }
+
+    h1{
+        color: #FECC37;
+        margin-bottom: 0;
+        font-size: 20px;
+        margin-left: 5%;
+        margin-top: 5%;
+        }
+
+    //date & time pag show
+    .date_time_show{
+        margin: 5% 5% 2% 5%;
+        font-size: 12px;
+        }
+
+    //box blue of description show page
+    .descript{
+        background: rgba(16, 46, 130, 0.5);
+        border: 1px solid rgba(16, 46, 130, 0.5);
         color: white;
-
-        //date & time page index
-        .date_time{
-                color: #fecc37;
-                text-align: start;
-                font-size: 15px;
-                margin: 0 5% 2% 5%;
+        border-radius: 5%;
+        width: 250px;
+        height: 70px;
+        margin: 10% 5% 5% 5%;
+        text-align: center;
         }
 
-        //name of events
-        .n_event{
-                text-align: start;
-                font-size: 12px;
-                margin: 0 5% 2% 5%;
+    //participation section
+    img{
+        width: 20px;
+        border-radius: 50%;
+        margin-left: 15px ;
         }
 
-        //cards of event in index page
-        .card_events{
-                background: rgba(74, 176, 121, 0.95);
-                border: 5px solid #1E6740;
-
+    figure{
+        font-size: 20px;
         }
 
-        //button add
-        .add{
-                box-sizing: border-box;
-                background-color:#FECC37;
-                border-color: transparent ;
-                border-radius: 100%;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 520px;
-                left: 250px;
-                color: transparent;
+    .participation{
+        display: flex;
+        flex-wrap: wrap;
         }
 
-        //line blue
-        hr{
-                width: 90%;
-                height: 2px;
-                background-color:rgba(16, 46, 130, 0.5); ;
-                border: none;
-                margin-top: auto;
+    .but_par{
+        background-color: transparent;
+        border-color: transparent;
+        text-decoration: none;
+        color: white;
         }
 
-        //box green of page show
-        .show_events {
-                background: rgba(74, 176, 121, 0.95);
-                border: 5px solid #1E6740;
-                box-sizing: border-box;
-                border-radius: 5px;
-                margin: 5% 5% 20% 5%;
-                height: 80%;
+    .link{
+        background-color: transparent;
+        border-color: transparent;
+        text-decoration: none;
+        color: white;
         }
 
-        h1{
-                color: #FECC37;
-                margin-bottom: 0;
-                font-size: 20px;
-                margin-left: 5%;
-                margin-top: 5%;
+    .participation >*{
+        flex: 1 1 50px;
+        margin: 5% 0 5% 0;
         }
 
-        //date & time pag show
-        .date_time_show{
-                margin: 5% 5% 2% 5%;
-                font-size: 12px;
+    //level page show
+    .levl_n{
+        margin: 5% 5% 5% 15%;
         }
 
-        //box blue of description show page
-        .descript{
-                background: rgba(16, 46, 130, 0.5);
-                border: 1px solid rgba(16, 46, 130, 0.5);
+    h2{
+        color: white;
+        margin-bottom: 0;
+        font-size: 20px;
+        margin-left: 5%;
+        margin-top: 5%;
+        }
+
+    //button of delete
+    .delete{
+        background-image: url('/build/images/delete.36f9db95.svg');
+        background-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        background-color:#FECC37;
+        border-color: transparent ;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 520px;
+        left: 250px;
+        }
+
+    //button  of return
+    .return{
+        box-sizing: border-box;
+        background-color:#FECC37;
+        border-color: transparent ;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 520px;
+        left: 35px;
+        }
+
+    //button of edit
+    .edit{
+        box-sizing: border-box;
+        background-color:#FECC37;
+        border-color: transparent ;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 520px;
+        left: 135px;
+        }
+
+    //icon of edit and return
+    .icons{
+        width: 30px;
+        margin: auto;
+        }
+
+    // card page events
+    .card_button{
+        background-color: transparent;
+        border-color: transparent;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin: 10% 5% 0 5%;
+        height: 11%;
+        width: 90%;
+
+        a{
                 color: white;
-                border-radius: 5%;
-                width: 250px;
-                height: 70px;
-                margin: 10% 5% 5% 5%;
-                text-align: center;
-        }
-
-        //participation section
-        img{
-                width: 20px;
-                border-radius: 50%;
-                margin-left: 15px ;
-        }
-
-        figure{
-                font-size: 20px;
-        }
-
-        .participation{
-                display: flex;
-                flex-wrap: wrap;
-        }
-
-        .but_par{
-                background-color: transparent;
-                border-color: transparent;
                 text-decoration: none;
-                color: white;
-        }
-
-        .link{
-                background-color: transparent;
-                border-color: transparent;
-                text-decoration: none;
-                color: white;
-        }
-
-        .participation >*{
-                flex: 1 1 50px;
-                margin: 5% 0 5% 0;
-        }
-
-        //level page show
-        .levl_n{
-                margin: 5% 5% 5% 15%;
-        }
-
-        h2{
-                color: white;
-                margin-bottom: 0;
-                font-size: 20px;
-                margin-left: 5%;
-                margin-top: 5%;
-        }
-
-        //button of delete
-        .delete{
-                background-image: url('/build/images/delete.36f9db95.svg');
-                background-size: 30px;
-                background-position: center;
-                background-repeat: no-repeat;
-                box-sizing: border-box;
-                background-color:#FECC37;
-                border-color: transparent ;
-                border-radius: 100%;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 520px;
-                left: 250px;
-        }
-
-        //button  of return
-        .return{
-                box-sizing: border-box;
-                background-color:#FECC37;
-                border-color: transparent ;
-                border-radius: 100%;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 520px;
-                left: 35px;
-        }
-
-        //button of edit
-        .edit{
-                box-sizing: border-box;
-                background-color:#FECC37;
-                border-color: transparent ;
-                border-radius: 100%;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                top: 520px;
-                left: 135px;
-        }
-
-        //icon of edit and return
-        .icons{
-                width: 30px;
-                margin: auto;
-        }
-
-        // card page events
-        .card_button{
-                background-color: transparent;
-                border-color: transparent;
-                box-sizing: border-box;
-                border-radius: 5px;
-                margin: 10% 5% 0 5%;
-                height: 11%;
-                width: 90%;
-
-                a{
-                        color: white;
-                        text-decoration: none;
                 }
 
         }
