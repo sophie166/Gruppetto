@@ -5,35 +5,6 @@
         <h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
 
         <ul class="js-chatbox" id="messages-list">
-           {# {% for message in messages %}
-                {% if is_granted('ROLE_CLUBER') %}
-                    {% if (message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0]) %}
-                        <li class="general-chat-message" data-message-id="{{ message.id }}">
-                <span class="sentBy">
-                    {% if message.profilSolo %}
-                        {{ message.profilSolo.firstname }}
-                    {% else %}
-                        {{ message.profilClub.nameClub }}
-                    {% endif %}
-                </span>
-                            <p class="message">{{ message.contentMessage }}</p><span class="sentAt">[{{ message.dateMessage.format('d-m-Y') }}]</span>
-                        </li>
-                    {% endif %}
-                {% elseif is_granted('ROLE_USER') %}
-                    {% if message.profilClub == app.user.profilClubs.owner.profilSolo.profilClub %}
-                        <li class="general-chat-message" data-message-id="{{ message.id }}">
-                <span class="sentBy">
-                    {% if message.profilSolo %}
-                        {{ message.profilSolo.firstname }}
-                    {% else %}
-                        {{ message.profilClub.nameClub }}
-                    {% endif %}
-                </span>
-                            <p class="message">{{ message.contentMessage }}</p><span class="sentAt">[{{ message.dateMessage.format('d-m-Y') }}]</span>
-                        </li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}#}
         </ul>
         {{ form_start(form,{
             'attr': {
@@ -43,9 +14,6 @@
             }})
         }}
         {{ form_errors(form) }}
-
-
-        <input type="date" hidden value="now">
         {% if is_granted('ROLE_CLUBER') %}
             <input type="hidden" value="{{ app.user.profilClubs.owner.profilClubs.snapshot[0].id }}" name="profilClub">
         {% elseif is_granted('ROLE_USER') %}
@@ -59,6 +27,3 @@
         {{ form_end(form) }}
     </section>
 {% endblock greenBox %}
-
-{#message.profilClub == app.user.profilClubs.owner.profilClubs.snapshot[0] FOR CLUB VIEW#}
-{#message.profilClub == app.user.profilClubs.owner.profilSolo.profilClub  FOR SOLO VIEW#}

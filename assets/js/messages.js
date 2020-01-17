@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 require('../scss/messages.scss');
 require('../js/searchBar');
+
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
@@ -9,7 +10,6 @@ let Routes = require('./js_routes.json');
 
 Routing.setRoutingData(Routes);
 
- // let message_id = document.getElementsByClassName('general-chat-message');
 let messages_list = document.getElementById('messages-list');
 let new_message_form = document.getElementById('new-message-form');
 
@@ -48,8 +48,7 @@ new_message_form.addEventListener('submit', function (event) {
 
 });
 
-
-//document.addEventListener('DOMContentLoaded', function (event) {
+// get all club messages
 window.setInterval(function () {
     let url = Routing.generate('club_chat_get_messages');
     new Promise(function (resolve, reject) {
@@ -89,7 +88,6 @@ function insertToDOM(data)
     let li = createElement('li');
     li.className = "general-chat-message";
 
-
     // data
     let pMessageNode = data.content;
     let sentBy = (data.soloName ? data.soloName : data.clubName);
@@ -101,21 +99,9 @@ function insertToDOM(data)
         '<span class="sentBy">' + sentBy + '</span>' +
         '<p class="message">' + pMessageNode + '</p>' +
         '<span class="sentAt">' + dateNode +'</span>';
-
 }
 
 function createElement(name)
 {
     return document.createElement(name)
 }
-
-
-// Scrolls to bottom of message list
-// Needs to be updated
-/*$(document).ready(function () {
-    setTimeout(function () {
-        $('.js-chatbox').animate({ scrollTop: $('.js-chatbox').get(0).scrollHeight })
-
-    },1000);
-});*/
-
