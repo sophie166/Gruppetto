@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking | Evenement{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('new_events') }}
+{% endblock %}
+{% block body %}
+
+        {% for event in events %}
+            <button class="card_button"><a href="{{ path('event_show', {'id': event.id}) }}">
+           <div class="card_events">
+                <p class="date_time">{{ event.dateEvent ? event.dateEvent|date('d-m-Y') : '' }} | {{ event.timeEvent ? event.timeEvent|date('H:i') : '' }}</p>
+                <p class="n_event">{{ event.nameEvent }}</p>
+                <p>Niveau : {{ event.levelEvent }}</p>
+           </div>
+                </a>
+            </button>
+        {% else %}
+            <h1>no records found</h1>
+
+        {% endfor %}
+
+    <button class="add"><a href="{{ path('event_new') }}"><img src="{{ asset("build/images/add.4ee49584.svg")}}" alt="edit" class="icons"></a></button>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('new_events') }}
+{% endblock %}
