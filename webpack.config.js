@@ -22,6 +22,8 @@ Encore
     .addEntry('messages', './assets/js/messages.js')
     .addEntry('new_events', './assets/js/new_events.js')
     .addEntry('edit_events', './assets/js/edit_events.js')
+    .addEntry('details', './assets/js/details.js')
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
