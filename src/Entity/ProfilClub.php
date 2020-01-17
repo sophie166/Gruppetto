@@ -155,6 +155,12 @@ class ProfilClub
         return $this;
     }
 
+    public function getGeneralChatClub(): ?GeneralChatClub
+    {
+        return $this->generalChatClub;
+    }
+
+
     public function setGeneralChatClub(GeneralChatClub $generalChatClub): self
     {
         $this->generalChatClub = $generalChatClub;
