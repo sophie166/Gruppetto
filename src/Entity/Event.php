@@ -84,12 +84,7 @@ class Event
      */
     private $bookings;
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-        $this->registrationEvent = new ArrayCollection();
-        $this->bookings = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -168,7 +163,7 @@ class Event
         return $this;
     }
 
-    public function getPlaceEvent(): ?string
+    public function getPlaceEvent()
     {
         return $this->placeEvent;
     }
@@ -305,4 +300,6 @@ class Event
 
         return $this;
     }
+
+
 }

@@ -47,10 +47,7 @@ class User implements UserInterface
      */
     private $profilClubs;
 
-    public function __construct()
-    {
-        $this->profilClubs = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -165,4 +162,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }
