@@ -23,7 +23,7 @@ newMessageForm.addEventListener('submit',  (event) => {
 
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.addEventListener('load', (event) => {
+        xhr.addEventListener('load', function (event) {
 
             if (this.readyState===4) {
                 if (this.status === 200 && this.statusText==="OK") {
@@ -49,14 +49,14 @@ newMessageForm.addEventListener('submit',  (event) => {
 });
 
 // get all club messages
-window.setInterval(() => {
+window.setInterval(function () {
     let url = Routing.generate('club_chat_get_messages');
-    new Promise((resolve, reject) => {
+    new Promise(function (resolve, reject) {
         let xhr = new XMLHttpRequest();
 
         xhr.open("GET", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.addEventListener('load', (event) => {
+        xhr.addEventListener('load', function (event) {
 
             if (this.readyState===4) {
                 if (this.status === 200 && this.statusText==="OK") {
