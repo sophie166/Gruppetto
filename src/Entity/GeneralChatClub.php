@@ -30,7 +30,7 @@ class GeneralChatClub
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub",
-     *      inversedBy="generalChatClub", cascade={"persist", "remove"}, fetch="EAGER")
+     *      inversedBy="generalChatClub", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $profilClub;

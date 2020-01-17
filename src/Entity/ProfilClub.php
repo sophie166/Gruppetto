@@ -44,7 +44,7 @@ class ProfilClub
     private $sports;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="App\Entity\GeneralChatClub", mappedBy="profilClub")
      */
     private $generalChatClub;
 

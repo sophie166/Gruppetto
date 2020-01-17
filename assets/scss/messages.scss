@@ -149,6 +149,11 @@ body{
                 font-family: 'Roboto', sans-serif;
                 color: $light;
 
+                p{
+                    max-width: 80vw;
+                    overflow: no-content;
+                }
+
                 .sentAt{
                     font-size: 12px;
                 }
