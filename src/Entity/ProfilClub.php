@@ -160,6 +160,7 @@ class ProfilClub
         return $this->generalChatClub;
     }
 
+
     public function setGeneralChatClub(GeneralChatClub $generalChatClub): self
     {
         $this->generalChatClub = $generalChatClub;
