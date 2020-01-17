@@ -1,4 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-multi-spaces */
+/* eslint-disable import/no-shadow */
+/* eslint-disable import/semi */
+/* eslint-disable import/no-console */
+/* eslint-disable import/func-names */
+/* eslint-disable import/no-use-before-define */
 require('../scss/messages.scss');
 require('../js/searchBar');
 
