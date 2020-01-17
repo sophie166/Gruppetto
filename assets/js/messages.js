@@ -5,25 +5,25 @@ require('../js/searchBar');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
-let Routing = require('../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router');
-let Routes = require('./js_routes.json');
+const Routing = require('../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router');
+const Routes = require('./js_routes.json');
 
 Routing.setRoutingData(Routes);
 
-let messages_list = document.getElementById('messages-list');
-let new_message_form = document.getElementById('new-message-form');
+let messagesList = document.getElementById('messages-list');
+let newMessageForm = document.getElementById('new-message-form');
 
 // send a message
-new_message_form.addEventListener('submit', function (event) {
+newMessageForm.addEventListener('submit',  (event) => {
     event.preventDefault();
-    new Promise(function (resolve, reject) {
+    new Promise( (resolve, reject) => {
         let url = Routing.generate('club_chat_general');
         let xhr = new XMLHttpRequest();
-        let formData = new FormData(new_message_form);
+        let formData = new FormData(newMessageForm);
 
         xhr.open("POST", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.addEventListener('load', function (event) {
+        xhr.addEventListener('load', (event) => {
 
             if (this.readyState===4) {
                 if (this.status === 200 && this.statusText==="OK") {
@@ -49,14 +49,14 @@ new_message_form.addEventListener('submit', function (event) {
 });
 
 // get all club messages
-window.setInterval(function () {
+window.setInterval(() => {
     let url = Routing.generate('club_chat_get_messages');
-    new Promise(function (resolve, reject) {
+    new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
 
         xhr.open("GET", url);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.addEventListener('load', function (event) {
+        xhr.addEventListener('load', (event) => {
 
             if (this.readyState===4) {
                 if (this.status === 200 && this.statusText==="OK") {
@@ -94,7 +94,7 @@ function insertToDOM(data)
     let dateNode = data.dateMessage;
 
     // add all the elements to the message-list in the right order
-    let li_message = messages_list.appendChild(li);
+    let li_message = messagesList.appendChild(li);
     li_message.innerHTML =
         '<span class="sentBy">' + sentBy + '</span>' +
         '<p class="message">' + pMessageNode + '</p>' +
