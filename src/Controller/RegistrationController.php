@@ -65,15 +65,11 @@ class RegistrationController extends AbstractController
      */
     public function profilregister(Request $request): Response
     {
-        $user= new User();
         $form = $this->createForm(ProfilType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRoles(['']);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlash(
                 'notice',
                 'Bientot arrivé, encore un petit effort !!!'
@@ -114,7 +110,7 @@ class RegistrationController extends AbstractController
                 'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
             );
 
-            return $this->render('home/index.html.twig', [
+            return $this->render('navbar/navbar.html.twig', [
             ]);
         }
 
