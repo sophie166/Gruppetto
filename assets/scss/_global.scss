@@ -5,7 +5,9 @@
     padding: 0;
     margin: 0;
 }
-
+.closeCard {
+    display: none;
+}
 body {
     height: 100vh;
     background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;

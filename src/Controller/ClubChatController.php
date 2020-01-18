@@ -109,7 +109,7 @@ class ClubChatController extends AbstractController
 
     /**
      * @return Response
-     * @Route("/getUserInfos/{messageId}", name="_getUserInfos", methods={"GET"}, options={"expose"=true})
+     * @Route("/getUserInfos/{messageId}", name="_getUserInfos", methods={"POST"}, options={"expose"=true})
      */
     public function getUserInfos(
         GeneralChatClubRepository $chatClubRepository,
