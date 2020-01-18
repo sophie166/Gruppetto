@@ -16,13 +16,12 @@
         </div>
 
             {% block greenBox %}
+        <section id="general-chat-button" onclick="window.location.href='{{ path('club_chat_general') }}'">
+{#                <img class="avatar" src="{{ asset('build/images/logo_club.png') }}" alt="avatar">#}
+                <p>CHAT CLUB</p>
+        </section>
         <section class="green-box">
             <ul>
-                <li id="general-chat-button" onclick="window.location.href='{{ path('club_chat_general') }}'">
-                    <img class="avatar" src="{{ asset('build/images/logo_club.png') }}" alt="avatar">
-                    <p>Chat général</p>
-                </li>
-                <hr>
                 <li>
                     <table>
                         <tr>
