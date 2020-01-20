@@ -74,12 +74,11 @@ class RegistrationController extends AbstractController
                 'notice',
                 'Bientot arrivé, encore un petit effort !!!'
             );
-
-            return $this->redirectToRoute('app_info_register');
+                return $this->redirectToRoute('navbar');
         }
-        return $this->render('profil/index.html.twig', [
+                return $this->render('profil/index.html.twig', [
             'registrationForm' => $form->createView(),
-        ]);
+                ]);
     }
 
     /**
