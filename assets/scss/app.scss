@@ -61,30 +61,38 @@ body {
         }
     }
 
-    #choice-form {
-        height: 50%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    //section containing the forms
+    #register-form{
+        height: 50vh;
+        z-index: 2;
+        //form choose between 'sportif' and 'club'
 
-        .choice-btn {
-            height: 60%;
+        #choice-entity{
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            height: 100%;
 
-            #choice-form-btn {
+            .entity{
                 background: $primary-color90;
-                border: 2px solid $primary-border-color;
-                width: 315px;
-                height: 78px;
-                color: $light;
+                border: 5px solid $primary-border-color;
+                border-radius: 15px;
                 text-align: center;
-                font-size: 48px;
-                margin: 0.5em 0;
-                border-radius: 5px;
+                font-size: 36px;
+                width: 60%;
+                height: 125px;
+                color: $light;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &:focus{
+                    color: $secondary-color90 ;
+                }
             }
         }
     }
