@@ -9,11 +9,7 @@
     <img src="{{ asset('build/images/separator-step-check.svg') }}" alt="">
     <img src="{{ asset('build/images/step-check.svg') }}" id="fourth-check" alt="">
 </div>
-{% for message in app.flashes('notice') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+
 {<section class="container">
     <section id="auth-buttons">
         <button onclick='location.href="{{path('app_register')}}"'  class="auth-button">Sportif</button>
