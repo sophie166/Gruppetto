@@ -1,4 +1,4 @@
-{{ form_start(registrationForm, { 'attr': { 'class': 'registration-form' }}) }}
+
 
 <div class="step-check">
     <img src="{{ asset('build/images/step-checked.svg') }}" id="first-check" alt="">
@@ -14,7 +14,10 @@
         {{ message }}
     </div>
 {% endfor %}
-{{ form_widget(registrationForm.Sportif) }}
-{{ form_widget(registrationForm.Club) }}
+{<section class="container">
+    <section id="auth-buttons">
+        <button onclick='location.href="{{path('app_register')}}"'  class="auth-button">Sportif</button>
+        <button onclick='location.href="{{path('app_info_register')}}"' class="auth-button">Club</button>
+    </section>
 
-{{ form_end(registrationForm) }}
+</section>
