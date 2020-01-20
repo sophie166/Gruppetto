@@ -41,3 +41,4 @@ const myHeader = document.querySelector('header');
 myArrow.addEventListener('click', () => {
     myHeader.classList.toggle('closed');
 });
+

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\ProfilClub;
+use App\Entity\ProfilSolo;
 use App\Entity\Sport;
 use App\Entity\User;
+use App\Form\InformationSoloFormType;
 use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
 use App\Form\InformationFormType;
@@ -115,6 +117,40 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/infoRegister.html.twig', [
             'registrationForm2' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/register/informationSolo", name="app_info_register_solo")
+     * @param Request $request
+     * @return Response
+     */
+    public function informationSolo(Request $request): Response
+    {
+        $profilSolo = new ProfilSolo();
+        $profilSolo->setFirstname('');
+        $profilSolo->setLastname('');
+        $profilSolo->setAvatar('');
+
+        $form = $this->createForm(InformationSoloFormType::class, $profilSolo);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($profilSolo);
+            $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
+            );
+
+            return $this->render('navbar/navbar.html.twig', [
+            ]);
+        }
+
+        return $this->render('registration/infoSoloRegister.html.twig', [
+            'registrationForm3' => $form->createView(),
         ]);
     }
 }

@@ -1,4 +1,4 @@
-{{ form_start(registrationForm2, { 'attr': { 'class': 'registration-form' }}) }}
+{{ form_start(registrationForm3, { 'attr': { 'class': 'registration-form' }}) }}
 
 {# displays the images showing the registration progress #}
 <div class="step-check">
@@ -10,9 +10,15 @@
     <img src="{{ asset('build/images/separator-step-check.svg') }}" alt="">
     <img src="{{ asset('build/images/step-checked.svg') }}" id="fourth-check" alt="">
 </div>
-{{ form_widget(registrationForm2.LogoClub) }}
-{{ form_widget(registrationForm2.DescriptionClub) }}
+{{ form_widget(registrationForm3.lastname) }}
+{{ form_widget(registrationForm3.firstname) }}
+{{ form_widget(registrationForm3.birthdate) }}
+{{ form_widget(registrationForm3.phone) }}
+{{ form_widget(registrationForm3.description) }}
+{{ form_widget(registrationForm3.avatar) }}
+{{ form_widget(registrationForm3.emergencyContactName) }}
+{{ form_widget(registrationForm3.emergencyPhone) }}
 
 <button class="continue-btn">Continuer</button>
-{{ form_end(registrationForm2) }}
+{{ form_end(registrationForm3) }}
 
