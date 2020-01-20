@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -11,15 +12,19 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+
+        if ($this->getUser()) {
+            return $this->redirectToRoute('club_chat');
+        }
         return $this->render('home/index.html.twig');
     }
-  
+
     /**
-     * @Route("/navbar", name="navigation")
+     * @return Response
+     * @Route("/details", name="information")
      */
-    // To display the navbar will be removed when we create the other pages //
-    public function nav()
+    public function show(): Response
     {
-        return $this->render('navbar/navbar.html.twig');
+        return $this->render('details.html.twig');
     }
 }

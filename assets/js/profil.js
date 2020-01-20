@@ -12,11 +12,3 @@ for (let i=0; i<= myForms.length; i++) {
         myTexts[i].classList.toggle('hidden');
 
     })}
-
-/* myPen1.addEventListener('click', () => {
-    myForm1.classList.toggle('displayed');
-    myText1.classList.toggle('hidden');
-}); */
-// 1 je veux que tous mes input soient en display none quand j'arrive sur la page
-// 2 je veux qu'une fois que je clique mon text box disparaisse et on input apparaisse
-

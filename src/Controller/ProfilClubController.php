@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\ProfilClub;
 use App\Entity\User;
 use App\Form\ProfilClubType;
+use App\Form\UserType;
 use App\Repository\ProfilClubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -78,7 +79,7 @@ class ProfilClubController extends AbstractController
         $form->handleRequest($request);
         // user for the security form
         $user =  $this->getUser();
-        $securityForm = $this->createForm(User::class, $user);
+        $securityForm = $this->createForm(UserType::class, $user);
         $securityForm->handleRequest($request);
         if ($securityForm->isSubmitted() && $securityForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();

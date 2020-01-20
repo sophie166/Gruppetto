@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
     {
         // fFixtures for profil club//
 
-        /*$faker = Faker\Factory::create('en_US');
+            $faker = Faker\Factory::create('en_US');
 
         // Creating admin user
         $admin = new User();
@@ -60,7 +60,7 @@ class AppFixtures extends Fixture
             $cluber2,
             'clubpassword'
         ));
-        $manager->persist($cluber2); */
+        $manager->persist($cluber2);
 
         // Fixtures for profil club//
         $profilClub = new ProfilClub();
@@ -68,7 +68,7 @@ class AppFixtures extends Fixture
         $profilClub->setCityClub('Lille');
         $profilClub->setLogoClub('avatar2.jpg');
         $profilClub->setDescriptionClub('Petite equipe Lilloise');
-        /*$profilClub->addUser($cluber);*/
+        $profilClub->addUser($cluber);
         $manager->persist($profilClub);
 
         $profilClub2 = new ProfilClub();
@@ -76,13 +76,14 @@ class AppFixtures extends Fixture
         $profilClub2->setCityClub('Douai');
         $profilClub2->setLogoClub('avatar6.jpg');
         $profilClub2->setDescriptionClub('Club de natation');
+        $profilClub2->addUser($cluber2);
         $manager->persist($profilClub2);
 
         // Fixtures for profil Solo//
         $profilSolo= new ProfilSolo();
         $profilSolo->setLastname('Doe');
         $profilSolo->setFirstname('Jonh');
-        $profilSolo->setBirthdate(new\ DateTime(141220));
+        $profilSolo->setBirthdate(new DateTime(141220));
         $profilSolo->setDescription('My description');
         $profilSolo->setGender(0);
         $profilSolo->setAvatar('avatar.jpg');
@@ -91,6 +92,7 @@ class AppFixtures extends Fixture
         $profilSolo->setSportFrequency(2);
         $profilSolo->setPhone('0000000000');
         $profilSolo->setEmergencyPhone('0000000000');
+        $profilSolo->setProfilClub($profilClub2);
         $manager->persist($profilSolo);
 
         // Creating lambda user
@@ -116,7 +118,7 @@ class AppFixtures extends Fixture
         $manager->persist($sport);
 
         // Fixtures for event page//
-        /*$event = new Event();
+        $event = new Event();
         $event->setNameEvent('Entrainement de course ');
         $event->setLevelEvent(1);
         $event->setDateEvent($faker->dateTimeThisMonth);
@@ -126,7 +128,7 @@ class AppFixtures extends Fixture
         $event->setPlaceEvent('23 place des ecoliers 59000 Lille');
         $event->setSport($sport);
         $event->setCreatorClub($profilClub);
-        $manager->persist($event);*/
+        $manager->persist($event);
 
         // Fixtures for GeneralChatClub
         $messageClub = new GeneralChatClub();
@@ -134,6 +136,19 @@ class AppFixtures extends Fixture
         $messageClub->setDateMessage(new DateTime('now'));
         $messageClub->setContentMessage('Bonjour, je suis un club de natation');
         $manager->persist($messageClub);
+
+        $messageClub2 = new GeneralChatClub();
+        $messageClub2->setProfilClub($profilClub);
+        $messageClub2->setDateMessage(new DateTime('now'));
+        $messageClub2->setContentMessage('Bonjour, je suis un club de run');
+        $manager->persist($messageClub2);
+
+        $messageSolo = new GeneralChatClub();
+        $messageSolo->setProfilClub($profilClub2);
+        $messageSolo->setProfilSolo($profilSolo);
+        $messageSolo->setDateMessage(new DateTime('now'));
+        $messageSolo->setContentMessage('Bonjour, je suis John.');
+        $manager->persist($messageSolo);
 
         $manager->flush();
     }

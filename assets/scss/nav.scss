@@ -27,8 +27,8 @@ header {
         }
 
         ul{
-            height: 90%;
-            margin-top: 7%;
+            height: 96%;
+            margin-top: 4%;
             background:$light-filter50;
             border-radius: 5px;
             list-style-type: none;
@@ -43,7 +43,7 @@ header {
                 width: 30%;
                 height: 20%;
                 border: solid $secondary-border-color 5px;
-                margin: 8% 5%;
+                margin: 5% 2%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -97,11 +97,11 @@ header {
             align-items: center;
             background-color: $primary-color85;
             width: 70%;
-            height: 8%;
             box-sizing: border-box;
 
             img {
                 width: 55px;
+                margin-left: 10px;
             }
 
             /* Display arrow*/
@@ -128,3 +128,42 @@ header.closed{
     }
 }
 
+@media screen and (min-width: 800px) {
+
+    header{
+        .main-menu{
+            display: flex;
+            justify-content: center;
+
+
+            ul {
+                height: 600px;
+                margin-top: -6%;
+                width: 819px;
+
+                li{
+                    width: 17%;
+                    height: 23%;
+                    margin: 8% 5%
+                }
+
+                img{
+                    width: 60px;
+                }
+
+                a{
+                    font-size: 19px;
+                }
+            }
+
+        }
+
+        .navigation-bar-bottom {
+
+            .yellow-bottom-nav {
+                transform: matrix(2, 0, -1, 1, 86, 0);
+            }
+        }
+    }
+
+}
