@@ -16,6 +16,7 @@
         <exclude name="ExcessiveClassComplexity"/>
         <exclude name="TooManyPublicMethods"/>
         <exclude name="ExcessivePublicCount"/>
+        <exclude name="ExcessiveMethodLength"/>
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity" >
         <properties>
@@ -24,7 +25,12 @@
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessivePublicCount" >
         <properties>
-            <property name="minimum" value="50"/>
+            <property name="minimum" value="60"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength" >
+        <properties>
+            <property name="minimum" value="200"/>
         </properties>
     </rule>
     <rule ref="rulesets/codesize.xml/TooManyFields" >
@@ -50,7 +56,7 @@
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessivePublicCount">
         <properties>
-            <property name="minimum" value="50"/>
+            <property name="minimum" value="60"/>
         </properties>
     </rule>
     <rule ref="rulesets/design.xml/CouplingBetweenObjects">
