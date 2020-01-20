@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ProfilClub;
+use App\Entity\User;
 use App\Form\ProfilClubType;
 use App\Repository\ProfilClubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -65,11 +66,23 @@ class ProfilClubController extends AbstractController
 
     /**
      * @Route("/{id}/", name="profil_club_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param ProfilClub $profilClub
+     * @param User $user
+     * @return Response
      */
-    public function edit(Request $request, ProfilClub $profilClub): Response
+    public function edit(Request $request, ProfilClub $profilClub, User $user): Response
     {
+        // create form for profil club and user password security
         $form = $this->createForm(ProfilClubType::class, $profilClub);
         $form->handleRequest($request);
+        // user for the security form
+        $user =  $this->getUser();
+        $securityForm = $this->createForm(User::class, $user);
+        $securityForm->handleRequest($request);
+        if ($securityForm->isSubmitted() && $securityForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $logoFile =$form['logoClub']->getData();
@@ -85,6 +98,8 @@ class ProfilClubController extends AbstractController
         return $this->render('profil_club/show.html.twig', [
             'profil_club' => $profilClub,
             'form' => $form->createView(),
+            'user' => $user,
+            'sercurityForm' => $securityForm->createView()
         ]);
     }
 

@@ -4,11 +4,16 @@
   margin: 0;
 }
 
+
 body {
   height: 100vh;
   background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;
   background-size: cover;
   overflow: hidden;
+
+main{
+  margin-top: 63px;
+}
 
   #box-global {
     width: 100%;
@@ -22,15 +27,18 @@ body {
 
     .btn-modify {
       background-color: $secondary-color;
-      width: 30px;
-      height: 30px;
-      border-radius: 22px 0;
+      width: 25px;
+      height: 25px;
+      border: $secondary-border-color solid 1px;
+      border-radius: 50px;
       position: relative;
-      top: -50px;
-      left: 449px;
+      left: 99%;
+      bottom: 61%;
+      display: flex;
+      justify-content: center;
 
       .img-pen{
-        width: 30px;
+        width: 20px;
       }
     }
 

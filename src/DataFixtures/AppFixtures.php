@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
     {
         // fFixtures for profil club//
 
-        /*$faker = Faker\Factory::create('en_US');
+        $faker = Faker\Factory::create('en_US');
 
         // Creating admin user
         $admin = new User();
@@ -60,7 +60,7 @@ class AppFixtures extends Fixture
             $cluber2,
             'clubpassword'
         ));
-        $manager->persist($cluber2); */
+        $manager->persist($cluber2);
 
         // Fixtures for profil club//
         $profilClub = new ProfilClub();
