@@ -6,12 +6,10 @@ use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
 use App\Entity\Sport;
 use App\Entity\User;
+use App\Form\InformationClubFormType;
 use App\Form\InformationSoloFormType;
-use App\Form\ProfilType;
 use App\Form\RegistrationFormType;
-use App\Form\InformationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,28 +57,6 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/register/profil", name="app_profil_register")
-     * @param Request $request
-     * @return RedirectResponse|Response
-     */
-    public function profilregister(Request $request): Response
-    {
-        $form = $this->createForm(ProfilType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash(
-                'notice',
-                'Bientot arrivé, encore un petit effort !!!'
-            );
-                return $this->redirectToRoute('navbar');
-        }
-                return $this->render('profil/index.html.twig', [
-            'registrationForm' => $form->createView(),
-                ]);
-    }
 
     /**
      * @Route("/register/information", name="app_info_register")
@@ -97,7 +73,7 @@ class RegistrationController extends AbstractController
         $profilClub->setDescriptionClub('');
         $profilClub->setLogoClub('');
 
-        $form = $this->createForm(InformationFormType::class, $profilClub);
+        $form = $this->createForm(InformationClubFormType::class, $profilClub);
 
         $form->handleRequest($request);
 
@@ -110,11 +86,11 @@ class RegistrationController extends AbstractController
                 'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
             );
 
-            return $this->render('navbar/navbar.html.twig', [
+            return $this->render('event/index.html.twig', [
             ]);
         }
 
-        return $this->render('registration/infoRegister.html.twig', [
+        return $this->render('registration/infoClubRegister.html.twig', [
             'registrationForm2' => $form->createView(),
         ]);
     }
@@ -144,7 +120,7 @@ class RegistrationController extends AbstractController
                 'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
             );
 
-            return $this->render('navbar/navbar.html.twig', [
+            return $this->render('event/index.html.twig', [
             ]);
         }
 

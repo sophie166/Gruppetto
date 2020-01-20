@@ -11,9 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
-class InformationFormType extends AbstractType
+class InformationClubFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -28,7 +27,10 @@ class InformationFormType extends AbstractType
             ])
 
             ->add('sport', EntityType::class, [
-                "class" => Sport::class])
+                "class" => Sport::class,
+                'attr'=> [
+                    'class' => 'green-input'
+                ]])
 
             ->add('cityClub', TextType::class, [
                 "label" => false,

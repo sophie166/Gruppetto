@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\ProfilSolo;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -38,6 +39,12 @@ class InformationSoloFormType extends AbstractType
                 "label" => false,
                 "required" => true,
             ])
+            ->add('gender', ChoiceType::class, [
+                'choices' => [
+                    'Femme' => true,
+                    'Homme' => false,
+                ]
+            ])
             ->add('phone', TelType::class, [
                 "label" => false,
                 "required" => false,
@@ -45,6 +52,10 @@ class InformationSoloFormType extends AbstractType
                     "placeholder" => "Numero de telephone ",
                     "class" => "green-input"
                 ]
+            ])
+            ->add('avatar', FileType::class, [
+                "label" => false,
+                "required" => false,
             ])
             ->add('description', TextareaType::class, [
                 "label" => false,
@@ -54,11 +65,7 @@ class InformationSoloFormType extends AbstractType
                     "class" => "green-input"
                 ]
             ])
-            ->add('avatar', FileType::class, [
-                "label" => false,
-                "required" => true,
-            ])
-            ->add('emergencyContactName', TelType::class, [
+            ->add('emergencyContactName', TextType::class, [
                 "label" => false,
                 "required" => false,
                 "attr" => [
