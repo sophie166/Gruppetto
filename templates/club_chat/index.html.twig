@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gruppetto | Messages{% endblock %}
+   {% block stylesheets %}
+       {{ encore_entry_link_tags('messages') }}
+   {% endblock %}
+{% block body %}
+{% include 'navbar/_navbar.html.twig' %}
+    <section class="container">
+        <div class="searchBar">
+            <input type="text" class="searchType">
+            <div class="js-search-icon">
+                <img src="{{ asset('build/images/icons8-search-blue.svg') }}" alt="search icon">
+            </div>
+
+        </div>
+
+            {% block greenBox %}
+        <section id="general-chat-button" onclick="window.location.href='{{ path('club_chat_general') }}'">
+{#                <img class="avatar" src="{{ asset('build/images/logo_club.png') }}" alt="avatar">#}
+                <p>CHAT CLUB</p>
+        </section>
+        <section class="green-box">
+            <ul>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td rowspan="2" id="user-avatar-cell"><img class="avatar" src="{{ asset('build/images/icons8-person.svg') }}" alt=""></td>
+                            <td class="user-name">John Doe</td>
+                            <td rowspan="2" id="message-icon-cell"><img src="{{ asset('build/images/message-icon.svg') }}" alt=""></td>
+                        </tr>
+                        <tr>
+                            {# add a twig filter to display only x characters #}
+                            <td class="user-last-message">Lorem ipsum de frata</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </section>
+            {% endblock greenBox %}
+
+    </section>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('messages') }}
+    {% endblock %}
+{% endblock %}

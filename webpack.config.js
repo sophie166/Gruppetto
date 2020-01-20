@@ -19,6 +19,8 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('nav', './assets/js/nav.js')
+    .addEntry('messages', './assets/js/messages.js')
+    .addEntry('details', './assets/js/details.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -59,7 +61,7 @@ Encore
     //.enableIntegrityHashes()
 
     // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
