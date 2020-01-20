@@ -13,6 +13,10 @@ Routing.setRoutingData(Routes);
 const section = document.getElementById('messages-section');
 const messagesList = document.getElementById('messages-list');
 const newMessageForm = document.getElementById('new-message-form');
+const userCard = document.getElementById('js-user-card');
+const userAvatar = document.getElementById('user-avatar');
+const userName = document.getElementById('user-name');
+const userDescription = document.getElementById('user-description');
 
 // send a message
 newMessageForm.addEventListener('submit', (event) => {
@@ -93,29 +97,27 @@ function insertToDOM(data)
                 .then((response) => {
                     // display the infos of this user
                     if (data.soloName) {
+
                         const data = response[0];
                         const lastnameSolo = data.lastnameSolo;
                         const firstnameSolo = data.firstnameSolo;
-                        const userCard = document.createElement("div");
-                        userCard.innerHTML =
-                            `<div class="user-card" id="js-user-card">
-                                 <img src="data.logo" alt="">
-                                 <div id="text-info">
-                                    <p>`+firstnameSolo+` `+lastnameSolo+`</p>
-                                    <p>lorem lorem lorem loremloremlorem lorem lorem lorem lorem lorem lorem lorem </p>
-                                 </div>
-                                 <button id="close-btn">Fermer</button>
-                            </div>`;
-                        section.appendChild(userCard);
-
-                        function closeCard()
-                        {
-                            const textInfos = document.getElementById('text-info');
-                            textInfos.parentNode.removeChild(textInfos);
-                        }
+                        const avatarSolo = data.avatarSolo;
+                        const descriptionSolo = data.descriptionSolo;
+                        userCard.style.display = 'flex';
+                        userAvatar.setAttribute('src', avatarSolo);
+                        userName.innerText = firstnameSolo + ' ' + lastnameSolo;
+                        userDescription.innerText = descriptionSolo;
 
                     } else {
-                        alert('club');
+                        const data = response[0];
+                        const nameClub = data.nameClub;
+                        const cityClub = data.cityClub;
+                        const logoClub = data.logoClub;
+                        const descriptionClub = data.descriptionClub;
+                        userCard.style.display = 'flex';
+                        userAvatar.setAttribute('src', logoClub);
+                        userName.innerText = nameClub + ', ' + cityClub;
+                        userDescription.innerText = descriptionClub;
                     }
 
                     if (document.getElementById('close-btn')) {
