@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
-use App\Entity\Sport;
 use App\Entity\User;
 use App\Form\InformationClubFormType;
 use App\Form\InformationSoloFormType;
@@ -13,17 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class RegistrationController
+ * @package App\Controller
+ * @SuppressWarnings("undefined")
+ */
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -38,6 +42,9 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setRoles(["ROLE_REGISTERED"]);
+            $_SESSION['email'] = $form['email']->getData();
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -46,17 +53,23 @@ class RegistrationController extends AbstractController
                 'Félicitations, vous avez fait votre premier pas chez Gruppetto !!!'
             );
 
+            $token = new UsernamePasswordToken(
+                $user,
+                $passwordEncoder,
+                'main',
+                $user->getRoles()
+            );
+            /** mixed */
+            $this->get('security.token_storage')->setToken($token);
+            /** mixed */
+            $this->get('session')->set('_security_main', serialize($token));
 
-            // do anything else you need here, like send an email
-
-
-            return $this->render('profil/index.html.twig');
+            return $this->render('registration/choiceTypeRegister.html.twig');
         }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/register/club/information", name="app_club_register_informations")
@@ -65,6 +78,7 @@ class RegistrationController extends AbstractController
      */
     public function informationClub(Request $request): Response
     {
+
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('');
         $profilClub->setCityClub('');
@@ -76,12 +90,17 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             if (is_null($form['LogoClub']->getData())) {
                 $profilClub->setLogoClub('no_avatar.jpg');
             } else {
                 $profilClub->setLogoClub($form['LogoClub']->getData());
             }
+
             $profilClub->setSport($form['sport']->getData());
+            // linking user to ProfilClub
+            $profilClub->addUser($this->getUser());
+
             $entityManager->persist($profilClub);
             $entityManager->flush();
             $this->addFlash(
