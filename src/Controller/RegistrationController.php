@@ -78,6 +78,12 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $logoFile =$form['LogoClub']->getData();
+            if ($logoFile) {
+                $logoFileName = md5(uniqid()) . '.' . $logoFile->guessExtension();
+                // Move the file to the directory where brochures are stored
+                $profilClub->setLogoClub($logoFileName);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($profilClub);
             $entityManager->flush();
