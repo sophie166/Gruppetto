@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class InformationClubFormType extends AbstractType
 {
@@ -44,6 +45,8 @@ class InformationClubFormType extends AbstractType
             ->add('LogoClub', FileType::class, [
                 "label" => false,
                 "required" => false,
+                "attr" => [
+                    'placeholder'=>"Logo du Club"],
             ])
 
             ->add('DescriptionClub', TextareaType::class, [
