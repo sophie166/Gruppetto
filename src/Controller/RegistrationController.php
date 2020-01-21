@@ -59,7 +59,7 @@ class RegistrationController extends AbstractController
 
 
     /**
-     * @Route("/register/information", name="app_info_register")
+     * @Route("/register/club/information", name="app_club_register_informations")
      * @param Request $request
      * @return Response
      */
@@ -86,8 +86,7 @@ class RegistrationController extends AbstractController
                 'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
             );
 
-            return $this->render('event/index.html.twig', [
-            ]);
+            return $this->render('event/index.html.twig');
         }
 
         return $this->render('registration/infoClubRegister.html.twig', [
@@ -96,7 +95,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register/informationSolo", name="app_info_register_solo")
+     * @Route("/register/solo/informations", name="app_solo_register_informations")
      * @param Request $request
      * @return Response
      */
@@ -120,8 +119,7 @@ class RegistrationController extends AbstractController
                 'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
             );
 
-            return $this->render('event/index.html.twig', [
-            ]);
+            return $this->render('event/index.html.twig');
         }
 
         return $this->render('registration/infoSoloRegister.html.twig', [
