@@ -118,6 +118,11 @@ class ProfilSolo
      */
     private $registrationEvent;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilClub", inversedBy="profilSolos")
+     */
+    private $profilClub;
+
 
     public function __construct()
     {
@@ -489,6 +494,18 @@ class ProfilSolo
                 $registrationEvent->setProfilSolo(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfilClub(): ?ProfilClub
+    {
+        return $this->profilClub;
+    }
+
+    public function setProfilClub(?ProfilClub $profilClub): self
+    {
+        $this->profilClub = $profilClub;
 
         return $this;
     }
