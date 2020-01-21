@@ -114,20 +114,25 @@ class EventController extends AbstractController
      * @Route("/{id}/participe", name="event_participe")
      * @param Event $event
      * @param ObjectManager $manager
-     * @param ParticipationLikeRepository $participationLikeRepository
+     * @param ParticipationLikeRepository $participationRepo
      * @return Response
      */
-    public function participation(Event $event, ObjectManager $manager, ParticipationLikeRepository $participationLikeRepository) : Response
-    {
+    public function participation(
+        Event $event,
+        ObjectManager $manager,
+        ParticipationLikeRepository $participationRepo
+    ) : Response {
         $user = $this->getUser();
 
-        if(!$user) return $this->json([
+        if (!$user) {
+            return $this->json([
             'code'=>403,
             'message'=>"Connectez vous"
-        ], 403);
+            ], 403);
+        }
 
-        if($event->isParticipationByUser($user)){
-            $participationLike = $participationLikeRepository->findOneBy([
+        if ($event->isParticipationByUser($user)) {
+            $participationLike = $participationRepo->findOneBy([
                 'event'=>$event,
                 'user'=>$user
             ]);
@@ -138,7 +143,7 @@ class EventController extends AbstractController
             return $this->json([
                 'code'=>200,
                 'message'=>"Participation supprimer",
-                'participationLikes'=> $participationLikeRepository->count(['event'=> $event])
+                'participationLikes'=> $participationRepo->count(['event'=> $event])
             ], 200);
         }
 
@@ -153,8 +158,7 @@ class EventController extends AbstractController
         return $this->json([
             'code' => 200,
             'message' => 'Participation accepter',
-            'participationLikes'=> $participationLikeRepository->count(['event'=> $event])
+            'participationLikes'=> $participationRepo->count(['event'=> $event])
         ], 200);
     }
-
 }
