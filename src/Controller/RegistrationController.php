@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\InformationClubFormType;
 use App\Form\InformationSoloFormType;
 use App\Form\RegistrationFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,6 +30,10 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        if ($this->getUser() && in_array('ROLE_USER', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('event');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -41,27 +46,25 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
-            $user->setRoles(["ROLE_REGISTERED"]);
-            $_SESSION['email'] = $form['email']->getData();
+            $user->setRoles(['ROLE_REGISTERED']);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
             $this->addFlash(
                 'notice',
                 'Félicitations, vous avez fait votre premier pas chez Gruppetto !!!'
             );
 
+            // automatically connects the user
             $token = new UsernamePasswordToken(
                 $user,
                 $passwordEncoder,
                 'main',
                 $user->getRoles()
             );
-            /** mixed */
             $this->get('security.token_storage')->setToken($token);
-            /** mixed */
             $this->get('session')->set('_security_main', serialize($token));
 
             return $this->render('registration/choiceTypeRegister.html.twig');
@@ -75,9 +78,12 @@ class RegistrationController extends AbstractController
      * @Route("/register/club/information", name="app_club_register_informations")
      * @param Request $request
      * @return Response
+     * @IsGranted("ROLE_REGISTERED")
      */
     public function informationClub(Request $request): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_REGISTERED');
 
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('');
@@ -91,6 +97,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+
             if (is_null($form['LogoClub']->getData())) {
                 $profilClub->setLogoClub('no_avatar.jpg');
             } else {
@@ -98,23 +105,28 @@ class RegistrationController extends AbstractController
             }
 
             $profilClub->setSport($form['sport']->getData());
+
+            // setting roles for a club
+            $this->getUser()->setRoles(['ROLE_USER', 'ROLE_CLUBER']);
+
             // linking user to ProfilClub
             $profilClub->addUser($this->getUser());
-
             $entityManager->persist($profilClub);
+            $entityManager->persist($this->getUser());
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
+                "Il ne vous reste plus q'à vous connecter !"
             );
 
-            return $this->render('event/index.html.twig');
+            return $this->redirectToRoute('app_login');
         }
-
         return $this->render('registration/infoClubRegister.html.twig', [
             'registrationForm2' => $form->createView(),
         ]);
     }
+
+
 
     /**
      * @Route("/register/solo/informations", name="app_solo_register_informations")
@@ -138,7 +150,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
+                'Bravo, vous avez réussi. Bienvenue chez Gruppetto !!!'
             );
 
             return $this->render('event/index.html.twig');
