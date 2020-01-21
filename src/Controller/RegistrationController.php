@@ -63,15 +63,12 @@ class RegistrationController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function information(Request $request): Response
+    public function informationClub(Request $request): Response
     {
         $profilClub = new ProfilClub();
-        $sportName = new Sport();
         $profilClub->setNameClub('');
-        $sportName->setSportName('');
         $profilClub->setCityClub('');
         $profilClub->setDescriptionClub('');
-        $profilClub->setLogoClub('');
 
         $form = $this->createForm(InformationClubFormType::class, $profilClub);
 
@@ -79,6 +76,12 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            if (is_null($form['LogoClub']->getData())) {
+                $profilClub->setLogoClub('no_avatar.jpg');
+            } else {
+                $profilClub->setLogoClub($form['LogoClub']->getData());
+            }
+            $profilClub->setSport($form['sport']->getData());
             $entityManager->persist($profilClub);
             $entityManager->flush();
             $this->addFlash(
