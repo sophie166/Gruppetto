@@ -11,28 +11,3 @@ require('../scss/app.scss');
 // takes the images in /pictures to put them in build/images
 const imagesContext = require.context('../pictures', true, /\.(png|jpg|jpeg|gif|ico|svg|webp)$/);
 imagesContext.keys().forEach(imagesContext);
-
-// FAQ scroll through the answers.
-const acc = document.getElementsByClassName('accordion');
-let i;
-function faqList() {
-    this.classList.toggle('active');
-    const panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-    } else {
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
-    }
-}
-for (i = 0; i < acc.length; i += 1) {
-    acc[i].addEventListener('click', faqList);
-}
-
-
-// Interact with navbar, swipe effect !
-const myArrow = document.querySelector('#arrow-swipe');
-const myHeader = document.querySelector('header');
-
-myArrow.addEventListener('click', () => {
-    myHeader.classList.toggle('closed');
-});
