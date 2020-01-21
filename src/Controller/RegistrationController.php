@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Felicitations, vous avez fait votre premier pas chez Gruppetto !!!'
+                'Félicitations, vous avez fait votre premier pas chez Gruppetto !!!'
             );
 
 
