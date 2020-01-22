@@ -4,27 +4,36 @@ namespace App\Controller;
 
 use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
-use App\Entity\Sport;
 use App\Entity\User;
 use App\Form\InformationClubFormType;
 use App\Form\InformationSoloFormType;
 use App\Form\RegistrationFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * Class RegistrationController
+ * @package App\Controller
+ * @SuppressWarnings("undefined")
+ */
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        if ($this->getUser() && in_array('ROLE_USER', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('event');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -37,34 +46,45 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setRoles(['ROLE_REGISTERED']);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
             $this->addFlash(
                 'notice',
                 'Félicitations, vous avez fait votre premier pas chez Gruppetto !!!'
             );
 
+            // automatically connects the user
+            $token = new UsernamePasswordToken(
+                $user,
+                $passwordEncoder,
+                'main',
+                $user->getRoles()
+            );
+            $this->get('security.token_storage')->setToken($token);
+            $this->get('session')->set('_security_main', serialize($token));
 
-            // do anything else you need here, like send an email
-
-
-            return $this->render('profil/index.html.twig');
+            return $this->render('registration/choiceTypeRegister.html.twig');
         }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
-
     /**
      * @Route("/register/club/information", name="app_club_register_informations")
      * @param Request $request
      * @return Response
+     * @IsGranted("ROLE_REGISTERED")
      */
     public function informationClub(Request $request): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_REGISTERED');
+
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('');
         $profilClub->setCityClub('');
@@ -76,14 +96,18 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            if (is_null($form['logoClub']->getData())) {
+
+            if (is_null($form['LogoClub']->getData())) {
                 $profilClub->setLogoClub('no_avatar.jpg');
             } else {
                 $profilClub->setLogoClub($form['logoClub']->getData());
                 $logoClub=md5(uniqid()) . '.' . $profilClub->getLogoClub();
                 $profilClub->setLogoClub($logoClub);
             }
+
             $profilClub->setSport($form['sport']->getData());
+
+            // setting roles for a club
 
             $this->getUser()->setRoles(['ROLE_USER', 'ROLE_CLUBER']);
 
@@ -103,6 +127,8 @@ class RegistrationController extends AbstractController
             'registrationForm2' => $form->createView(),
         ]);
     }
+
+
 
     /**
      * @Route("/register/solo/informations", name="app_solo_register_informations")
@@ -130,7 +156,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
+                'Bravo, vous avez réussi. Bienvenue chez Gruppetto !!!'
             );
 
             return $this->render('event/index.html.twig');

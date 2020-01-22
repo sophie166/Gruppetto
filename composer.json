@@ -5,6 +5,7 @@
         "php": "^7.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "phpmd/phpmd": "^2.6",
         "sensio/framework-extra-bundle": "^5.5",
@@ -28,8 +29,7 @@
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "4.3.*",
-        "twig/extra-bundle": "^3.0",
-      "ext-json": "*"
+        "twig/extra-bundle": "^3.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",

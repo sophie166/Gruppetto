@@ -17,17 +17,22 @@
     </div>
 {% endfor %}
 
-{{ form_errors(registrationForm2.nameClub) }}
-{{ form_widget(registrationForm2.nameClub)}}
+<div id="js-first-part-form-club" class="part-form">
+    {{ form_errors(registrationForm2.nameClub) }}
+    {{ form_widget(registrationForm2.nameClub)}}
 
-{{ form_errors(registrationForm2.sport) }}
-{{ form_widget(registrationForm2.sport)}}
+    {{ form_errors(registrationForm2.sport) }}
+    {{ form_widget(registrationForm2.sport)}}
 
-{{ form_errors(registrationForm2.cityClub) }}
-{{ form_widget(registrationForm2.cityClub)}}
+    {{ form_errors(registrationForm2.cityClub) }}
+    {{ form_widget(registrationForm2.cityClub)}}
+    <button type="button" class="continue-btn" id="js-continue-club">Continuer</button>
+</div>
 
-{{ form_widget(registrationForm2.logoClub) }}
-{{ form_widget(registrationForm2.DescriptionClub) }}
+<div id="js-second-part-form-club" class="part-form hide">
+    {{ form_widget(registrationForm2.LogoClub) }}
+    {{ form_widget(registrationForm2.DescriptionClub) }}
+    <button type="submit" class="continue-btn">Créer mon profil</button>
+</div>
 
-<button class="continue-btn">Continuer</button>
 {{ form_end(registrationForm2) }}
