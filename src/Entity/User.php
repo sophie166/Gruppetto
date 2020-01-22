@@ -44,6 +44,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\ProfilClub", inversedBy="users")
+     * @ORM\JoinTable(name="user_profil_club")
      */
     private $profilClubs;
 
