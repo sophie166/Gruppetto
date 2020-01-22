@@ -163,9 +163,8 @@ class AppFixtures extends Fixture
         $messageSolo->setProfilSolo($profilSolo);
         $messageSolo->setDateMessage(new DateTime('now'));
         $messageSolo->setContentMessage('Bonjour, je suis John.');
-        $manager->persist($messageSolo);
+            $manager->persist($messageSolo);
 
-        $manager->flush();
-
+            $manager->flush();
     }
 }
