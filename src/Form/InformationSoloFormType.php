@@ -56,6 +56,8 @@ class InformationSoloFormType extends AbstractType
             ->add('avatar', FileType::class, [
                 "label" => false,
                 "required" => false,
+                "attr" => [
+                    'placeholder'=>"avatar"],
             ])
             ->add('description', TextareaType::class, [
                 "label" => false,

@@ -42,11 +42,21 @@ class InformationClubFormType extends AbstractType
                 ]
             ])
 
-            ->add('LogoClub', FileType::class, [
-                "label" => false,
-                "required" => false,
-                "attr" => [
-                    'placeholder'=>"Logo du Club"],
+            ->add('logoClub', FileType::class, [
+                'label'=>'Logo',
+                'mapped'=> false,
+                'required'=> false,
+                'constraints'=> [
+                    new File([
+                        'maxSize'=> '500K',
+                        'maxSizeMessage'=> 'The file is too large',
+                        'mimeTypes' =>[
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage'=>'Please upload a png or jpg file.'
+                    ])
+                ]
             ])
 
             ->add('DescriptionClub', TextareaType::class, [

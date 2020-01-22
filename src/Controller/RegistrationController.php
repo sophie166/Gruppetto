@@ -75,29 +75,30 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $logoFile =$form['LogoClub']->getData();
-            if ($logoFile) {
-                $logoFileName = md5(uniqid()) . '.' . $logoFile->guessExtension();
-                // Move the file to the directory where brochures are stored
-                $profilClub->setLogoClub($logoFileName);
-            }
             $entityManager = $this->getDoctrine()->getManager();
-            if (is_null($form['LogoClub']->getData())) {
+            if (is_null($form['logoClub']->getData())) {
                 $profilClub->setLogoClub('no_avatar.jpg');
             } else {
-                $profilClub->setLogoClub($form['LogoClub']->getData());
+                $profilClub->setLogoClub($form['logoClub']->getData());
+                $logoClub=md5(uniqid()) . '.' . $profilClub->getLogoClub();
+                $profilClub->setLogoClub($logoClub);
             }
             $profilClub->setSport($form['sport']->getData());
+
+            $this->getUser()->setRoles(['ROLE_USER', 'ROLE_CLUBER']);
+
+            // linking user to ProfilClub
+            $profilClub->addUser($this->getUser());
             $entityManager->persist($profilClub);
+            $entityManager->persist($this->getUser());
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Bravo, vous avez reussi, Bienvenue chez Gruppetto !!!'
+                "Il ne vous reste plus q'à vous connecter !"
             );
 
-            return $this->render('event/index.html.twig');
+            return $this->redirectToRoute('app_login');
         }
-
         return $this->render('registration/infoClubRegister.html.twig', [
             'registrationForm2' => $form->createView(),
         ]);
@@ -113,7 +114,6 @@ class RegistrationController extends AbstractController
         $profilSolo = new ProfilSolo();
         $profilSolo->setFirstname('');
         $profilSolo->setLastname('');
-        $profilSolo->setAvatar('');
 
         $form = $this->createForm(InformationSoloFormType::class, $profilSolo);
 
@@ -121,6 +121,11 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            if (is_null($form['LogoClub']->getData())) {
+                $profilSolo->setAvatar('no_avatar.jpg');
+            } else {
+                $profilSolo->setAvatar($form['LogoClub']->getData());
+            }
             $entityManager->persist($profilSolo);
             $entityManager->flush();
             $this->addFlash(
