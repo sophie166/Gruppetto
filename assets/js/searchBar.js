@@ -7,4 +7,3 @@ const mySearchInput = document.querySelector('.searchType');
 mySearchIcon.addEventListener('click', () => {
     mySearchInput.classList.toggle('visible');
 });
-
