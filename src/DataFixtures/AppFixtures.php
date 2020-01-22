@@ -166,5 +166,6 @@ class AppFixtures extends Fixture
         $manager->persist($messageSolo);
 
         $manager->flush();
+
     }
 }
