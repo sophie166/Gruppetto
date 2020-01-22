@@ -80,7 +80,7 @@ class RegistrationController extends AbstractController
      * @Route("/register/club/information", name="app_club_register_informations")
      * @param Request $request
      * @return Response
-     * @IsGranted("ROLE_CLUBER")
+     * @IsGranted("ROLE_REGISTERED")
      */
     public function informationClub(Request $request): Response
     {
@@ -121,7 +121,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                "Il ne vous reste plus qu'à vous connecter !"
+                "Il ne vous reste plus q'à vous connecter !"
             );
 
             return $this->redirectToRoute('app_login');
@@ -137,7 +137,7 @@ class RegistrationController extends AbstractController
      * @Route("/register/solo/informations", name="app_solo_register_informations")
      * @param Request $request
      * @return Response
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_REGISTERED")
      */
     public function informationSolo(Request $request): Response
     {

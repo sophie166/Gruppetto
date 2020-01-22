@@ -30,6 +30,18 @@
 
     // on déclenche cette fonction en cliquant sur le bouton qui a l'ID de continueBtn
     continueBtn.addEventListener('click', () => {
+        for (let i = 0; i < buttonNext.length; i += 1) {
+            buttonNext[i].addEventListener('click', () => {
+                questions[i].classList.add('hideIt1');
+                setTimeout(() => {
+                    questions[i + 1].classList.remove('hideIt2');
+                    questions[i].classList.add('hideIt2');
+                    setTimeout(() => {
+                        questions[i + 1].classList.remove('hideIt1');
+                    }, 200);
+                }, 200);
+            });
+        }
         // les points qui séparent les éléments sont comme les flèches des méthodes en PHP
         /* ici, on prend l'objet firstFormClub (la première div qui est apparente), on regarde sa liste de classes,
         * puis on lui dit d'ajouter ou d'enlever la classe 'hide' (définie dans _global.scss) selon qu'elle soit
