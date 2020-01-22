@@ -1,20 +1,19 @@
  @import "vars";
 
- * {
+* {
     padding: 0;
     margin: 0;
- }
+}
 
-
- body {
+body {
     height: 100vh;
     background: url("/build/images/homepage.71b33183.jpg") no-repeat fixed center;
     background-size: cover;
     overflow: hidden;
 
     /* Put a main for having a space between nav bar and the page*/
-   main {
-      margin-top: 63px;
+    main {
+        margin-top: 63px;
    }
 
     #box-global {
@@ -79,9 +78,10 @@
                 margin: auto;
 
                 h3 {
-                  color: $secondary-color;
+                    color: $secondary-color;
                 }
             }
+
             .box-text.hidden{
                 display: none;
             }
@@ -89,8 +89,8 @@
       }
 
     #logo-form {
-      margin-top: 10px;
-      color: $secondary-color;
+        margin-top: 10px;
+        color: $secondary-color;
 
       #profil_club_logoClub {
             background: none;
@@ -100,10 +100,10 @@
       }
 
     .btn-save{
-            border: solid $secondary-color;
-            background-color: $secondary-color;
-            border-radius: 7px;
+        border: solid $secondary-color;
+        background-color: $secondary-color;
+        border-radius: 7px;
       }
-    }
+}
 
 
