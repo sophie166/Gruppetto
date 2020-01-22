@@ -1,7 +1,6 @@
 require('../scss/profil.scss');
 
-
-
+// js for modify profil page with the pen and display effect
 const myPens = document.querySelectorAll('.btn-modify');
 const myForms = document.querySelectorAll('.box-form-update');
 const myTexts = document.querySelectorAll('.box-text');

@@ -11,6 +11,7 @@ body {
   background-size: cover;
   overflow: hidden;
 
+  /* Put a main for having a space between nav bar and the page*/
 main{
   margin-top: 63px;
 }
@@ -25,6 +26,7 @@ main{
     align-items: center;
     margin-top: 10%;
 
+    /* for modify form, js effect and display none*/
     .btn-modify {
       background-color: $secondary-color;
       width: 25px;
