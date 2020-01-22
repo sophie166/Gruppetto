@@ -97,11 +97,11 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            if (is_null($form['LogoClub']->getData())) {
+            if (is_null($form['logoClub']->getData())) {
                 $profilClub->setLogoClub('no_avatar.jpg');
             } else {
                 $profilClub->setLogoClub($form['logoClub']->getData());
-                $logoClub=md5(uniqid()) . '.' . $profilClub->getLogoClub();
+                $logoClub=md5(uniqid()) . '.' . $profilClub->guessExtension();
                 $profilClub->setLogoClub($logoClub);
             }
 
@@ -109,7 +109,7 @@ class RegistrationController extends AbstractController
 
             // setting roles for a club
 
-            $this->getUser()->setRoles(['ROLE_USER', 'ROLE_CLUBER']);
+            $this->getUser()->setRoles(['ROLE_CLUBER']);
 
             // linking user to ProfilClub
             $profilClub->addUser($this->getUser());
@@ -137,6 +137,8 @@ class RegistrationController extends AbstractController
      */
     public function informationSolo(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_REGISTERED');
+
         $profilSolo = new ProfilSolo();
         $profilSolo->setFirstname('');
         $profilSolo->setLastname('');
@@ -147,19 +149,30 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            if (is_null($form['LogoClub']->getData())) {
+
+            if (is_null($form['avatar']->getData())) {
                 $profilSolo->setAvatar('no_avatar.jpg');
             } else {
-                $profilSolo->setAvatar($form['LogoClub']->getData());
+                $profilSolo->setAvatar($form['avatar']->getData());
+                $logoClub=md5(uniqid()) . '.' . $profilSolo->guessExtension();
+                $profilSolo->setAvatar($logoClub);
             }
+
+            // setting roles for a club
+
+            $this->getUser()->setRoles(['ROLE_USER']);
+
+            // linking user to ProfilClub
+            $profilSolo->setUser($this->getUser());
             $entityManager->persist($profilSolo);
+            $entityManager->persist($this->getUser());
             $entityManager->flush();
             $this->addFlash(
                 'notice',
-                'Bravo, vous avez réussi. Bienvenue chez Gruppetto !!!'
+                "Il ne vous reste plus q'à vous connecter !"
             );
 
-            return $this->render('event/index.html.twig');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/infoSoloRegister.html.twig', [
