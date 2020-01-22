@@ -11,10 +11,13 @@
     display: none !important;
 }
 
-    .closeCard {
-        display: flex;
+.show {
+    display: block !important;
+}
 
-    }
+.closeCard {
+    display: flex;
+}
 
     body {
         height: 100vh;
@@ -41,6 +44,7 @@
             // for searchBar
             .searchType.visible {
                 visibility: visible;
+                width: 100%;
             }
 
             div.js-search-icon {
@@ -56,6 +60,22 @@
                     width: 80%;
                     height: 35px;
                 }
+            }
+        }
+
+        .search-results{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 115px;
+            background-color: $secondary-color85;
+            border: $primary-border-color solid 3px;
+            border-radius: 5px;
+            min-width: 80%;
+            padding: 0.3em;
+
+            p{
+                margin: 0.2em 0;
             }
         }
 

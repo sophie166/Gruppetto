@@ -48,8 +48,9 @@ class SearchBarController extends AbstractController
 
             return new JsonResponse($json, 200, [], true);
         }
+
         $json[] = ['fullname' => 'Pas de resultat'];
         $json = json_encode($json);
-         return new JsonResponse($json, 500, [], true);
+        return new JsonResponse($json, 500, [], true);
     }
 }

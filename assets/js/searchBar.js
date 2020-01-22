@@ -10,6 +10,7 @@ const searchResultsBlock = document.getElementById('js-search-results');
 mySearchIcon.addEventListener('click', () => {
     mySearchInput.value = '';
     mySearchInput.classList.toggle('visible');
+
 });
 
 
@@ -39,9 +40,11 @@ function insertToDOM(data)
 mySearchInput.addEventListener('keyup', () => {
     if (mySearchInput.value === '') {
         searchResultsBlock.innerText = '';
+        searchResultsBlock.classList.add('hide');
         return
     }
     new Promise(((resolve, reject) => {
+        searchResultsBlock.classList.remove('hide');
         const joker = mySearchInput.value;
         console.log(joker);
         const url = Routing.generate("searchbar_getMembers", { joker });
