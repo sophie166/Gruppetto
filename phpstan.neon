@@ -7,4 +7,6 @@ parameters:
         - %rootDir%/../../../src/Migrations
     excludes_analyse:
         - src/DataFixtures
+        - src/Controller/RegistrationController.php
         - src/Controller/SearchBarController.php
+
