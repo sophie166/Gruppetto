@@ -5,32 +5,36 @@
     {{ encore_entry_link_tags('new_events') }}
 {% endblock %}
 {% block body %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <div class="show_events">
         <h1>{{ event.nameEvent }}</h1>
         <hr>
         <p class="date_time_show">{{ event.dateEvent ? event.dateEvent|date('d-m-Y') : '' }} | {{ event.timeEvent ? event.timeEvent|date('H:i') : '' }} | {{ event.placeEvent }}</p>
-        <p class="date_time_show">Entraîneure : JOhn JOe</p>
+        <p class="date_time_show">Entraîneur : JOhn JOe</p>
         <p class="levl_n">Niveau : {{ event.levelEvent }}</p>
         <p class="descript">{{ event.description }}</p>
 
         <div class="participation">
 
             <a href="{{ path('event_participe', {'id' : event.id}) }}" class="btn-link js-participe">
+
                 {% if app.user and event.isParticipationByUser(app.user) %}
-                    <i class="fas participation">Je participe</i>
+                    <i class="fas fa-check-circle"></i>
                 {% else %}
-                    <i class="far participation">Je ne participe pas</i>
+                    <i class="far fa-times-circle"></i>
                 {% endif %}
-                <span class="js-participationLikes;">{{ event.participationLikes | length }}/{{ event.participantLimit }}</span>
-                <span class="js-label"><img src="{{ asset("build/images/DRAPEAUV.2abb850b.svg")}}" alt="drapeau"></span>
+                <span class="js-participationLikes">{{ event.participationLikes | length }}</span>/{{ event.participantLimit }}
             </a>
 
-    {{ include('event/_delete_form.html.twig') }}
-        <button class="return"><a href="{{ path('event_index') }}"><img src="{{ asset("build/images/return.242530f7.svg")}}" alt="retour" class="icons"></a></button>
-        <button class="edit"><a href="{{ path('event_edit', {'id': event.id}) }}"><img src="{{ asset("build/images/btn-modif.ca9f6a1d.svg")}}" alt="edit" class="icons"></a></button>
+            <h2>Commentaire :</h2>
+            <hr>
 
-    </div>
+            {{ include('event/_delete_form.html.twig') }}
+            <button class="return"><a href="{{ path('event_index') }}"><img src="{{ asset("build/images/return.svg")}}" alt="retour" class="icons"></a></button>
+            <button class="edit"><a href="{{ path('event_edit', {'id': event.id}) }}"><img src="{{ asset("build/images/btn-modif.svg")}}" alt="edit" class="icons"></a></button>
+
         </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -40,10 +44,14 @@
             event.preventDefault();
 
             const url = this.href;
-            const spanCount = this.querySelectorAll('span.js-participationLikes');
-
+            const spanCount = this.querySelector('span.js-participationLikes');
+            const icone = this.querySelector('i');
             axios.get(url).then(function (response) {
                 spanCount.textContent = response.data.participationLikes;
+
+                if(icone.classList.contains('fas')) icone.classList.replace('fas', 'far');
+                else
+                    icone.classList.replace('far', 'fas');
             })
         }
 
