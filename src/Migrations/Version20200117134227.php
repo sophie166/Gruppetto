@@ -120,4 +120,9 @@ final class Version20200117134227 extends AbstractMigration
         $this->addSql('DROP TABLE profil_solo_sport');
         $this->addSql('DROP TABLE profil_solo_friend');
     }
+
+ 
 }
+
+}
+
