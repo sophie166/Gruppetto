@@ -6,8 +6,13 @@
     margin: 0;
 }
 
+
 .hide{
     display: none !important;
+
+.closeCard {
+    display: flex;
+
 }
 
 body {
@@ -21,7 +26,6 @@ body {
         width: 90%;
         border: 3px solid $primary-border-color;
         border-radius: 5px;
-
     }
 
     .searchBar{
