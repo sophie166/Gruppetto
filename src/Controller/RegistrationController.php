@@ -153,12 +153,13 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $logoFile =$form['avatar']->getData();
 
             if (is_null($form['avatar']->getData())) {
                 $profilSolo->setAvatar('no_avatar.jpg');
-            } else {
-                $profilSolo->setAvatar($form['avatar']->getData());
-                $logoClub=md5(uniqid()) . '.' . $profilSolo->guessExtension();
+            } if ($logoFile) {
+                $logoClub=md5(uniqid()) . '.' . $logoFile->guessExtension();
+                $logoFile->move($logoClub);
                 $profilSolo->setAvatar($logoClub);
             }
 
