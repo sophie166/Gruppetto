@@ -8,8 +8,8 @@
 <div class="date_time">
     <label for="{{ form.timeEvent.vars.id }}" class="time"></label>
     <label for="{{ form.dateEvent.vars.id }}" class="date"></label>
-    <img src="{{ asset("build/images/date.ef9ee144.svg")}}" alt="calendrier" class="img-date-heure">
-    <img src="{{ asset("build/images/time.0b67796a.svg")}}" alt="horloge" class="img-date-heure">
+    <img src="{{ asset("build/images/date.svg")}}" alt="calendrier" class="img-date-heure">
+    <img src="{{ asset("build/images/time.svg")}}" alt="horloge" class="img-date-heure">
 </div>
 <div class="form_group">
     {{ form_widget(form.dateEvent) }}
@@ -34,7 +34,7 @@
 </div>
 <div class="form_group5">
     <label for="{{ form.placeEvent.vars.id }}"></label>
-    <input type="text" class="placeEvent" id= "{{ form.placeEvent.vars.id }}" title="{{ form.placeEvent.vars.full_name }}" value="{{ form.placeEvent.vars.value }}" placeholder="Lieux:"/>
+    <input type="text" class="placeEvent" id= "{{ form.placeEvent.vars.id }}" title="{{ form.placeEvent.vars.full_name }}" value="{{ form.placeEvent.vars.value }}" placeholder="Lieu:"/>
     {% do form.placeEvent.setRendered %}
 </div>
 

@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\ParticipationLike;
 use App\Form\EventType;
 use App\Repository\EventRepository;
+use App\Repository\ParticipationLikeRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,28 +42,29 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($event);
-            $entityManager->flush();
+            $entitymanagerinterface = $this->getDoctrine()->getManager();
+            $entitymanagerinterface->persist($event);
+            $entitymanagerinterface->flush();
 
             return $this->redirectToRoute('event_index');
         }
 
         return $this->render('event/new.html.twig', [
-            'event' => $event,
+
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
-     * @param Event $event
+     * @param EventRepository $eventRepository
      * @return Response
      */
-    public function show(Event $event): Response
+    public function show(EventRepository $eventRepository, Event $event): Response
     {
         return $this->render('event/show.html.twig', [
-            'event' => $event,
+            'events' => $eventRepository->findAll(),
+            'event' => $event
         ]);
     }
 
@@ -95,12 +99,66 @@ class EventController extends AbstractController
      */
     public function delete(Request $request, Event $event): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $event->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($event);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('event_index');
+    }
+
+
+    /**
+     * Allows you to participate and no longer participate
+     * @Route("/{id}/participe", name="event_participe")
+     * @param Event $event
+     * @param ObjectManager $manager
+     * @param ParticipationLikeRepository $participationRepo
+     * @return Response
+     */
+    public function participation(
+        Event $event,
+        ObjectManager $manager,
+        ParticipationLikeRepository $participationRepo
+    ) : Response {
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->json([
+            'code'=>403,
+            'message'=>"Connectez vous"
+            ], 403);
+        }
+
+        if ($event->isParticipationByUser($user)) {
+            $participationLike = $participationRepo->findOneBy([
+                'event'=>$event,
+                'user'=>$user
+            ]);
+
+            $manager->remove($participationLike);
+            $manager->flush();
+
+            return $this->json([
+                'code'=>200,
+                'message'=>"Participation supprimer",
+                'participationLikes'=> $participationRepo->count(['event'=> $event])
+            ], 200);
+        }
+
+        $participationLike = new ParticipationLike();
+        $participationLike->setEvent($event)
+            ->setUser($user);
+
+        $manager->persist($participationLike);
+        $manager->flush();
+
+
+        return $this->json([
+            'code' => 200,
+            'message' => 'Participation accepter',
+            'participationLikes'=> $participationRepo->count(['event'=> $event])
+        ], 200);
     }
 }

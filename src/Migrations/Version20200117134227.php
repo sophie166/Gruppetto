@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200110134453 extends AbstractMigration
+final class Version20200117134227 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -38,7 +38,7 @@ final class Version20200110134453 extends AbstractMigration
         $this->addSql('CREATE TABLE sport_category (id INT AUTO_INCREMENT NOT NULL, name_category VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE chat (id INT AUTO_INCREMENT NOT NULL, profil_solo_id INT NOT NULL, friend_id INT NOT NULL, content_message LONGTEXT NOT NULL, date_message DATETIME NOT NULL, UNIQUE INDEX UNIQ_659DF2AA9ADD062D (profil_solo_id), UNIQUE INDEX UNIQ_659DF2AA6A5458E8 (friend_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE friend (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE profil_solo (id INT AUTO_INCREMENT NOT NULL, lastname VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, birthdate DATE NOT NULL, description LONGTEXT DEFAULT NULL, gender TINYINT(1) NOT NULL, avatar VARCHAR(255) NOT NULL, emergency_contact_name VARCHAR(255) DEFAULT NULL, level INT NOT NULL, sport_frequency INT NOT NULL, phone INT DEFAULT NULL, emergency_phone INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE profil_solo (id INT AUTO_INCREMENT NOT NULL, profil_club_id INT DEFAULT NULL, lastname VARCHAR(255) NOT NULL, firstname VARCHAR(255) NOT NULL, birthdate DATE NOT NULL, description LONGTEXT DEFAULT NULL, gender TINYINT(1) NOT NULL, avatar VARCHAR(255) NOT NULL, emergency_contact_name VARCHAR(255) DEFAULT NULL, level INT NOT NULL, sport_frequency INT NOT NULL, phone INT DEFAULT NULL, emergency_phone INT DEFAULT NULL, INDEX IDX_75814F3E40DC563 (profil_club_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE profil_solo_sport (profil_solo_id INT NOT NULL, sport_id INT NOT NULL, INDEX IDX_9D2D68739ADD062D (profil_solo_id), INDEX IDX_9D2D6873AC78BCF8 (sport_id), PRIMARY KEY(profil_solo_id, sport_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE profil_solo_friend (profil_solo_id INT NOT NULL, friend_id INT NOT NULL, INDEX IDX_F4B897989ADD062D (profil_solo_id), INDEX IDX_F4B897986A5458E8 (friend_id), PRIMARY KEY(profil_solo_id, friend_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE sport ADD CONSTRAINT FK_1A85EFD27173D9A4 FOREIGN KEY (sport_category_id) REFERENCES sport_category (id)');
@@ -62,6 +62,7 @@ final class Version20200110134453 extends AbstractMigration
         $this->addSql('ALTER TABLE booking_event ADD CONSTRAINT FK_AAD2F71271F7E88B FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE chat ADD CONSTRAINT FK_659DF2AA9ADD062D FOREIGN KEY (profil_solo_id) REFERENCES profil_solo (id)');
         $this->addSql('ALTER TABLE chat ADD CONSTRAINT FK_659DF2AA6A5458E8 FOREIGN KEY (friend_id) REFERENCES friend (id)');
+        $this->addSql('ALTER TABLE profil_solo ADD CONSTRAINT FK_75814F3E40DC563 FOREIGN KEY (profil_club_id) REFERENCES profil_club (id)');
         $this->addSql('ALTER TABLE profil_solo_sport ADD CONSTRAINT FK_9D2D68739ADD062D FOREIGN KEY (profil_solo_id) REFERENCES profil_solo (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE profil_solo_sport ADD CONSTRAINT FK_9D2D6873AC78BCF8 FOREIGN KEY (sport_id) REFERENCES sport (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE profil_solo_friend ADD CONSTRAINT FK_F4B897989ADD062D FOREIGN KEY (profil_solo_id) REFERENCES profil_solo (id) ON DELETE CASCADE');
@@ -85,6 +86,7 @@ final class Version20200110134453 extends AbstractMigration
         $this->addSql('ALTER TABLE profil_club_sport DROP FOREIGN KEY FK_812D9E9EE40DC563');
         $this->addSql('ALTER TABLE general_chat_club DROP FOREIGN KEY FK_FD46B7B4E40DC563');
         $this->addSql('ALTER TABLE private_chat_club DROP FOREIGN KEY FK_B6B2ECB9E40DC563');
+        $this->addSql('ALTER TABLE profil_solo DROP FOREIGN KEY FK_75814F3E40DC563');
         $this->addSql('ALTER TABLE booking_event DROP FOREIGN KEY FK_AAD2F7123301C60');
         $this->addSql('ALTER TABLE sport DROP FOREIGN KEY FK_1A85EFD27173D9A4');
         $this->addSql('ALTER TABLE chat DROP FOREIGN KEY FK_659DF2AA6A5458E8');

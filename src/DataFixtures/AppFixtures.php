@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Event;
 use App\Entity\GeneralChatClub;
+use App\Entity\ParticipationLike;
 use App\Entity\ProfilClub;
 use App\Entity\ProfilSolo;
 use App\Entity\Sport;
@@ -61,7 +62,7 @@ class AppFixtures extends Fixture
         ));
         $manager->persist($cluber2);
 
-        // Fixtures for profil club//
+        // Fixtures for profil -(//
         $profilClub = new ProfilClub();
         $profilClub->setNameClub('Run Team');
         $profilClub->setCityClub('Lille');
@@ -78,7 +79,7 @@ class AppFixtures extends Fixture
         $manager->persist($profilClub2);
 
         // Fixtures for profil Solo//
-        $profilSolo= new ProfilSolo();
+        $profilSolo = new ProfilSolo();
         $profilSolo->setLastname('Doe');
         $profilSolo->setFirstname('Jonh');
         $profilSolo->setBirthdate(new\ DateTime(141220));
@@ -92,6 +93,7 @@ class AppFixtures extends Fixture
         $profilSolo->setEmergencyPhone('0000000000');
         $manager->persist($profilSolo);
 
+        $users = [];
         // Creating lambda user
         $user = new User();
         $user->setProfilSolo($profilSolo);
@@ -102,14 +104,15 @@ class AppFixtures extends Fixture
             'userpassword'
         ));
         $manager->persist($user);
+        $users[] = $user;
 
         // Fixtures for sportCategory//
-        $sportCategory=new SportCategory();
+        $sportCategory = new SportCategory();
         $sportCategory->setNameCategory('Running');
         $manager->persist($sportCategory);
 
         // Fixtures for sport//
-        $sport= new Sport();
+        $sport = new Sport();
         $sport->setSportName('Courses');
         $sport->setSportCategory($sportCategory);
         $manager->persist($sport);
@@ -134,6 +137,17 @@ class AppFixtures extends Fixture
         $messageClub->setContentMessage('Bonjour, je suis un club de natation');
         $manager->persist($messageClub);
 
-        $manager->flush();
+
+        //participation
+        for ($j = 0; $j < mt_rand(0, 10); $j++) {
+            $participationLike = new ParticipationLike();
+
+            $participationLike->setEvent($event)
+                ->setUser($faker->randomElement($users));
+            $manager->persist($participationLike);
+
+
+            $manager->flush();
+        }
     }
 }
