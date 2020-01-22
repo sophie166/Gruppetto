@@ -1,3 +1,7 @@
+@import "vars";
+@import "form";
+@import "global";
+
 body{
     background-image: url('/build/images/runBackground.b2ed985d.jpg');
     margin: 0;
@@ -9,7 +13,7 @@ body{
 
     //box green of page edit
     .edit{
-        background: rgba(74, 176, 121, 0.95);
+        background: $primary-color95;
         border: 5px solid #1E6740;
         box-sizing: border-box;
         border-radius: 5px;
@@ -20,7 +24,7 @@ body{
         .name_event{
             background-color: transparent;
             border-color: transparent ;
-            color: white;
+            color: $light;
             margin-bottom: 0;
             font-size: 20px;
             margin-left: 5%;
@@ -32,9 +36,10 @@ body{
     hr{
         width: 90%;
         height: 2px;
-        background-color:rgba(16, 46, 130, 0.5); ;
+        background-color: $tertiary-color50;
         border: none;
         margin-top: auto;
+        margin-left: 5%;
 }
 
     //button of save
@@ -44,14 +49,14 @@ body{
         background-position: center;
         background-repeat: no-repeat;
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color:$secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
-        top: 520px;
-        left: 135px;
+        top: 530px;
+        left: 160px;
 }
 
     //select of date and time
@@ -61,7 +66,7 @@ body{
         appearance: none;
         border-color: transparent;
         background-color: transparent;
-        color: white;
+        color: $light;
 }
 
     //group date and time
@@ -79,9 +84,9 @@ body{
 
     //box blue
     .description_event{
-        background: rgba(16, 46, 130, 0.5);
-        border: 1px solid rgba(16, 46, 130, 0.5);
-        color: white;
+        background: $tertiary-color50;
+        border: 1px solid $tertiary-color50;
+        color: $light;
         border-radius: 5%;
         width: 250px;
         height: 100px;
@@ -90,13 +95,13 @@ body{
 
     // level of events
     .level{
-        color: white;
+        color: $light;
         margin-left: 5%;
 }
 
     // place of l'events
     .placeEvent{
-        color: white;
+        color: $light;
         margin-left: 5%;
         width: 90%;
 }
@@ -104,7 +109,7 @@ body{
     input{
         background-color: transparent;
         border-color: transparent ;
-        color: #FECC37;
+        color: $secondary-color;
         margin-bottom: 3%;
         font-size: 20px;
         margin-left: 15%;
@@ -113,14 +118,14 @@ body{
     //button return
     .return{
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color:$secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
-        top: 520px;
-        left: 35px;
+        top: 530px;
+        left: 30px;
 }
 
     //button of delete
@@ -130,13 +135,13 @@ body{
         background-position: center;
         background-repeat: no-repeat;
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color:$secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
-        top: 520px;
-        left: 250px;
+        top: 530px;
+        left: 290px;
 }
 }

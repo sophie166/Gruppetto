@@ -1,9 +1,13 @@
+@import "vars";
+@import "form";
+@import "global";
+
 body{
-    color: white;
+    color: $light;
 
     //date & time page index
     .date_time{
-        color: #fecc37;
+        color: $secondary-color;
         text-align: start;
         font-size: 15px;
         margin: 0 5% 2% 5%;
@@ -18,15 +22,15 @@ body{
 
     //cards of event in index page
     .card_events{
-        background: rgba(74, 176, 121, 0.95);
+        background: $primary-color95;
         border: 5px solid #1E6740;
-
+        border-radius: 5px;
         }
 
     //button add
     .add{
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color: $secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
@@ -41,14 +45,14 @@ body{
     hr{
         width: 90%;
         height: 2px;
-        background-color:rgba(16, 46, 130, 0.5); ;
+        background-color: $tertiary-color50;
         border: none;
         margin-top: auto;
         }
 
     //box green of page show
     .show_events {
-        background: rgba(74, 176, 121, 0.95);
+        background: $primary-color95;
         border: 5px solid #1E6740;
         box-sizing: border-box;
         border-radius: 5px;
@@ -57,7 +61,7 @@ body{
         }
 
     h1{
-        color: #FECC37;
+        color: $secondary-color;
         margin-bottom: 0;
         font-size: 20px;
         margin-left: 5%;
@@ -72,13 +76,13 @@ body{
 
     //box blue of description show page
     .descript{
-        background: rgba(16, 46, 130, 0.5);
-        border: 1px solid rgba(16, 46, 130, 0.5);
-        color: white;
+        background: $tertiary-color50;
+        border: 1px solid $tertiary-color50;
+        color: $light;
         border-radius: 5%;
         width: 250px;
         height: 70px;
-        margin: 10% 5% 5% 5%;
+        margin: 5% 5% 5% 11%;
         text-align: center;
         }
 
@@ -99,14 +103,14 @@ body{
         background-color: transparent;
         border-color: transparent;
         text-decoration: none;
-        color: white;
+        color: $light;
         }
 
     .link{
         background-color: transparent;
         border-color: transparent;
         text-decoration: none;
-        color: white;
+        color: $light;
         }
 
 
@@ -117,7 +121,7 @@ body{
         }
 
     h2{
-        color: white;
+        color: $light;
         margin-bottom: 0;
         font-size: 20px;
         margin-left: 5%;
@@ -131,40 +135,40 @@ body{
         background-position: center;
         background-repeat: no-repeat;
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color: $secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
         top: 520px;
-        left: 250px;
+        left: 290px;
         }
 
     //button  of return
     .return{
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color: $secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
         top: 520px;
-        left: 35px;
+        left: 30px;
         }
 
     //button of edit
     .edit{
         box-sizing: border-box;
-        background-color:#FECC37;
+        background-color:$secondary-color;
         border-color: transparent ;
         border-radius: 100%;
         width: 50px;
         height: 50px;
         position: absolute;
         top: 520px;
-        left: 135px;
+        left: 160px;
         }
 
     //icon of edit and return
@@ -172,6 +176,13 @@ body{
         width: 30px;
         margin: auto;
         }
+
+    .btn-link{
+        color: $light;
+        text-decoration: none;
+        line-height: 16px;
+        margin-left: 38%;
+    }
 
     // card page events
     .card_button{
@@ -184,7 +195,7 @@ body{
         width: 90%;
 
         a{
-            color: white;
+            color: $light;
             text-decoration: none;
             }
 
