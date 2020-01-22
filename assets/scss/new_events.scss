@@ -1,3 +1,7 @@
+@import "vars";
+@import "form";
+@import "global";
+
 body{
     background-image: url('/build/images/runBackground.b2ed985d.jpg');
     margin: 0;
@@ -9,18 +13,18 @@ body{
 
     //box green of page new
     .new{
-        background: rgba(74, 176, 121, 0.95);
+        background: $primary-color95;
         border: 5px solid #1E6740;
         box-sizing: border-box;
         border-radius: 5px;
-        margin: 5% 5% 20% 5%;
+        margin: 15% 5% 20% 5%;
         height: 80%;
 
         //input of add name events
         .name_event{
             background-color: transparent;
             border-color: transparent ;
-            color: #FECC37;
+            color: $secondary-color;
             margin-bottom: 0;
             font-size: 20px;
             margin-left: 5%;
@@ -32,9 +36,10 @@ body{
     hr{
         width: 90%;
         height: 2px;
-        background-color:rgba(16, 46, 130, 0.5); ;
+        background-color:$tertiary-color50;
         border: none;
         margin-top: auto;
+        margin-left: 5%;
 }
 }
 
@@ -45,14 +50,14 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;
-    background-color:#FECC37;
+    background-color:$secondary-color;
     border-color: transparent ;
     border-radius: 100%;
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 520px;
-    left: 135px;
+    left: 160px;
+    top: 581px;
 }
 
 //select of date and time
@@ -62,7 +67,7 @@ select, option{
     appearance: none;
     border-color: transparent;
     background-color: transparent;
-    color: white;
+    color: $light;
 }
 
 //group date and time
@@ -73,31 +78,31 @@ select, option{
 
 //picture date and time
 .img-date-heure{
-    margin: 5% 1% 5% 19%;
+    margin: 5% 5% 5% 19%;
     width: 60px;
     border-radius: 0;
 }
 
 //box blue
 .description_event{
-    background: rgba(16, 46, 130, 0.5);
-    border: 1px solid rgba(16, 46, 130, 0.5);
-    color: white;
+    background: $tertiary-color50;
+    border: 1px solid $tertiary-color50;
+    color: $light;
     border-radius: 5%;
     width: 250px;
     height: 100px;
-    margin: 5% 5% 5% 5%;
+    margin: 5% 5% 5% 11%;
 }
 
 // level of  event
 .level{
-    color: white;
+    color: $light;
     margin-left: 5%;
 }
 
 // place of event
 .placeEvent{
-    color: white;
+    color: $light;
     margin-left: 5%;
     width: 90%;
 }
@@ -111,7 +116,7 @@ select, option{
 input{
     background-color: transparent;
     border-color: transparent ;
-    color: #FECC37;
+    color: $secondary-color;
     margin-bottom: 3%;
     font-size: 20px;
     margin-left: 15%;
