@@ -23,13 +23,13 @@
     {% do form.description.setRendered %}
 </div>
 <div class="form_group3">
-    <label for="{{ form.levelEvent.vars.id }}" class="level">Niveau</label>
-    {{ form_widget(form.levelEvent) }}
+    <label for="{{ form.levelEvent.vars.id }}" class="level"></label>
+    <input type="number" class="level_event" id= "{{ form.levelEvent.vars.id }}" title="{{ form.levelEvent.vars.full_name }}" value="{{ form.levelEvent.vars.value }}" placeholder="Niveau:"/>
     {% do form.levelEvent.setRendered %}
 </div>
 <div class="form_group4">
-    <label for="{{ form.participantLimit.vars.id }}" class="level">Nombre de participant</label>
-    {{ form_widget(form.participantLimit) }}
+    <label for="{{ form.participantLimit.vars.id }}" class="level"></label>
+    <input type="number" class="participant_limit" id= "{{ form.participantLimit.vars.id }}" title="{{ form.participantLimit.vars.full_name }}" value="{{ form.participantLimit.vars.value }}" placeholder="N° Participant:"/>
     {% do form.participantLimit.setRendered %}
 </div>
 <div class="form_group5">
