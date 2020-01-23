@@ -36,7 +36,7 @@ class ProfilClubType extends AbstractType
                              'image/jpeg',
                              'image/png',
                          ],
-                         'mimeTypesMessage'=>'Please upload a png or jpg file.'
+                         'mimeTypesMessage'=>'Merci de sélectionner un fichier png ou jpg.'
                      ])
                  ]
             ])

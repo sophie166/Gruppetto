@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\ProfilClubType;
 use App\Form\UserType;
 use App\Repository\ProfilClubRepository;
+use App\Services\GetUserClub;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,12 +26,14 @@ class ProfilClubController extends AbstractController
      * @Route("/{id}/", name="profil_club_edit", methods={"GET","POST"})
      * @param Request $request
      * @param ProfilClub $profilClub
+     * @param GetUserClub $club
      * @return Response
      * @IsGranted("ROLE_USER")
      */
 
-    public function edit(Request $request, ProfilClub $profilClub): Response
+    public function edit(Request $request, ProfilClub $profilClub, GetUserClub $club): Response
     {
+        $club->getClub();
         // create form for profil club and user password security
         $form = $this->createForm(ProfilClubType::class, $profilClub);
         $form->handleRequest($request);
