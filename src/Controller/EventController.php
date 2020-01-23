@@ -23,13 +23,13 @@ class EventController extends AbstractController
 {
     /**
      * @Route("/", name="event_index", methods={"GET", "POST"}, options={"expose"=true})
-     * @param EventRepository $eventRepository
+     * @param GetUserClub $club
      * @return Response
      * @IsGranted("ROLE_USER")
      */
-    public function index(EventRepository $eventRepository,GetUserClub $club): Response
-    {
 
+    public function index(GetUserClub $club): Response
+    {
 
         $ema = $this->getDoctrine()->getManager();
         $events = $ema->getRepository(Event::class)
