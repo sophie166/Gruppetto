@@ -9,6 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BookingType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -17,6 +21,8 @@ class BookingType extends AbstractType
             ->add('title')
             ->add('events')
         ;
+
+        $options = null;
     }
 
     public function configureOptions(OptionsResolver $resolver)
