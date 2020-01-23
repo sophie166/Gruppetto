@@ -8,6 +8,7 @@ use App\Form\ProfilClubType;
 use App\Form\UserType;
 use App\Repository\ProfilClubRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,9 @@ class ProfilClubController extends AbstractController
      * @param Request $request
      * @param ProfilClub $profilClub
      * @return Response
+     * @IsGranted("ROLE_USER")
      */
+
     public function edit(Request $request, ProfilClub $profilClub): Response
     {
         // create form for profil club and user password security

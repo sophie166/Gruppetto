@@ -89,7 +89,8 @@ body {
       }
 
     #logo-form {
-        margin-top: 10px;
+        display: inline-flex;
+        margin: 0px;
         color: $secondary-color;
 
         #profil_club_logoClub {
@@ -104,6 +105,7 @@ body {
         background-color: $secondary-color;
         border-radius: 7px;
       }
+
 }
 
 
