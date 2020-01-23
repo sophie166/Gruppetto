@@ -61,7 +61,8 @@
         </section>
 
         <section id="logo-form">
-            <h3>{{form_label(form.logoClub) }}</h3>
+            <h3>Logo</h3>
+            <h3>{{form_widget(form.logoClub,{'label': 'Télécharger'}) }}</h3>
         </section>
     {{ form_end(form) }}
         <section>
