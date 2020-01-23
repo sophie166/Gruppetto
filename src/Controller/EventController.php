@@ -163,5 +163,4 @@ class EventController extends AbstractController
             'participationLikes'=> $participationRepo->count(['event'=> $event])
         ], 200);
     }
-
 }
