@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BookingController extends AbstractController
-
 {
+
     /**
      * @Route("/booking", name="booking_index", methods={"GET"})
      * @param BookingRepository $bookingRepository

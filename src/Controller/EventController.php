@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Event;
 use App\Entity\ParticipationLike;
 use App\Form\EventType;
@@ -127,8 +128,8 @@ class EventController extends AbstractController
 
         if (!$user) {
             return $this->json([
-            'code'=>403,
-            'message'=>"Connectez vous"
+                'code'=>403,
+                'message'=>"Connectez vous"
             ], 403);
         }
 
@@ -162,4 +163,5 @@ class EventController extends AbstractController
             'participationLikes'=> $participationRepo->count(['event'=> $event])
         ], 200);
     }
+
 }
