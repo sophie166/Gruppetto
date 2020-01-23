@@ -23,18 +23,21 @@ class ProfilClubController extends AbstractController
 {
 
     /**
-     * @Route("/{id}/", name="profil_club_edit", methods={"GET","POST"})
+     * @Route("/", name="profil_club_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param ProfilClub $profilClub
      * @return Response
      * @IsGranted("ROLE_USER")
      */
 
-    public function edit(Request $request, ProfilClub $profilClub): Response
+    public function edit(Request $request,GetUserClub $club): Response
     {
         // create form for profil club
-        $form = $this->createForm(ProfilClubType::class, $profilClub);
+        $club->getClub();
+        $form = $this->createForm(ProfilClubType::class, $club->getClub());
         $form->handleRequest($request);
+        $ema = $this->getDoctrine()->getManager();
+        $thisClub = $ema->getRepository(ProfilClub::class)
+            ->find($club->getClub());
 
         if ($form->isSubmitted() && $form->isValid()) {
             $logoFile =$form['logoClub']->getData();
@@ -43,14 +46,15 @@ class ProfilClubController extends AbstractController
                 $logoFileName = md5(uniqid()). '.'.$logoFile->guessExtension();
                 // Move the file to the directory where brochures are stored
                 $logoFile->move($this->getParameter('upload_directory'), $logoFileName);
-                $profilClub->setLogoClub($logoFileName);
+                $thisClub->setLogoClub($logoFileName);
             }
+
 
             $this->getDoctrine()->getManager()->flush();
         }
 
         return $this->render('profil_club/show.html.twig', [
-            'profil_club' => $profilClub,
+            'profil_club' => $thisClub,
             'form' => $form->createView(),
         ]);
     }
