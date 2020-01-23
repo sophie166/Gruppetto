@@ -19,6 +19,18 @@ form{
             width: 80%;
             border: 0;
         }
+
+        button{
+            border: 0;
+        }
+
+        div{
+            height: 100%;
+
+            #general_chat_contentMessage{
+                height: 100%;
+            }
+        }
     }
 
 }
@@ -27,7 +39,29 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+
+    #general-chat-button{
+        background-color: $primary-color95;
+        border: 3px solid $primary-border-color;
+        border-radius: 5px;
+        width: 90%;
+        margin: 2.5em auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        img{
+            height: 70%;
+        }
+
+        p{
+            color: $light;
+            font-size: 21px;
+            font-family: 'Edmondsans', sans-serif;
+            letter-spacing: 15px;
+        }
+    }
 
     .green-box{
 
@@ -36,27 +70,6 @@ body{
             height: 95%;
             padding: 0.3em;
             overflow: auto;
-
-            li#general-chat-button{
-                background-color: $secondary-color50;
-                border-radius: 5px;
-                width: 90%;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                max-width: 250px;
-
-                img{
-                    height: 70%;
-                }
-
-                p{
-                    color: $light;
-                    font-size: 21px;
-                    font-family: 'Roboto', sans-serif;
-                }
-            }
 
             li{
                 height: 15%;
@@ -110,8 +123,9 @@ body{
     .general-chat-section{
         display: flex;
         flex-direction: column;
+        height: 74vh;
 
-        h4{
+        h1{
             display: flex;
             justify-content: space-evenly;
             width: 80%;
@@ -135,6 +149,11 @@ body{
                 font-family: 'Roboto', sans-serif;
                 color: $light;
 
+                p{
+                    max-width: 80vw;
+                    overflow: no-content;
+                }
+
                 .sentAt{
                     font-size: 12px;
                 }
@@ -142,6 +161,75 @@ body{
                 .sentBy{
                     color: $secondary-color;
                     font-weight: bold;
+                }
+            }
+        }
+
+        .user-card{
+            z-index: 4;
+            display: none;
+            background-color: $primary-color95;
+            height: 30vh;
+            width: 70vw;
+            border: 3px solid $primary-border-color;
+            border-radius: 5px;
+            position: fixed;
+            top: 30vh;
+            left: 15vw;
+            align-items: center;
+            justify-content: space-around;
+
+            img{
+                height: 50px;
+                width: 20%;
+                border-radius: 50%;
+            }
+
+            #text-info{
+                width: 70%;
+                height: 90%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+                #user-name{
+                    font-family: 'Edmondsans', sans-serif;
+                    font-size: 25px;
+                    color: $light;
+                }
+
+                #user-description{
+                    font-family: 'Roboto', sans-serif;
+                    color: $light;
+                }
+
+                .close {
+                    position: absolute;
+                    right: 32px;
+                    top: 32px;
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .close:hover {
+                    opacity: 1;
+                }
+
+                .close:before, .close:after {
+                    position: absolute;
+                    left: 15px;
+                    content: ' ';
+                    height: 33px;
+                    width: 2px;
+                    background-color: $secondary-color;
+                    border: none;}
+
+                .close:before {
+                    transform: rotate(45deg);
+                }
+
+                .close:after {
+                    transform: rotate(-45deg);
                 }
             }
         }

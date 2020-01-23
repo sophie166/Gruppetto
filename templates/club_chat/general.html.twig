@@ -1,23 +1,39 @@
 {% extends 'club_chat/index.html.twig' %}
 
 {% block greenBox %}
-    <section class="green-box general-chat-section">
-        <ul>
-        <li><h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
-        </li>
-            <li class="general-chat-message">
-                <span class="sentAt">[21/01/2020 13:45]</span> <span class="sentBy">John Doe :</span> <span class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit.</span>
-            </li>
-            <li class="general-chat-message">
-                <span class="sentAt">[21/01/2020 13:50]</span> <span class="sentBy">Running Club :</span> <span class="message">Consectetur adipisicing elit. A, aliquid dolor eius illum minus nobis odit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, laboriosam magni numquam odio quis sapiente vel? Aperiam cumque dolor excepturi explicabo nemo, nesciunt perspiciatis ratione tempora? Adipisci alias aliquam illo?</span>
-            </li>
+    <section class="green-box general-chat-section" id="messages-section">
+        <h1><img onclick="window.location.href='{{ path('club_chat') }}'" src="{{ asset('build/images/back-arrow-icon.svg') }}" alt="">Chat général</h1>
 
+        <ul class="js-chatbox" id="messages-list">
         </ul>
-        <form action="">
-            <div class="input-message-bar">
-                <input type="text" placeholder="Ecrivez votre message ...">
-                <img src="{{ asset('build/images/send-message-icon.svg') }}" alt="">
+        {{ form_start(form,{
+            'attr': {
+                'class': 'js-new-message',
+                'id': 'new-message-form',
+                'novalidate': 'novalidate'
+            }})
+        }}
+        {{ form_errors(form) }}
+        {% if is_granted('ROLE_CLUBER') %}
+            <input type="hidden" value="{{ app.user.profilClubs.owner.profilClubs.snapshot[0].id }}" name="profilClub">
+        {% elseif is_granted('ROLE_USER') %}
+                <input type="hidden" value="{{ app.user.profilClubs.owner.profilSolo.profilClub.id }}" name="profilClub">
+        {% endif %}
+
+        <div class="input-message-bar">
+            {{ form_row(form.contentMessage)}}
+            <button><img src="{{ asset('build/images/send-message-icon.svg') }}" alt=""></button>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="user-card" id="js-user-card">
+            <img src="data.logo" alt="avatar utilisateur" id="user-avatar">
+            <div id="text-info">
+                <p id="user-name"></p>
+                <p id="user-description"></p>
+                <a href="#" class="close" id="close-btn"></a>
             </div>
-        </form>
+        </div>
+
     </section>
 {% endblock greenBox %}
