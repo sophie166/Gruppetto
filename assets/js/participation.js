@@ -1,5 +1,4 @@
-function onclickBtnParticipe(event)
-{
+function onclickBtnParticipe(event) {
     event.preventDefault();
 
     const url = this.href;
