@@ -7,7 +7,9 @@ use App\Entity\ParticipationLike;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Repository\ParticipationLikeRepository;
+use App\Services\GetUserClub;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,14 +22,21 @@ use Doctrine\ORM\EntityManagerInterface;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="event_index", methods={"GET"})
+     * @Route("/", name="event_index", methods={"GET", "POST"}, options={"expose"=true})
      * @param EventRepository $eventRepository
      * @return Response
+     * @IsGranted("ROLE_USER")
      */
-    public function index(EventRepository $eventRepository): Response
+    public function index(EventRepository $eventRepository,GetUserClub $club): Response
     {
+
+
+        $ema = $this->getDoctrine()->getManager();
+        $events = $ema->getRepository(Event::class)
+            ->findBy(['creatorClub'=>$club->getClub()]);
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $events,
+
         ]);
     }
 
@@ -35,6 +44,7 @@ class EventController extends AbstractController
      * @Route("/new", name="event_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
+     * @IsGranted("ROLE_CLUBER")
      */
     public function new(Request $request): Response
     {
@@ -47,7 +57,7 @@ class EventController extends AbstractController
             $entitymanager->persist($event);
             $entitymanager->flush();
 
-            return $this->redirectToRoute('event_index');
+            return $this->redirectToRoute('booking_calendar');
         }
 
         return $this->render('event/new.html.twig', [
@@ -59,7 +69,9 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      * @param EventRepository $eventRepository
+     * @param Event $event
      * @return Response
+     * @IsGranted("ROLE_USER")
      */
     public function show(EventRepository $eventRepository, Event $event): Response
     {
@@ -74,6 +86,7 @@ class EventController extends AbstractController
      * @param Request $request
      * @param Event $event
      * @return Response
+     * @IsGranted("ROLE_CLUBER")
      */
     public function edit(Request $request, Event $event): Response
     {
@@ -97,6 +110,7 @@ class EventController extends AbstractController
      * @param Request $request
      * @param Event $event
      * @return Response
+     * @IsGranted("ROLE_CLUBER")
      */
     public function delete(Request $request, Event $event): Response
     {
@@ -143,7 +157,7 @@ class EventController extends AbstractController
 
             return $this->json([
                 'code'=>200,
-                'message'=>"Participation supprimer",
+                'message'=>"Participation supprimée",
                 'participationLikes'=> $participationRepo->count(['event'=> $event])
             ], 200);
         }
@@ -158,7 +172,7 @@ class EventController extends AbstractController
 
         return $this->json([
             'code' => 200,
-            'message' => 'Participation accepter',
+            'message' => 'Participation acceptée',
             'participationLikes'=> $participationRepo->count(['event'=> $event])
         ], 200);
     }

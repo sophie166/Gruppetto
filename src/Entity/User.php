@@ -55,6 +55,7 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->profilClubs = new ArrayCollection();
         $this->participationLikes = new ArrayCollection();
     }
 
