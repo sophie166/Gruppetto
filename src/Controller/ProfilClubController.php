@@ -26,15 +26,13 @@ class ProfilClubController extends AbstractController
      * @Route("/{id}/", name="profil_club_edit", methods={"GET","POST"})
      * @param Request $request
      * @param ProfilClub $profilClub
-     * @param GetUserClub $club
      * @return Response
      * @IsGranted("ROLE_USER")
      */
 
-    public function edit(Request $request, ProfilClub $profilClub, GetUserClub $club): Response
+    public function edit(Request $request, ProfilClub $profilClub): Response
     {
-        $club->getClub();
-        // create form for profil club and user password security
+        // create form for profil club
         $form = $this->createForm(ProfilClubType::class, $profilClub);
         $form->handleRequest($request);
 
